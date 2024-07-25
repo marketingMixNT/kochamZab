@@ -8,8 +8,10 @@ use Filament\Widgets;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Illuminate\Support\Facades\Blade;
+use App\Filament\Widgets\StatsOverview;
 use Filament\Navigation\NavigationItem;
 use Filament\Http\Middleware\Authenticate;
+
 use Filament\Support\Facades\FilamentView;
 use Filament\SpatieLaravelTranslatablePlugin;
 use Illuminate\Session\Middleware\StartSession;
@@ -21,12 +23,17 @@ use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
+use App\Filament\Resources\PostResource\Widgets\PostStatsOverview;
+use App\Filament\Resources\ApartmentResource\Widgets\ApartmentStatsOverview;
+use App\Filament\Resources\AttractionResource\Widgets\AttractionStatsOverview;
+use App\Filament\Resources\RestaurantResource\Widgets\RestaurantStatsOverview;
 
 class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
         return $panel
+        
             ->spa()
             ->id('admin')
             ->path('admin')
@@ -49,6 +56,11 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
+
+                StatsOverview::class,
+                PostStatsOverview::class
+
+
             ])
             ->navigationItems([
                 NavigationItem::make('Strona Główna')
@@ -82,9 +94,5 @@ class AdminPanelProvider extends PanelProvider
             ->plugin(SpatieLaravelTranslatablePlugin::make()->defaultLocales(['pl', 'en']),);
     }
 
-    public function register(): void
-    {
-        parent::register();
-        FilamentView::registerRenderHook('panels::body.end', fn (): string => Blade::render("@vite('resources/js/app.js')"));
-    }
+   
 }

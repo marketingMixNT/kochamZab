@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\RestaurantResource\Pages;
 
 use App\Filament\Resources\RestaurantResource;
+use App\Filament\Resources\RestaurantResource\Widgets\RestaurantStatsOverview;
 use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 
@@ -25,5 +26,13 @@ class CreateRestaurant extends CreateRecord
         $data['user_id'] = auth()->id();
 
         return $data;
+    }
+
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            
+            RestaurantStatsOverview::class
+        ];
     }
 }

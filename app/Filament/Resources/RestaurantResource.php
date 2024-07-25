@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use Filament\Forms;
+use App\Models\User;
 use Filament\Tables;
 use App\Models\Social;
 use Filament\Forms\Set;
@@ -12,13 +13,14 @@ use App\Models\Restaurant;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use Filament\Facades\Filament;
+use Illuminate\Support\Carbon;
 use Filament\Resources\Resource;
 use Awcodes\Shout\Components\Shout;
+use Livewire\Component as Livewire;
 use Filament\Forms\Components\Toggle;
+
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Fieldset;
-use Livewire\Component as Livewire;
-
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Component;
 use Illuminate\Database\Eloquent\Builder;
@@ -286,31 +288,44 @@ class RestaurantResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->reorderable('sort')
+            ->defaultSort('sort', 'desc')
             ->columns([
-                Tables\Columns\TextColumn::make('phone')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('email')
-                    ->searchable(),
-                Tables\Columns\IconColumn::make('featured')
-                    ->boolean(),
                 Tables\Columns\TextColumn::make('order')
-                    ->numeric()
+                    ->label('#')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('type')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('user.name')
-                    ->numeric()
+
+                Tables\Columns\ImageColumn::make('thumbnail')
+                    ->label('Miniaturka'),
+
+                Tables\Columns\TextColumn::make('name')
+                    ->label('Nazwa')
+                    ->description(function (Restaurant $record) {
+                        return Str::limit(strip_tags($record->desc), 40);
+                    })
+                    ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('_id')
-                    ->numeric()
+                    Tables\Columns\TextColumn::make('posts_count')
+                    ->label('Liczba Postów')
+                    ->counts('posts')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
+
+                    Tables\Columns\TextColumn::make('user_id')
+                    ->label('Autor')
                     ->sortable()
+                    ->formatStateUsing(function ($state) {
+                        $user = User::find($state);
+                        return $user ? $user->name : 'brak';
+                    })
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
+
+                Tables\Columns\TextColumn::make('created_at')
+                    ->label('Data publikacji')
                     ->dateTime()
                     ->sortable()
+                    ->formatStateUsing(function ($state) {
+                        return Carbon::parse($state)->format('d-m-Y');
+                    })
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
@@ -318,6 +333,7 @@ class RestaurantResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -326,12 +342,7 @@ class RestaurantResource extends Resource
             ]);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
+  
 
     public static function getPages(): array
     {

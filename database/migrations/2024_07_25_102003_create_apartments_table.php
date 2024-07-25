@@ -26,7 +26,7 @@ return new class extends Migration
             $table->text('google_maps_link')->nullable();
             $table->text('google_maps_frame')->nullable();
             $table->text('site_link')->nullable();
-            $table->boolean('featured');
+            $table->boolean('featured')->default(0);
             $table->integer('sort')->nullable();
             $table->foreignId('user_id');
             $table->timestamps();

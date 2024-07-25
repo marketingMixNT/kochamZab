@@ -4,18 +4,20 @@ namespace App\Filament\Resources;
 
 use Filament\Forms;
 use App\Models\Post;
+use App\Models\User;
 use Filament\Tables;
 use Filament\Forms\Set;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
+use Illuminate\Support\Carbon;
 use Filament\Resources\Resource;
 use Awcodes\Shout\Components\Shout;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Fieldset;
-use Filament\Forms\Components\Livewire;
+use Livewire\Component as Livewire;
 use Filament\Forms\Components\Component;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
@@ -115,15 +117,15 @@ class PostResource extends Resource
                             ->columnSpanFull(),
                     ]),
                 // Thumbnails & Relations
-                Section::make('Miniaturka oraz kategoria')
+                Section::make('Miniaturka oraz relacje')
                     ->icon('heroicon-o-photo')
-                    ->description('Przypisz kategorie oraz atrakcje')
+                    ->description('Ustaw miniaturkę oraz przypisz relacje do posta')
                     ->collapsible()
                     ->collapsed()
                     ->columns(2)
                     ->schema([
                         FileUpload::make('thumbnail')
-                            ->columns(1)
+                            ->columnSpanFull()
                             ->label('Miniaturka')
                             ->directory('blog-thumbnails')
                             ->getUploadedFileNameForStorageUsing(
@@ -142,7 +144,7 @@ class PostResource extends Resource
                             ->required(),
 
                         Fieldset::make('Przypisz posta')
-                            ->columns(3)
+                            
                             ->schema([
                                 Select::make('apartment_id')
                                     ->label('Apartament')
@@ -150,7 +152,8 @@ class PostResource extends Resource
                                     ->multiple()
                                     ->preload()
                                     ->searchable()
-                                    ->placeholder('Mozesz wybrac kilka'),
+                                    ->placeholder('Mozesz wybrac kilka')
+                                    ->columnSpanFull(),
 
                                 Select::make('attraction_id')
                                     ->label('Atrakcja')
@@ -158,7 +161,8 @@ class PostResource extends Resource
                                     ->multiple()
                                     ->preload()
                                     ->searchable()
-                                    ->placeholder('Mozesz wybrac kilka'),
+                                    ->placeholder('Mozesz wybrac kilka')
+                                    ->columnSpanFull(),
 
                                 Select::make('restaurant_id')
                                     ->label('Restauracja')
@@ -166,7 +170,8 @@ class PostResource extends Resource
                                     ->multiple()
                                     ->preload()
                                     ->searchable()
-                                    ->placeholder('Mozesz wybrac kilka'),
+                                    ->placeholder('Mozesz wybrac kilka')
+                                    ->columnSpanFull(),
 
                             ]),
 
@@ -193,22 +198,44 @@ class PostResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->defaultSort('published_at', 'desc')
             ->columns([
+                Tables\Columns\ImageColumn::make('thumbnail')
+                    ->label('Miniaturka'),
+                Tables\Columns\TextColumn::make('title')
+                    ->label('Tytuł')
+                    ->searchable()
+                    ->sortable()
+                    ->description(function (Post $record) {
+                        return Str::limit(strip_tags($record->content), 40);
+                    }),
+
                 Tables\Columns\TextColumn::make('published_at')
+                    ->label('Data publikacji')
+                    ->badge()
                     ->dateTime()
+                    ->formatStateUsing(function ($state) {
+                        return Carbon::parse($state)->format('d-m-Y H:i');
+                    })
+                    ->color(function ($state) {
+                        if ($state <= Carbon::now()) {
+                            return 'success';
+                        } else {
+                            return 'danger';
+                        }
+                    })
                     ->sortable(),
                 Tables\Columns\IconColumn::make('featured')
+                    ->label('Polecony')
                     ->boolean(),
-                Tables\Columns\TextColumn::make('user.name')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
+
+                    Tables\Columns\TextColumn::make('user_id')
+                    ->label('Autor')
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
+                    ->formatStateUsing(function ($state) {
+                        $user = User::find($state);
+                        return $user ? $user->name : 'brak';
+                    })
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
@@ -216,6 +243,7 @@ class PostResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

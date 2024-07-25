@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\RestaurantResource\Pages;
 
 use App\Filament\Resources\RestaurantResource;
+use App\Filament\Resources\RestaurantResource\Widgets\RestaurantStatsOverview;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
@@ -18,6 +19,14 @@ class ListRestaurants extends ListRecords
             Actions\CreateAction::make(),
             Actions\LocaleSwitcher::make(),
 
+        ];
+    }
+
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            
+            RestaurantStatsOverview::class
         ];
     }
 }

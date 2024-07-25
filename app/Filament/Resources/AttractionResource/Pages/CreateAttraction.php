@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\AttractionResource\Pages;
 
 use App\Filament\Resources\AttractionResource;
+use App\Filament\Resources\AttractionResource\Widgets\AttractionStatsOverview;
 use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 
@@ -25,5 +26,13 @@ class CreateAttraction extends CreateRecord
         $data['user_id'] = auth()->id();
 
         return $data;
+    }
+
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            
+            AttractionStatsOverview::class
+        ];
     }
 }

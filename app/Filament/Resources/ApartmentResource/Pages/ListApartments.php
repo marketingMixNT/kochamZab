@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\ApartmentResource\Pages;
 
 use App\Filament\Resources\ApartmentResource;
+use App\Filament\Resources\ApartmentResource\Widgets\ApartmentStatsOverview;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
@@ -18,6 +19,14 @@ class ListApartments extends ListRecords
             Actions\CreateAction::make(),
             Actions\LocaleSwitcher::make(),
 
+        ];
+    }
+
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            
+            ApartmentStatsOverview::class
         ];
     }
 }

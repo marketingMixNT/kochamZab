@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\PostResource\Pages;
 
 use App\Filament\Resources\PostResource;
+use App\Filament\Resources\PostResource\Widgets\PostStatsOverview;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
@@ -18,6 +19,14 @@ class ListPosts extends ListRecords
             Actions\CreateAction::make(),
             Actions\LocaleSwitcher::make(),
 
+        ];
+    }
+
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            
+            PostStatsOverview::class
         ];
     }
 }
