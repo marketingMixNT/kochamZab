@@ -1,21 +1,82 @@
 models:
   Apartment:
-    name: json unique
-    slug: json unique
     meta_title: json nullable
     meta_desc: json nullable
-    google_maps_link: text nullable
-    google_maps_frame: text nullable
+    name: json unique
+    slug: json unique
     desc: json
     thumbnail: text
     gallery: text
     address: text
-    site_link: text nullable
     phone: string nullable
     email: string nullable
+    google_maps_link: text nullable
+    google_maps_frame: text nullable
+    site_link: text nullable
     featured: boolean
     sort: integer nullable
     relationships:
-      belongsTo: User, 
-      belongsToMany: Category, Post
+      belongsTo: User
+      belongsToMany: Post
       hasMany: Social
+
+  Attraction:
+    meta_title: json nullable
+    meta_desc: json nullable
+    name: json unique
+    slug: json unique
+    desc: json
+    thumbnail: text
+    gallery: text
+    address: text
+    phone: string nullable
+    email: string nullable
+    google_maps_link: text nullable
+    google_maps_frame: text nullable
+    site_link: text nullable
+    featured: boolean
+    sort: integer nullable
+    relationships:
+      belongsTo: User
+      belongsToMany: Post
+      hasMany: Social
+
+  Restaurant:
+    meta_title: json nullable
+    meta_desc: json nullable
+    name: json unique
+    slug: json unique
+    desc: json
+    thumbnail: text
+    gallery: text
+    address: text
+    phone: string nullable
+    email: string nullable
+    google_maps_link: text nullable
+    google_maps_frame: text nullable
+    site_link: text nullable
+    featured: boolean
+    sort: integer nullable
+    relationships:
+      belongsTo: User
+      belongsToMany: Post
+      hasMany: Social
+
+  Social:
+    name: text
+    link: text
+    relationships:
+      belongsTo: Apartment, Attraction, Restaurant, User
+       
+  Post:
+    meta_title: json nullable
+    meta_desc: json nullable
+    title: json unique
+    slug: json unique
+    thumbnail: text
+    content: json
+    published_at: datetime nullable
+    featured: boolean nullable
+    relationships:
+      belongsToMany: Apartment, Attraction, Restaurant
+      belongsTo: User

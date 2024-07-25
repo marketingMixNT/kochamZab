@@ -11,25 +11,24 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('hotels', function (Blueprint $table) {
+        Schema::create('apartments', function (Blueprint $table) {
             $table->id();
-            $table->json('name')->unique();
-            $table->json('slug')->unique();
             $table->json('meta_title')->nullable();
             $table->json('meta_desc')->nullable();
-            $table->text('google_maps_link')->nullable();
-            $table->text('google_maps_frame')->nullable();
+            $table->json('name')->unique();
+            $table->json('slug')->unique();
             $table->json('desc');
             $table->text('thumbnail');
             $table->text('gallery');
             $table->text('address');
-            $table->text('site_link')->nullable();
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
+            $table->text('google_maps_link')->nullable();
+            $table->text('google_maps_frame')->nullable();
+            $table->text('site_link')->nullable();
             $table->boolean('featured');
             $table->integer('sort')->nullable();
             $table->foreignId('user_id');
-            $table->foreignId('_id');
             $table->timestamps();
         });
     }
@@ -39,6 +38,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('hotels');
+        Schema::dropIfExists('apartments');
     }
 };

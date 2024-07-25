@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->text('name');
             $table->text('link');
-            $table->foreignId('attraction_id');
-            $table->foreignId('restaurant_id');
-            $table->foreignId('hotel_id');
+            $table->foreignId('apartment_id')->nullable;
+            $table->foreignId('attraction_id')->nullable;
+            $table->foreignId('restaurant_id')->nullable;
             $table->foreignId('user_id');
             $table->timestamps();
         });

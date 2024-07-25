@@ -11,12 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->json('name')->unique();
+            $table->json('meta_title')->nullable();
+            $table->json('meta_desc')->nullable();
+            $table->json('title')->unique();
             $table->json('slug')->unique();
-            $table->string('type');
             $table->text('thumbnail');
+            $table->json('content');
+            $table->dateTime('published_at')->nullable();
+            $table->boolean('featured')->nullable();
             $table->foreignId('user_id');
             $table->timestamps();
         });
@@ -27,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('posts');
     }
 };

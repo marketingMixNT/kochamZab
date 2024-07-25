@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-
 use App\Models\Restaurant;
 use App\Models\User;
 
@@ -23,23 +22,22 @@ class RestaurantFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => '{}',
-            'slug' => '{}',
             'meta_title' => '{}',
             'meta_desc' => '{}',
-            'google_maps_link' => $this->faker->text(),
-            'google_maps_frame' => $this->faker->text(),
+            'name' => '{}',
+            'slug' => '{}',
             'desc' => '{}',
             'thumbnail' => $this->faker->text(),
             'gallery' => $this->faker->text(),
             'address' => $this->faker->text(),
-            'site_link' => $this->faker->text(),
             'phone' => $this->faker->phoneNumber(),
             'email' => $this->faker->safeEmail(),
+            'google_maps_link' => $this->faker->text(),
+            'google_maps_frame' => $this->faker->text(),
+            'site_link' => $this->faker->text(),
             'featured' => $this->faker->boolean(),
             'sort' => $this->faker->numberBetween(-10000, 10000),
             'user_id' => User::factory(),
-            
         ];
     }
 }

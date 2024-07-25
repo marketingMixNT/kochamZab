@@ -17,7 +17,8 @@ use Awcodes\Shout\Components\Shout;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Fieldset;
-use Filament\Forms\Components\Livewire;
+use Livewire\Component as Livewire;
+
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Component;
 use Illuminate\Database\Eloquent\Builder;

@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Attraction;
+use Filament\Facades\Filament;
 use Livewire\Component as Livewire;
 use Filament\Forms\Components\Select;
 use Illuminate\Database\Eloquent\Model;
@@ -10,6 +10,7 @@ use Filament\Forms\Components\Component;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 
 class Social extends Model
 {
@@ -23,9 +24,9 @@ class Social extends Model
     protected $fillable = [
         'name',
         'link',
+        'apartment_id',
         'attraction_id',
         'restaurant_id',
-        'apartment_id',
         'user_id',
     ];
 
@@ -36,9 +37,9 @@ class Social extends Model
      */
     protected $casts = [
         'id' => 'integer',
+        'apartment_id' => 'integer',
         'attraction_id' => 'integer',
         'restaurant_id' => 'integer',
-        'apartment_id' => 'integer',
         'user_id' => 'integer',
     ];
 
@@ -46,6 +47,7 @@ class Social extends Model
     {
         return $this->belongsTo(Apartment::class);
     }
+
     public function attraction(): BelongsTo
     {
         return $this->belongsTo(Attraction::class);
@@ -61,7 +63,7 @@ class Social extends Model
         return $this->belongsTo(User::class);
     }
 
-    public static function getForm(): array
+    public static function getForm($context = null): array
     {
         return [
             Select::make('name')
@@ -88,14 +90,10 @@ class Social extends Model
                 ->required()
                 ->minLength(3)
                 ->url()
-                ->live(debounce: 1000)
-                ->afterStateUpdated(function (Livewire $livewire, Component $component) {
-                    $validate = $livewire->validateOnly($component->getStatePath());
-                    $component
-                        ->hintIcon('heroicon-m-check-circle')
-                        ->hintColor('success');
-                })
-                ->placeholder('np. https://www.instagram.com/marketingmix_pl/')
+                
+                ->placeholder('np. https://www.instagram.com/marketingmix_pl/'),
+
+               
         ];
     }
 }

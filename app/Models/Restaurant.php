@@ -2,17 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Translatable\HasTranslations;
-
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Restaurant extends Model
 {
     use HasTranslations;
+
     use HasFactory;
 
     /**
@@ -21,23 +21,22 @@ class Restaurant extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
-        'slug',
         'meta_title',
         'meta_desc',
-        'google_maps_link',
-        'google_maps_frame',
+        'name',
+        'slug',
         'desc',
         'thumbnail',
         'gallery',
         'address',
-        'site_link',
         'phone',
         'email',
+        'google_maps_link',
+        'google_maps_frame',
+        'site_link',
         'featured',
         'sort',
         'user_id',
-        '_id',
     ];
 
     /**
@@ -47,27 +46,19 @@ class Restaurant extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'name' => 'array',
-        'slug' => 'array',
         'meta_title' => 'array',
         'meta_desc' => 'array',
+        'name' => 'array',
+        'slug' => 'array',
         'desc' => 'array',
-        'gallery'=>'array',
+        'gallery' => 'array',
         'featured' => 'boolean',
         'user_id' => 'integer',
-        '_id' => 'integer',
     ];
 
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
-    }
-
-   
-
-    public function categories(): BelongsToMany
-    {
-        return $this->belongsToMany(Category::class);
     }
 
     public function posts(): BelongsToMany
@@ -81,4 +72,5 @@ class Restaurant extends Model
     }
 
     public $translatable = ['name', 'slug','meta_title','meta_desc','desc'];
+
 }
