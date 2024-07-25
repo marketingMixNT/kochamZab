@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('restaurants', function (Blueprint $table) {
+        Schema::create('hotels', function (Blueprint $table) {
             $table->id();
             $table->json('name')->unique();
             $table->json('slug')->unique();
@@ -27,10 +27,9 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
             $table->boolean('featured');
-            $table->integer('order')->nullable();
-            $table->string('type');
+            $table->integer('sort')->nullable();
             $table->foreignId('user_id');
-            $table->foreignId('city_id');
+            $table->foreignId('_id');
             $table->timestamps();
         });
     }
@@ -40,6 +39,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('restaurants');
+        Schema::dropIfExists('hotels');
     }
 };

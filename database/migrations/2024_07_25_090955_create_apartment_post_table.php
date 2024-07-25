@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
-            $table->id();
-            $table->json('name')->unique();
-            $table->json('slug')->unique();
-            $table->string('type');
-            $table->text('thumbnail');
-            $table->timestamps();
+        Schema::create('apartment_post', function (Blueprint $table) {
+            $table->foreignId('apartment_id');
+            $table->foreignId('post_id');
         });
     }
 
@@ -26,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('apartment_post');
     }
 };

@@ -27,10 +27,8 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
             $table->boolean('featured');
-            $table->integer('order')->nullable();
-            $table->string('type');
+            $table->integer('sort')->nullable();
             $table->foreignId('user_id');
-            $table->foreignId('city_id');
             $table->timestamps();
         });
     }

@@ -8,6 +8,7 @@ use App\Models\Attraction;
 use App\Models\Hotel;
 use App\Models\Restaurant;
 use App\Models\Social;
+use App\Models\User;
 
 class SocialFactory extends Factory
 {
@@ -29,6 +30,7 @@ class SocialFactory extends Factory
             'attraction_id' => Attraction::factory(),
             'restaurant_id' => Restaurant::factory(),
             'hotel_id' => Hotel::factory(),
+            'user_id' => User::factory(),
         ];
     }
 }

@@ -5,7 +5,6 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use App\Models\Attraction;
-use App\Models\City;
 use App\Models\User;
 
 class AttractionFactory extends Factory
@@ -37,10 +36,8 @@ class AttractionFactory extends Factory
             'phone' => $this->faker->phoneNumber(),
             'email' => $this->faker->safeEmail(),
             'featured' => $this->faker->boolean(),
-            'order' => $this->faker->numberBetween(-10000, 10000),
-            'type' => $this->faker->word(),
+            'sort' => $this->faker->numberBetween(-10000, 10000),
             'user_id' => User::factory(),
-            'city_id' => City::factory(),
         ];
     }
 }

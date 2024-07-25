@@ -7,9 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\Translatable\HasTranslations;
+
 
 class Restaurant extends Model
 {
+    use HasTranslations;
     use HasFactory;
 
     /**
@@ -32,10 +35,9 @@ class Restaurant extends Model
         'phone',
         'email',
         'featured',
-        'order',
-        'type',
+        'sort',
         'user_id',
-        'city_id',
+        '_id',
     ];
 
     /**
@@ -50,9 +52,10 @@ class Restaurant extends Model
         'meta_title' => 'array',
         'meta_desc' => 'array',
         'desc' => 'array',
+        'gallery'=>'array',
         'featured' => 'boolean',
         'user_id' => 'integer',
-        'city_id' => 'integer',
+        '_id' => 'integer',
     ];
 
     public function user(): BelongsTo
@@ -60,10 +63,7 @@ class Restaurant extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function city(): BelongsTo
-    {
-        return $this->belongsTo(City::class);
-    }
+   
 
     public function categories(): BelongsToMany
     {
@@ -79,4 +79,6 @@ class Restaurant extends Model
     {
         return $this->hasMany(Social::class);
     }
+
+    public $translatable = ['name', 'slug','meta_title','meta_desc','desc'];
 }

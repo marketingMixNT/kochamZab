@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('attraction_id');
             $table->foreignId('restaurant_id');
             $table->foreignId('hotel_id');
+            $table->foreignId('user_id');
             $table->timestamps();
         });
     }

@@ -7,9 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\Translatable\HasTranslations;
 
-class Hotel extends Model
+
+class Apartment extends Model
 {
+    use HasTranslations;
+
     use HasFactory;
 
     /**
@@ -32,8 +36,7 @@ class Hotel extends Model
         'phone',
         'email',
         'featured',
-        'order',
-        'type',
+        'sort',
         'user_id',
         '_id',
     ];
@@ -50,6 +53,8 @@ class Hotel extends Model
         'meta_title' => 'array',
         'meta_desc' => 'array',
         'desc' => 'array',
+        'gallery' => 'array',
+       
         'featured' => 'boolean',
         'user_id' => 'integer',
         '_id' => 'integer',
@@ -60,10 +65,7 @@ class Hotel extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function (): BelongsTo
-    {
-        return $this->belongsTo(::class);
-    }
+    
 
     public function categories(): BelongsToMany
     {
@@ -79,4 +81,6 @@ class Hotel extends Model
     {
         return $this->hasMany(Social::class);
     }
+
+    public $translatable = ['name', 'slug','meta_title','meta_desc','desc'];
 }
