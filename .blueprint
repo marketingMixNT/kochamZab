@@ -1,0 +1,33 @@
+created:
+    - database/factories/AttractionFactory.php
+    - database/factories/RestaurantFactory.php
+    - database/factories/HotelFactory.php
+    - database/factories/CategoryFactory.php
+    - database/factories/SocialFactory.php
+    - database/factories/PostFactory.php
+    - database/migrations/2024_07_25_052356_create_attractions_table.php
+    - database/migrations/2024_07_25_052357_create_restaurants_table.php
+    - database/migrations/2024_07_25_052358_create_hotels_table.php
+    - database/migrations/2024_07_25_052359_create_categories_table.php
+    - database/migrations/2024_07_25_052400_create_socials_table.php
+    - database/migrations/2024_07_25_052401_create_posts_table.php
+    - database/migrations/2024_07_25_052402_create_attraction_category_table.php
+    - database/migrations/2024_07_25_052403_create_attraction_post_table.php
+    - database/migrations/2024_07_25_052404_create_category_restaurant_table.php
+    - database/migrations/2024_07_25_052405_create_post_restaurant_table.php
+    - database/migrations/2024_07_25_052406_create_category_hotel_table.php
+    - database/migrations/2024_07_25_052407_create_hotel_post_table.php
+    - database/migrations/2024_07_25_052408_create_category_post_table.php
+    - app/Models/Attraction.php
+    - app/Models/Restaurant.php
+    - app/Models/Hotel.php
+    - app/Models/Category.php
+    - app/Models/Social.php
+    - app/Models/Post.php
+models:
+    Attraction: { name: 'json unique', slug: 'json unique', meta_title: 'json nullable', meta_desc: 'json nullable', google_maps_link: 'text nullable', google_maps_frame: 'text nullable', desc: json, thumbnail: text, gallery: text, address: text, site_link: 'text nullable', phone: 'string nullable', email: 'string nullable', featured: boolean, order: 'integer nullable', type: string, relationships: { belongsTo: 'User, City', belongsToMany: 'Category, Post', hasMany: Social } }
+    Restaurant: { name: 'json unique', slug: 'json unique', meta_title: 'json nullable', meta_desc: 'json nullable', google_maps_link: 'text nullable', google_maps_frame: 'text nullable', desc: json, thumbnail: text, gallery: text, address: text, site_link: 'text nullable', phone: 'string nullable', email: 'string nullable', featured: boolean, order: 'integer nullable', type: string, relationships: { belongsTo: 'User, City', belongsToMany: 'Category, Post', hasMany: Social } }
+    Hotel: { name: 'json unique', slug: 'json unique', meta_title: 'json nullable', meta_desc: 'json nullable', google_maps_link: 'text nullable', google_maps_frame: 'text nullable', desc: json, thumbnail: text, gallery: text, address: text, site_link: 'text nullable', phone: 'string nullable', email: 'string nullable', featured: boolean, order: 'integer nullable', type: string, relationships: { belongsTo: 'User,', belongsToMany: 'Category, Post', hasMany: Social } }
+    Category: { name: 'json unique', slug: 'json unique', type: string, thumbnail: text, relationships: { belongsToMany: 'Attraction, Restaurant, Hotel' } }
+    Social: { name: text, link: text, relationships: { belongsTo: 'Attraction, Restaurant, Hotel' } }
+    Post: { meta_title: 'json nullable', meta_desc: 'json nullable', title: 'json unique', slug: 'json unique', thumbnail: text, content: 'json unique', published_at: 'datetime nullable', featured: 'boolean nullable', relationships: { belongsToMany: 'Category, Attraction, Restaurant, Hotel', belongsTo: User } }

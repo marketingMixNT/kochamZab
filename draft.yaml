@@ -1,0 +1,93 @@
+models:
+  Attraction:
+    name: json unique
+    slug: json unique
+    meta_title: json nullable
+    meta_desc: json nullable
+    google_maps_link: text nullable
+    google_maps_frame: text nullable
+    desc: json
+    thumbnail: text
+    gallery: text
+    address: text
+    site_link: text nullable
+    phone: string nullable
+    email: string nullable
+    featured: boolean
+    order: integer nullable
+    type: string
+    relationships:
+      belongsTo: User, City
+      belongsToMany: Category, Post
+      hasMany: Social
+
+  Restaurant:
+    name: json unique
+    slug: json unique
+    meta_title: json nullable
+    meta_desc: json nullable
+    google_maps_link: text nullable
+    google_maps_frame: text nullable
+    desc: json
+    thumbnail: text
+    gallery: text
+    address: text
+    site_link: text nullable
+    phone: string nullable
+    email: string nullable
+    featured: boolean
+    order: integer nullable
+    type: string
+    relationships:
+      belongsTo: User, City
+      belongsToMany: Category, Post
+      hasMany: Social
+
+  Hotel:
+    name: json unique
+    slug: json unique
+    meta_title: json nullable
+    meta_desc: json nullable
+    google_maps_link: text nullable
+    google_maps_frame: text nullable
+    desc: json
+    thumbnail: text
+    gallery: text
+    address: text
+    site_link: text nullable
+    phone: string nullable
+    email: string nullable
+    featured: boolean
+    order: integer nullable
+    type: string
+    relationships:
+      belongsTo: User, 
+      belongsToMany: Category, Post
+      hasMany: Social
+
+  Category:
+    name: json unique
+    slug: json unique
+    type: string
+    thumbnail: text
+    relationships:
+      belongsToMany: Attraction, Restaurant, Hotel
+
+  Social:
+    name: text
+    link: text
+    relationships:
+      belongsTo: Attraction, Restaurant, Hotel
+
+  Post:
+    meta_title: json nullable
+    meta_desc: json nullable
+    title: json unique
+    slug: json unique
+    thumbnail: text
+    content: json unique
+    published_at: datetime nullable
+    featured: boolean nullable
+    relationships:
+      belongsToMany: Category, Attraction, Restaurant, Hotel
+      belongsTo: User
