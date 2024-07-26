@@ -42,9 +42,9 @@
         <div class="container d-flex justify-content-between align-items-center">
             <div class="site-identity">
                 <h1 class="site-title">
-                    <a href="index.html">
-                        <img class="white-logo" src="assets/logo.png" alt="logo" style="width:70px">
-                        <img class="black-logo" src="assets/logo.png" alt="logo" style="width:90px">
+                    <a href="{{route('home')}}">
+                        <img class="white-logo" src="{{asset("assets/logo.png")}}" alt="logo" style="width:70px">
+                        <img class="black-logo" src="{{asset("assets/logo.png")}}" alt="logo" style="width:90px">
                     </a>
                 </h1>
             </div>
@@ -57,7 +57,7 @@
                             <a href="/o-nas.html">O nas</a>
                             <ul>
                                 <li>
-                                    <a href="/o-zebie.html">O Zębie</a>
+                                    <a href="{{route('about.zab')}}">O Zębie</a>
                                 </li>
                                 <li>
                                     <a href="/historia.html">Historia</a>

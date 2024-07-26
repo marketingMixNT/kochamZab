@@ -83,6 +83,7 @@ class Post extends Model
         return  $this->published_at->diffForHumans();
     }
 
+
     // TRANSLATABLE
     public $translatable = ['name', 'slug','meta_title','meta_desc','content'];
 

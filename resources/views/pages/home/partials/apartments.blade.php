@@ -1,5 +1,5 @@
 <!--ACCOMODATION SECTION-->
-<section class="package-section">
+<section class="package-section" style="margin-top:100px">
     <div class="container">
         <div class="section-heading text-center">
             <div class="row">

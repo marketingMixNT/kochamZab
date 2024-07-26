@@ -22,7 +22,8 @@ class HomeController extends Controller
         $totalAttractions = Attraction::count();
         $totalApartments = Apartment::count();
         $totalRestaurants = Restaurant::count();
+        $totalPosts = Post::count();
 
-        return view("pages.home.index", compact("slides","posts", "attractions", "apartments", "restaurants","totalAttractions","totalApartments","totalRestaurants"));
+        return view("pages.home.index", compact("slides","posts", "attractions", "apartments", "restaurants","totalAttractions","totalApartments","totalRestaurants","totalPosts"));
     }
 }
