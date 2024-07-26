@@ -296,9 +296,9 @@ class AttractionResource extends Resource
     {
         return $table
             ->reorderable('sort')
-            ->defaultSort('sort', 'desc')
+            ->defaultSort('sort', 'asc')
             ->columns([
-                Tables\Columns\TextColumn::make('order')
+                Tables\Columns\TextColumn::make('sort')
                     ->label('#')
                     ->sortable(),
 

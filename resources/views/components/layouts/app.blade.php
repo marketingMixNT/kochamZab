@@ -1,34 +1,43 @@
 @props(['title', 'description', 'noFollow' => false])
 
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
 
 <head>
-    <!--Meta-->
-    @include('partials.meta')
-    <!--Favicon-->
+    {{-- <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> --}}
+     <!-- meta -->
+     @include('partials.meta')
+    <!-- favicon -->
     @include('partials.favicon')
-    <!--Fonts-->
+    {{-- assets --}}
+    @include('partials.assets')
+    <!-- google fonts -->
     @include('partials.fonts')
+   
 
-    @vite(['resources/scss/app.scss', 'resources/js/app.js'])
-
+    @vite(["resources/css/style.css", "resources/js/app.js"])
 </head>
 
-<body
-    class="relative bg-bgLight-400 dark:bg-bgDark-800 font-text font-light text-fontDark dark:text-fontLight overflow-x-hidden">
+<body class="home">
 
-    {{-- <x-shared.header /> --}}
+    <x-preloader />
 
-    {{ $slot }}
+    <div id="page" class="full-page">
 
-    {{-- <x-shared.footer /> --}}
+        <x-header />
 
+        <main id="content" class="site-main">
+            {{ $slot }}
+        </main>
 
+        <x-footer />
 
-
-
+    </div>
+    
+    <x-back-to-top />
+    @include('partials.scripts')
 </body>
 
 </html>

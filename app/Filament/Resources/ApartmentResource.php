@@ -291,7 +291,7 @@ class ApartmentResource extends Resource
             ->reorderable('sort')
             ->defaultSort('sort', 'desc')
             ->columns([
-                Tables\Columns\TextColumn::make('order')
+                Tables\Columns\TextColumn::make('sort')
                     ->label('#')
                     ->sortable(),
 
@@ -342,12 +342,7 @@ class ApartmentResource extends Resource
             ]);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
+  
 
     public static function getPages(): array
     {

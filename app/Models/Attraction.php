@@ -56,6 +56,7 @@ class Attraction extends Model
         'user_id' => 'integer',
     ];
 
+    // RELATIONS
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -70,7 +71,13 @@ class Attraction extends Model
     {
         return $this->hasMany(Social::class);
     }
+    // METHODS
+    public function getThumbnailUrl()
+    {
+        return  asset('storage/' . $this->thumbnail);
+    }
 
+    // TRANSLATABLE
     public $translatable = ['name', 'slug','meta_title','meta_desc','desc'];
 
 }

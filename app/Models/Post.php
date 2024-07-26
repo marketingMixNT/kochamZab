@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -68,6 +69,21 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
+    // METHODS
+     public function scopePublished($query)
+    {
+        $query->where('published_at', '<=', Carbon::now());
+    }
+    public function getThumbnailUrl()
+    {
+        return  asset('storage/' . $this->thumbnail);
+    }
+    public function getPublishedDate()
+    {
+        return  $this->published_at->diffForHumans();
+    }
+
+    // TRANSLATABLE
     public $translatable = ['name', 'slug','meta_title','meta_desc','content'];
 
 }

@@ -1,26 +1,12 @@
 created:
-    - database/factories/ApartmentFactory.php
-    - database/factories/AttractionFactory.php
-    - database/factories/RestaurantFactory.php
-    - database/factories/SocialFactory.php
-    - database/factories/PostFactory.php
-    - database/migrations/2024_07_25_102003_create_apartments_table.php
-    - database/migrations/2024_07_25_102004_create_attractions_table.php
-    - database/migrations/2024_07_25_102005_create_restaurants_table.php
-    - database/migrations/2024_07_25_102006_create_socials_table.php
-    - database/migrations/2024_07_25_102007_create_posts_table.php
-    - database/migrations/2024_07_25_102008_create_apartment_post_table.php
-    - database/migrations/2024_07_25_102009_create_attraction_post_table.php
-    - database/migrations/2024_07_25_102010_create_post_restaurant_table.php
-    - app/Models/Apartment.php
-    - app/Models/Attraction.php
-    - app/Models/Restaurant.php
-    - app/Models/Social.php
-    - app/Models/Post.php
+    - database/factories/SlideFactory.php
+    - database/migrations/2024_07_26_080508_create_slides_table.php
+    - app/Models/Slide.php
 models:
+    Apartment: { meta_title: 'longtext nullable default:NULL', meta_desc: 'longtext nullable default:NULL', name: longtext, slug: longtext, desc: longtext, thumbnail: text, gallery: text, address: text, phone: 'string nullable default:NULL', email: 'string nullable default:NULL', google_maps_link: 'text nullable default:NULL', google_maps_frame: 'text nullable default:NULL', site_link: 'text nullable default:NULL', featured: boolean, sort: 'integer nullable default:NULL', user_id: 'biginteger unsigned' }
+    Attraction: { meta_title: 'longtext nullable default:NULL', meta_desc: 'longtext nullable default:NULL', name: longtext, slug: longtext, desc: longtext, thumbnail: text, gallery: text, address: text, phone: 'string nullable default:NULL', email: 'string nullable default:NULL', google_maps_link: 'text nullable default:NULL', google_maps_frame: 'text nullable default:NULL', site_link: 'text nullable default:NULL', featured: boolean, sort: 'integer nullable default:NULL', user_id: 'biginteger unsigned' }
+    Post: { meta_title: 'longtext nullable default:NULL', meta_desc: 'longtext nullable default:NULL', title: longtext, slug: longtext, thumbnail: text, content: longtext, published_at: 'datetime nullable default:NULL', featured: 'boolean nullable default:NULL', user_id: 'biginteger unsigned' }
+    Restaurant: { meta_title: 'longtext nullable default:NULL', meta_desc: 'longtext nullable default:NULL', name: longtext, slug: longtext, desc: longtext, thumbnail: text, gallery: text, address: text, phone: 'string nullable default:NULL', email: 'string nullable default:NULL', google_maps_link: 'text nullable default:NULL', google_maps_frame: 'text nullable default:NULL', site_link: 'text nullable default:NULL', featured: boolean, sort: 'integer nullable default:NULL', user_id: 'biginteger unsigned' }
+    Social: { name: text, link: text, apartment_id: 'biginteger unsigned nullable default:NULL', attraction_id: 'biginteger unsigned nullable default:NULL', restaurant_id: 'biginteger unsigned nullable default:NULL' }
     User: { name: string, email: string, email_verified_at: 'timestamp nullable default:NULL', password: string, remember_token: 'string:100 nullable default:NULL' }
-    Apartment: { meta_title: 'json nullable', meta_desc: 'json nullable', name: 'json unique', slug: 'json unique', desc: json, thumbnail: text, gallery: text, address: text, phone: 'string nullable', email: 'string nullable', google_maps_link: 'text nullable', google_maps_frame: 'text nullable', site_link: 'text nullable', featured: boolean, sort: 'integer nullable', relationships: { belongsTo: User, belongsToMany: Post, hasMany: Social } }
-    Attraction: { meta_title: 'json nullable', meta_desc: 'json nullable', name: 'json unique', slug: 'json unique', desc: json, thumbnail: text, gallery: text, address: text, phone: 'string nullable', email: 'string nullable', google_maps_link: 'text nullable', google_maps_frame: 'text nullable', site_link: 'text nullable', featured: boolean, sort: 'integer nullable', relationships: { belongsTo: User, belongsToMany: Post, hasMany: Social } }
-    Restaurant: { meta_title: 'json nullable', meta_desc: 'json nullable', name: 'json unique', slug: 'json unique', desc: json, thumbnail: text, gallery: text, address: text, phone: 'string nullable', email: 'string nullable', google_maps_link: 'text nullable', google_maps_frame: 'text nullable', site_link: 'text nullable', featured: boolean, sort: 'integer nullable', relationships: { belongsTo: User, belongsToMany: Post, hasMany: Social } }
-    Social: { name: text, link: text, relationships: { belongsTo: 'Apartment, Attraction, Restaurant, User' } }
-    Post: { meta_title: 'json nullable', meta_desc: 'json nullable', title: 'json unique', slug: 'json unique', thumbnail: text, content: json, published_at: 'datetime nullable', featured: 'boolean nullable', relationships: { belongsToMany: 'Apartment, Attraction, Restaurant', belongsTo: User } }
+    Slide: { title: json, content: json, image: text, sort: 'integer nullable', relationships: { belongsTo: User } }

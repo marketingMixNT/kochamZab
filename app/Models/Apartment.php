@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Post;
 use App\Models\Social;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -72,7 +73,17 @@ class Apartment extends Model
     {
         return $this->hasMany(Social::class);
     }
+    // METHODS
+    public function getExcerpt()
+    {
+        return Str::limit(strip_tags($this->desc), 120);
+    }
 
-    public $translatable = ['name', 'slug','meta_title','meta_desc','desc'];
+    public function getThumbnailUrl()
+    {
+        return  asset('storage/' . $this->thumbnail);
+    }
 
+    // TRANSLATABLE
+    public $translatable = ['name', 'slug', 'meta_title', 'meta_desc', 'desc'];
 }
