@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
@@ -81,6 +82,10 @@ class Post extends Model
     public function getPublishedDate()
     {
         return  $this->published_at->diffForHumans();
+    }
+    public function getExcerpt()
+    {
+        return Str::limit(strip_tags($this->content), 250);
     }
 
 

@@ -60,25 +60,25 @@
                                     <a href="{{route('about.zab')}}">O Zębie</a>
                                 </li>
                                 <li>
-                                    <a href="/historia.html">Historia</a>
+                                    <a href="{{route('about.history')}}">Historia</a>
                                 </li>
                                 <li>
-                                    <a href="/gmina-poronin.html">Gmina Poronin</a>
+                                    <a href="{{route('about.poronin')}}">Gmina Poronin</a>
                                 </li>
                                 <li>
-                                    <a href="/stowarzyszenie.html">Stowarzyszenie</a>
+                                    <a href="{{route('about.association')}}">Stowarzyszenie</a>
                                 </li>
                                 <li>
-                                    <a href="/zwiazek-podhalan.html">Związek Podhalan o/Ząb</a>
+                                    <a href="{{route('about.zwiazek')}}">Związek Podhalan o/Ząb</a>
                                 </li>
                                 <li>
-                                    <a href="/zespol-regionalny-zbojnicek.html">Zespół Regionalny Zbójnicek</a>
+                                    <a href="{{route('about.band')}}">Zespół Regionalny Zbójnicek</a>
                                 </li>
 
                             </ul>
                         </li>
 
-                        <li class="menu-item"> <a href="/wydarzenia.html">Wydarzenia</a></li>
+                        <li class="menu-item"> <a href="{{route('blog.index')}}">Wydarzenia</a></li>
                         <li class="menu-item"> <a href="/atrakcje.html">Atrakcje</a></li>
                         <li class="menu-item"> <a href="/noclegi.html">Noclegi</a></li>
                         <li class="menu-item"> <a href="/gastronomia.html">Gastronomia</a></li>

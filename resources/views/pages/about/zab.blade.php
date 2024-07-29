@@ -1,4 +1,6 @@
-<x-layouts.app title="" description="">
+<x-layouts.app 
+title="Poznaj Ząb -  O Nas | Kocham Ząb" 
+description="Dowiedz się więcej o malowniczej wsi Ząb i naszej misji. Odkryj historię, kulturę i uroki tego wyjątkowego miejsca z Kocham Ząb.">
 
 
    <header class="inner-banner-wrap">
