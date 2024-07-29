@@ -12,7 +12,7 @@
         </div> --}}
         <div class="desti-content">
             <h3>
-                <a href="#">{{$attraction->name}}</a>
+                <a href="{{route('attraction.show', $attraction->slug)}}">{{$attraction->name}}</a>
             </h3>
          
         </div>

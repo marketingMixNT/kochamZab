@@ -8,14 +8,14 @@
                   <h3 class="widget-title">KOCHAM ZĄB</h3>
                   <div class="textwidget widget-text">
                      <ul>
-                        <li><a href="#">O nas</a></li>
-                        <li><a href="#">O Zębie</a></li>
-                        <li><a href="#">Historia</a></li>
-                        <li><a href="#">Gmina Poronin</a></li>
-                        <li><a href="#">Zespół Regionalny Zbójnicek</a></li>
-                        <li><a href="#">Związek Podhalan o/Ząb</a></li>
-                        <li><a href="#">Polityka Prywatności</a></li>
-                        <li><a href="#">Kontakt</a></li>
+                        <li><a href="{{route('about.zab')}}">O Zębie</a></li>
+                        <li><a href="{{route('about.history')}}">Historia</a></li>
+                        <li><a href="{{route('about.poronin')}}">Gmina Poronin</a></li>
+                        <li><a href="{{route('about.association')}}">Zespół Regionalny Zbójnicek</a></li>
+                        <li><a href="{{route('about.zwiazek')}}">Związek Podhalan o/Ząb</a></li>
+                        <li><a href="">Polityka Prywatności</a></li>
+                        <li><a href="">Kontakt</a></li>
+                       
                      </ul>
                   </div>
                </aside>
@@ -25,9 +25,9 @@
                   <h3 class="widget-title">TURYSTYKA</h3>
                   <div class="textwidget widget-text">
                      <ul>
-                        <li><a href="#">Noclegi</a></li>
-                        <li><a href="#">Gastronomia</a></li>
-                        <li><a href="#">Atrakcje</a></li>
+                        <li><a href="{{route('attraction.index')}}">Atrakcje</a></li>
+                        <li><a href="{{route('apartment.index')}}">Apartamenty</a></li>
+                        <li><a href="{{route('restaurant.index')}}">Restauracje</a></li>
                      </ul>
                   </div>
                </aside>
@@ -37,7 +37,7 @@
                   <h3 class="widget-title">MIESZKAŃCY</h3>
                   <div class="textwidget widget-text">
                      <ul>
-                        <li><a href="#">Wydarzenia</a></li>
+                        <li><a href="{{route('blog.index')}}">Wydarzenia</a></li>
                         <li><a href="#">Msze święte</a></li>
                         <li><a href="#">Zakupy</a></li>
                         <li><a href="#">Reklamuj się</a></li>

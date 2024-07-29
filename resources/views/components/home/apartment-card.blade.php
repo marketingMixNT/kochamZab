@@ -3,7 +3,7 @@
 <div class="col-lg-4 col-md-6">
     <div class="package-wrap">
        <figure class="feature-image">
-          <a href="#">
+          <a href="{{route('apartment.show', $apartment->slug)}}">
              <img src="{{$apartment->getThumbnailUrl()}}" alt="{{$apartment->name}}" style="height:305px;width:100%;object-fit:cover">
           </a>
        </figure>
@@ -32,12 +32,12 @@
           </div> --}}
           <div class="package-content" style="margin-top:40px">
              <h3>
-                <a href="#">{{$apartment->name}}</a>
+                <a  href="{{route('apartment.show', $apartment->slug)}}">{{$apartment->name}}</a>
              </h3>
             
              <p>{{$apartment->getExcerpt()}}</p>
              <div class="btn-wrap">
-                <a href="#" class="button-text width-6">Zarezerwuj<i
+                <a href="{{route('apartment.show', $apartment->slug)}}" class="button-text width-6">Zobacz<i
                       class="fas fa-arrow-right"></i></a>
                 
              </div>

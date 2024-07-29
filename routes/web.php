@@ -1,9 +1,12 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ApartmentController;
+use App\Http\Controllers\AttractionController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\RestaurantController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -19,5 +22,16 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('/o-nas/zespol-regionalny-zbojnicek', [AboutController::class, 'band'])->name('about.band');
 
     Route::get('/wydarzenia', [BlogController::class, 'index'])->name('blog.index');
-    Route::get('/wydarzenia/{slug}', [BlogController::class, 'show'])->name('blog.show');
+
+    Route::get('/wydarzenie/{slug}', [BlogController::class, 'show'])->name('blog.show');
+    
+    Route::get('/atrakcje', [AttractionController::class, 'index'])->name('attraction.index');
+    Route::get('/atrakcja/{slug}', [AttractionController::class, 'show'])->name('attraction.show');
+
+    Route::get('/apartamenty', [ApartmentController::class, 'index'])->name('apartment.index');
+    Route::get('/apartament/{slug}', [ApartmentController::class, 'show'])->name('apartment.show');
+
+    Route::get('/restauracje', [RestaurantController::class, 'index'])->name('restaurant.index');
+    Route::get('/restauracja/{slug}', [RestaurantController::class, 'show'])->name('restaurant.show');
+
 });

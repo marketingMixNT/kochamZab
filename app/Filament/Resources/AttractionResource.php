@@ -250,9 +250,9 @@ class AttractionResource extends Resource
                             ->columnSpanFull(),
                         Forms\Components\FileUpload::make('gallery')
                             ->label('Galeria')
-                            ->directory('apartments-galleries')
+                            ->directory('atrakcja-galeria')
                             ->getUploadedFileNameForStorageUsing(
-                                fn (TemporaryUploadedFile $file): string => 'atrakcja-galeria-' . now()->format('H-i-s') . '-' . str_replace([' ', '.'], '', microtime()) . '.' . $file->getClientOriginalExtension()
+                                fn (TemporaryUploadedFile $file): string =>   now()->format('H-i-s') . '-' . str_replace([' ', '.'], '', microtime()) . '.' . $file->getClientOriginalExtension()
                             )
                             ->multiple()
                             ->appendFiles()

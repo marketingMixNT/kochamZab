@@ -79,9 +79,9 @@
                         </li>
 
                         <li class="menu-item"> <a href="{{route('blog.index')}}">Wydarzenia</a></li>
-                        <li class="menu-item"> <a href="/atrakcje.html">Atrakcje</a></li>
-                        <li class="menu-item"> <a href="/noclegi.html">Noclegi</a></li>
-                        <li class="menu-item"> <a href="/gastronomia.html">Gastronomia</a></li>
+                        <li class="menu-item"> <a href="{{route('attraction.index')}}">Atrakcje</a></li>
+                        <li class="menu-item"> <a href="{{route('apartment.index')}}">Noclegi</a></li>
+                        <li class="menu-item"> <a href="{{route('restaurant.index')}}">Gastronomia</a></li>
 
                     </ul>
                 </nav>
