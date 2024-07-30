@@ -13,6 +13,7 @@ use Filament\Facades\Filament;
 use Illuminate\Support\Carbon;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Resources\Concerns\Translatable;
 use App\Filament\Resources\SlideResource\Pages;
@@ -67,6 +68,10 @@ class SlideResource extends Resource
                     ])
                     ->required()
                     ->columnSpanFull(),
+                    TextInput::make('link')
+                    ->label('Link')
+                    ->url(),
+                   
 
                     Forms\Components\TextInput::make('user_id')
                     ->required()
