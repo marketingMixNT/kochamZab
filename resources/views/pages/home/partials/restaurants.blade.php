@@ -19,7 +19,7 @@
            @endforeach
        </div>
        <div class="btn-wrap text-center">
-        <a href="#" class="button-primary" style="text-transform:uppercase">zobacz wszystkie restauracje</a>
+        <a href="{{route('restaurant.index')}}" class="button-primary" style="text-transform:uppercase">zobacz wszystkie restauracje</a>
      </div>
     </div>
  </section>

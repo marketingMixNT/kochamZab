@@ -1,4 +1,4 @@
-<x-layouts.app title="" description="">
+<x-layouts.app title="{{ $attraction->getMetaTitle() }}" description="{{ $attraction->getMetaDesc() }}">
     {{-- header --}}
     <section class="inner-banner-wrap">
         <div class="inner-baner-container"
@@ -118,12 +118,43 @@
 
                             </div>
                         </div>
+
+                      
+
                     </div>
                 </div>
 
             </div>
         </div>
     </div>
+
+    {{-- POSTS --}}
+    @if ($attraction->posts->count() > 0)
+<section class="blog-section" style="padding-top:0">
+    <div class="container">
+        <div class="section-heading text-center">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    
+                    <h2>Artykuły</h2>
+                   
+                </div>
+            </div>
+        </div>
+        <div class="row">
+           
+           @foreach ($attraction->posts->take(3) as $post)
+              <x-home.post :post="$post"/>
+           @endforeach
+           
+        </div>
+
+        
+    </div>
+</section>
+@endif
+
+
     <!-- subscribe section html start -->
     <section class="blog-section" style="padding:0;margin-bottom:100px">
         <div class="container">

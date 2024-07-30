@@ -1,6 +1,7 @@
 @props(['post'])
 
 <div class="col-md-6 col-lg-4">
+   
     <article class="post">
         <figure class="feature-image">
             <a href="{{ route('blog.show', $post->slug) }}">
@@ -21,4 +22,5 @@
             </div>
         </div>
     </article>
+
 </div>

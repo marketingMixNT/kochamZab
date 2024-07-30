@@ -5,7 +5,7 @@
              <div class="col-lg-8 offset-lg-2">
                 <span class="dash-style">Kocham Ząb</span>
                 <h2>Miejsce pełne możliwości</h2>
-                <p>ąb to nie tylko malownicza wieś, ale również miejsce pełne różnorodnych atrakcji i
+                <p>Ząb to nie tylko malownicza wieś, ale również miejsce pełne różnorodnych atrakcji i
                     udogodnień.
                     Niezależnie od tego, czy jesteś miłośnikiem przyrody, smakoszem lokalnej kuchni, czy
                     poszukujesz relaksu i odpoczynku - Ząb ma coś specjalnego dla każdego. Przyjedź i przekonaj
@@ -17,7 +17,7 @@
          
 
 
-          <a href="/atrakcje.html" class="counter-item">
+          <a href="{{route('attraction.index')}}" class="counter-item">
              <div class="counter-item-inner">
                 <div class="counter-icon">
                     <img src="{{asset("assets/icons/attractions.png")}}" alt="" >
@@ -32,7 +32,7 @@
                 </div>
              </div>
             </a>
-          <a href="/gastronomia.html" class="counter-item">
+          <a href="{{route('restaurant.index')}}" class="counter-item">
              <div class="counter-item-inner">
                 <div class="counter-icon">
                     <img src="{{asset("assets/icons/restaurant.png")}}" alt="" >
@@ -47,7 +47,7 @@
                 </div>
              </div>
             </a>
-          <a href="/noclegi.html" class="counter-item">
+          <a href="{{route('apartment.index')}}" class="counter-item">
              <div class="counter-item-inner">
                 <div class="counter-icon">
                     <img src="{{asset("assets/icons/accomodation.png")}}" alt="" >
@@ -62,7 +62,7 @@
                 </div>
              </div>
             </a>
-          <a href="/wydarzenia.html" class="counter-item">
+          <a href="{{route('blog.index')}}" class="counter-item">
              <div class="counter-item-inner">
                 <div class="counter-icon">
                     <img src="{{asset("assets/icons/events.png")}}" alt="" >

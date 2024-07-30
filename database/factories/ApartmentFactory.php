@@ -24,7 +24,7 @@ class ApartmentFactory extends Factory
         return [
             'meta_title' => '{}',
             'meta_desc' => '{}',
-            'name' => '{}',
+            'title' => '{}',
             'slug' => '{}',
             'desc' => '{}',
             'thumbnail' => $this->faker->text(),

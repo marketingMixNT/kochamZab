@@ -1,95 +1,50 @@
-<header id="masthead" class="site-header header-primary">
-    <!-- top -->
-    <div class="top-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 d-none d-lg-block">
-                    <div class="header-contact-info">
-                        <span>Stowarzyszenie Rozwoju i Promocji Wsi Ząb i Okolicy</span>
-                    </div>
-                </div>
-                <div class="col-lg-4 d-flex justify-content-lg-end justify-content-between">
-                    <div class="header-social social-links" style="margin-right:10px">
-                        {{-- socials --}}
-                        <ul>
-                            <li><a href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+<header>
 
-                        </ul>
-                    </div>
-                  
-                    <div>
-                    </div>
-                    <div class="header-social social-links">
-                        {{-- langugageSwitcher --}}
-                        <ul class="language-switcher">
-                            @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                                <li>
-                                    <a rel="alternate" hreflang="{{ $localeCode }}"
-                                        href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                                        {{ strtoupper($localeCode) }}
-                                    </a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-                
+    {{-- TOP --}}
+    <div class="hidden lg:block bg-primary-400 border-b border-secondary-400 ">
+        {{-- container --}}
+        <div class="max-w-screen-2xl mx-auto flex justify-between items-center py-4 px-6 ">
+            {{-- text --}}
+            <div>
+                <span class="text-fontLight text-sm uppercase font-semibold">Stowarzyszenie Rozwoju i Promocji Wsi Ząb i
+                    Okolicy</span>
+            </div>
+            {{-- languageSwitcher & themeToggle --}}
+            <div class="flex items-center gap-4">
+                <x-shared.header.language-switcher />
+                <x-shared.header.theme-toggle />
             </div>
         </div>
     </div>
-    <!-- bottom -->
-    <div class="bottom-header">
-        <div class="container d-flex justify-content-between align-items-center">
-            <div class="site-identity">
-                <h1 class="site-title">
-                    <a href="{{route('home')}}">
-                        <img class="white-logo" src="{{asset("assets/logo.png")}}" alt="logo" style="width:70px">
-                        <img class="black-logo" src="{{asset("assets/logo.png")}}" alt="logo" style="width:90px">
-                    </a>
-                </h1>
+
+    {{-- BOTTOM --}}
+    <div class=" px-4 sm:px-10 2xl:px-0 bg-bgLight-400 dark:bg-bgDark-400">
+        {{-- container --}}
+        <nav class="max-w-screen-xl mx-auto flex justify-between items-center py-4 sticky top-0">
+            {{-- logo --}}
+            <a href="{{ route('home') }}"><img src="{{ asset('assets/logo--horizontal.png') }}"
+                    alt="logo stowarzyszenia Kocham Ząb" class="w-[200px]"></a>
+            {{-- nav-items --}}
+            <div class="hidden lg:block">
+                <x-shared.header.nav-links />
             </div>
-            
-            <div class="main-navigation d-none d-lg-block">
-                <nav id="navigation" class="navigation">
-                    <ul>
+            {{-- contact --}}
+            <a href="{{ route('contact.index') }}"
+                class=" hidden lg:block  px-8 xl:px-10 py-2 bg-secondary-400 hover:bg-secondary-200  lg:text-sm xl:text-base font-medium uppercase text-white rounded-md duration-500">Kontakt</a>
+            {{-- hamburger --}}
+            <x-shared.header.hamburger />
+        </nav>
 
-                        <li class="menu-item-has-children">
-                            <a href="/o-nas.html">O nas</a>
-                            <ul>
-                                <li>
-                                    <a href="{{route('about.zab')}}">O Zębie</a>
-                                </li>
-                                <li>
-                                    <a href="{{route('about.history')}}">Historia</a>
-                                </li>
-                                <li>
-                                    <a href="{{route('about.poronin')}}">Gmina Poronin</a>
-                                </li>
-                                <li>
-                                    <a href="{{route('about.association')}}">Stowarzyszenie</a>
-                                </li>
-                                <li>
-                                    <a href="{{route('about.zwiazek')}}">Związek Podhalan o/Ząb</a>
-                                </li>
-                                <li>
-                                    <a href="{{route('about.band')}}">Zespół Regionalny Zbójnicek</a>
-                                </li>
-
-                            </ul>
-                        </li>
-
-                        <li class="menu-item"> <a href="{{route('blog.index')}}">Wydarzenia</a></li>
-                        <li class="menu-item"> <a href="{{route('attraction.index')}}">Atrakcje</a></li>
-                        <li class="menu-item"> <a href="{{route('apartment.index')}}">Noclegi</a></li>
-                        <li class="menu-item"> <a href="{{route('restaurant.index')}}">Gastronomia</a></li>
-
-                    </ul>
-                </nav>
-            </div>
-            <div class="header-btn">
-                <a href="/kontakt.html" class="button-primary">KONTAKT</a>
-            </div>
-        </div>
+        {{-- mobile menu --}}
+        <nav id="menu"
+            class="fixed  top-[92px] left-0 right-0 bottom-0 flex justify-center items-center bg-primary-400 translate-x-[100%] duration-500  ease-in-out z-50">
+            {{-- links --}}
+            <x-shared.header.nav-links />
+            {{-- other --}}
+            <x-shared.header.theme-toggle class="absolute top-4 right-4 lg:hidden" />
+            <x-shared.socials class="absolute bottom-4 left-4 lg:hidden" />
+            <x-shared.header.language-switcher class="absolute bottom-4 right-4 lg:hidden text-fontLight" />
+        </nav>
     </div>
-    <div class="mobile-menu-container"></div>
+
 </header>

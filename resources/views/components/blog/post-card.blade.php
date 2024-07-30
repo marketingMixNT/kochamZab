@@ -1,6 +1,6 @@
 @props(['post'])
 
-<div class="grid-item col-md-6">
+<div class="customPost" >
     <article class="post">
         <figure class="feature-image">
             <a href="{{ route('blog.show', $post->slug) }}">

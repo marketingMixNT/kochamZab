@@ -13,7 +13,7 @@ class BlogController extends Controller
     public function index()
     {
 
-        $posts = Post::simplePaginate(4);
+        $posts = Post::select('id', 'title', 'slug', 'thumbnail','content' ,'published_at')->paginate(6);
         $totalAttractions = Attraction::count();
         $totalApartments = Apartment::count();
         $totalRestaurants = Restaurant::count();

@@ -1,4 +1,4 @@
-<x-layouts.app title="" description="">
+<x-layouts.app title="{{ $restaurant->getMetaTitle() }}" description="{{ $restaurant->getMetaDesc() }}">
     {{-- header --}}
     <section class="inner-banner-wrap">
         <div class="inner-baner-container"
@@ -79,18 +79,21 @@
                                 </div>
                                 {{-- address --}}
                                 <div class="tab-pane" id="map" role="tabpanel" aria-labelledby="map-tab">
-                                 
-                                    <div style="display: flex;justify-start: center;align-items: center;gap: 5px;margin-bottom:15px;">
+
+                                    <div
+                                        style="display: flex;justify-start: center;align-items: center;gap: 5px;margin-bottom:15px;">
                                         <i class="far fa-map"></i>
                                         <a href="{{ $restaurant->google_maps_link }}"> {{ $restaurant->address }}</a>
                                     </div>
 
-                                    <div style="display: flex;justify-start: center;align-items: center;gap: 5px;margin-bottom:15px;">
+                                    <div
+                                        style="display: flex;justify-start: center;align-items: center;gap: 5px;margin-bottom:15px;">
                                         <i class="fas fa-phone"></i>
-                                        <a href="tel:{{ $restaurant->phone}}"> {{ $restaurant->phone }}</a>
+                                        <a href="tel:{{ $restaurant->phone }}"> {{ $restaurant->phone }}</a>
                                     </div>
 
-                                    <div style="display: flex;justify-start: center;align-items: center;gap: 5px;margin-bottom:15px;">
+                                    <div
+                                        style="display: flex;justify-start: center;align-items: center;gap: 5px;margin-bottom:15px;">
                                         <i class="far fa-envelope"></i>
                                         <a href="mailto:{{ $restaurant->email }}"> {{ $restaurant->email }}</a>
                                     </div>
@@ -124,6 +127,34 @@
             </div>
         </div>
     </div>
+
+{{-- posts --}}
+@if ($restaurant->posts->count() > 0)
+<section class="blog-section" style="padding-top:0">
+    <div class="container">
+        <div class="section-heading text-center">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    
+                    <h2>Artykuły</h2>
+                   
+                </div>
+            </div>
+        </div>
+        <div class="row">
+           
+           @foreach ($restaurant->posts->take(3) as $post)
+              <x-home.post :post="$post"/>
+           @endforeach
+           
+        </div>
+
+        
+    </div>
+</section>
+@endif
+
+
     <!-- subscribe section html start -->
     <section class="blog-section" style="padding:0;margin-bottom:100px">
         <div class="container">

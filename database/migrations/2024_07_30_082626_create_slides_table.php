@@ -11,16 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('slides', function (Blueprint $table) {
             $table->id();
-            $table->json('meta_title')->nullable();
-            $table->json('meta_desc')->nullable();
-            $table->json('title')->unique();
-            $table->json('slug')->unique();
-            $table->text('thumbnail');
+            $table->json('title');
             $table->json('content');
-            $table->dateTime('published_at')->nullable();
-            $table->boolean('featured')->nullable();
+            $table->text('image');
+            $table->text('link')->nullable();
+            $table->integer('sort')->nullable();
             $table->foreignId('user_id');
             $table->timestamps();
         });
@@ -31,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('slides');
     }
 };

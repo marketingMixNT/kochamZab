@@ -28,7 +28,7 @@
                  
              </div>
              <div class="btn-wrap text-center">
-                 <a href="#" class="button-primary">WIĘCEJ ATRAKCJI</a>
+                 <a href="{{ route('attraction.index') }}" class="button-primary">ZOBACZ WIĘCEJ ATRAKCJI</a>
              </div>
          </div>
      </div>

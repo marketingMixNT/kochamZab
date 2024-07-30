@@ -8,10 +8,8 @@ description="Znajdź najlepsze atrakcje, restauracje, hotele i aktualności w Z�
     @include('pages.home.partials.blog') 
     @include('pages.home.partials.attractions') 
     <x-info :totalAttractions="$totalAttractions" :totalApartments="$totalApartments" :totalRestaurants="$totalRestaurants" :totalPosts="$totalPosts"/>
-    {{-- @include('pages.home.partials.cta')  --}}
     @include('pages.home.partials.apartments') 
     @include('pages.home.partials.restaurants') 
-    {{-- @include('pages.home.partials.partners') 
-    @include('pages.home.partials.ads')  --}}
+  
       
 </x-layouts.app>

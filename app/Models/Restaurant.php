@@ -2,18 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Str;
-use Illuminate\Database\Eloquent\Model;
-use Spatie\Translatable\HasTranslations;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Restaurant extends Model
 {
-    use HasTranslations;
-
     use HasFactory;
 
     /**
@@ -24,7 +20,7 @@ class Restaurant extends Model
     protected $fillable = [
         'meta_title',
         'meta_desc',
-        'name',
+        'title',
         'slug',
         'desc',
         'thumbnail',
@@ -49,10 +45,9 @@ class Restaurant extends Model
         'id' => 'integer',
         'meta_title' => 'array',
         'meta_desc' => 'array',
-        'name' => 'array',
+        'title' => 'array',
         'slug' => 'array',
         'desc' => 'array',
-        'gallery' => 'array',
         'featured' => 'boolean',
         'user_id' => 'integer',
     ];
@@ -71,20 +66,4 @@ class Restaurant extends Model
     {
         return $this->hasMany(Social::class);
     }
-
-     // METHODS
-     public function getExcerpt()
-     {
-         return Str::limit(strip_tags($this->desc), 120);
-     }
- 
-     public function getThumbnailUrl()
-     {
-         return  asset('storage/' . $this->thumbnail);
-     }
- 
-     // TRANSLATABLE
-
-    public $translatable = ['name', 'slug','meta_title','meta_desc','desc'];
-
 }

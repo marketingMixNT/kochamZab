@@ -1,4 +1,4 @@
-<x-layouts.app title="" description="">
+<x-layouts.app title="Atrakcje w Zębie | Kocham Ząb" description="Odkryj najciekawsze atrakcje w Zębie. Zwiedzaj malownicze szlaki, zabytki i lokalne atrakcje turystyczne z Kocham Ząb.">
     <!-- header-->
     <section class="inner-banner-wrap">
         <div class="inner-baner-container" 

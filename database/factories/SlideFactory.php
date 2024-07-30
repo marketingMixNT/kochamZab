@@ -25,6 +25,7 @@ class SlideFactory extends Factory
             'title' => '{}',
             'content' => '{}',
             'image' => $this->faker->text(),
+            'link' => $this->faker->text(),
             'sort' => $this->faker->numberBetween(-10000, 10000),
             'user_id' => User::factory(),
         ];

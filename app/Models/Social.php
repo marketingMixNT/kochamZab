@@ -2,15 +2,9 @@
 
 namespace App\Models;
 
-use Filament\Facades\Filament;
-use Livewire\Component as Livewire;
-use Filament\Forms\Components\Select;
-use Illuminate\Database\Eloquent\Model;
-use Filament\Forms\Components\Component;
-use Filament\Forms\Components\TextInput;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Social extends Model
 {
@@ -61,39 +55,5 @@ class Social extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
-    }
-
-    public static function getForm($context = null): array
-    {
-        return [
-            Select::make('name')
-                ->label('Platforma')
-                ->required()
-                ->disableOptionsWhenSelectedInSiblingRepeaterItems()
-                ->live()
-                ->searchable()
-                ->preload()
-                ->options([
-                    'facebook' => 'Facebook',
-                    'instagram' => 'Instagram',
-                    'twitter' => 'X/Twitter',
-                    'tiktok' => 'TikTok',
-                    'youtube' => 'YouTube',
-                    'linkedin' => 'LinkedIn',
-                    'tripadvisor' => 'TripAdvisor',
-                    'booking' => 'Booking',
-                ]),
-
-
-            TextInput::make('link')
-                ->label('Link')
-                ->required()
-                ->minLength(3)
-                ->url()
-                
-                ->placeholder('np. https://www.instagram.com/marketingmix_pl/'),
-
-               
-        ];
     }
 }

@@ -13,7 +13,7 @@ class ApartmentController extends Controller
     public function index()
     {
 
-        $apartments = Apartment::paginate(9);
+        $apartments = Apartment::select('id', 'name', 'slug', 'thumbnail', 'desc')->paginate(9);
         $totalAttractions = Attraction::count();
         $totalApartments = Apartment::count();
         $totalRestaurants = Restaurant::count();
@@ -24,7 +24,7 @@ class ApartmentController extends Controller
 
     public function show($slug)
     {
-        $apartment = Apartment::with('socials')->where('slug->pl', $slug)->firstOrFail();
+        $apartment = Apartment::with('socials', 'posts')->where('slug->pl', $slug)->firstOrFail();
 
         $otherApartments = Apartment::orderByDesc('created_at')->take(4)->get();
 

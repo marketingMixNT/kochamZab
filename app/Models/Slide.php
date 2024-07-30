@@ -2,15 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Spatie\Translatable\HasTranslations;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Slide extends Model
 {
-    use HasTranslations;
-
     use HasFactory;
 
     /**
@@ -22,6 +19,7 @@ class Slide extends Model
         'title',
         'content',
         'image',
+        'link',
         'sort',
         'user_id',
     ];
@@ -42,15 +40,4 @@ class Slide extends Model
     {
         return $this->belongsTo(User::class);
     }
-
-    //METHODS
-    public function getImageUrl()
-    {
-        return  asset('storage/' . $this->image);
-    }
-
-   
-
-    // TRANSLATABLE
-    public $translatable = ['title', 'content',];
 }

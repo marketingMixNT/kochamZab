@@ -2,20 +2,18 @@
 
 namespace App\Models;
 
-use App\Models\Post;
-use App\Models\Social;
-use Illuminate\Support\Str;
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Spatie\Translatable\HasTranslations;
+
 
 class Apartment extends Model
 {
     use HasTranslations;
-
     use HasFactory;
 
     /**
@@ -26,7 +24,7 @@ class Apartment extends Model
     protected $fillable = [
         'meta_title',
         'meta_desc',
-        'name',
+        'title',
         'slug',
         'desc',
         'thumbnail',
@@ -51,10 +49,9 @@ class Apartment extends Model
         'id' => 'integer',
         'meta_title' => 'array',
         'meta_desc' => 'array',
-        'name' => 'array',
+        'title' => 'array',
         'slug' => 'array',
         'desc' => 'array',
-        'gallery' => 'array',
         'featured' => 'boolean',
         'user_id' => 'integer',
     ];
@@ -73,17 +70,6 @@ class Apartment extends Model
     {
         return $this->hasMany(Social::class);
     }
-    // METHODS
-    public function getExcerpt()
-    {
-        return Str::limit(strip_tags($this->desc), 120);
-    }
 
-    public function getThumbnailUrl()
-    {
-        return  asset('storage/' . $this->thumbnail);
-    }
-
-    // TRANSLATABLE
-    public $translatable = ['name', 'slug', 'meta_title', 'meta_desc', 'desc'];
+    
 }

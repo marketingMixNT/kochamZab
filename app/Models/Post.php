@@ -13,7 +13,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Post extends Model
 {
     use HasTranslations;
-
     use HasFactory;
 
     /**
@@ -29,6 +28,7 @@ class Post extends Model
         'thumbnail',
         'content',
         'published_at',
+        'published_end',
         'featured',
         'user_id',
     ];
@@ -46,6 +46,7 @@ class Post extends Model
         'slug' => 'array',
         'content' => 'array',
         'published_at' => 'datetime',
+        'published_end' => 'datetime',
         'featured' => 'boolean',
         'user_id' => 'integer',
     ];
@@ -71,7 +72,7 @@ class Post extends Model
     }
 
     // METHODS
-     public function scopePublished($query)
+    public function scopePublished($query)
     {
         $query->where('published_at', '<=', Carbon::now());
     }
@@ -91,5 +92,4 @@ class Post extends Model
 
     // TRANSLATABLE
     public $translatable = ['name', 'slug','meta_title','meta_desc','content'];
-
 }

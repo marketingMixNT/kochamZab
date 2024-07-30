@@ -12,20 +12,13 @@
         </div>
         <div class="package-inner">
             <div class="row">
-
-
-
                 @foreach ($apartments as $apartment)
                     <x-home.apartment-card :apartment="$apartment" />
                 @endforeach
 
-
-
-
-
             </div>
             <div class="btn-wrap text-center">
-                <a href="#" class="button-primary">ZOBACZ WSZYSTKIE NOCLEGI</a>
+                <a href="{{ route('apartment.index') }}" class="button-primary">ZOBACZ WSZYSTKIE APARTAMENTY</a>
             </div>
         </div>
     </div>

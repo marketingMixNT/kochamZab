@@ -1,4 +1,4 @@
-<x-layouts.app title="" description="">
+<x-layouts.app title="Apartamenty w Zębie | Kocham Ząb" description="Znajdź komfortowe apartamenty w Zębie. Wybierz idealne miejsce na nocleg i ciesz się wygodnym wypoczynkiem z Kocham Ząb.">
     <!-- header-->
     <section class="inner-banner-wrap">
         <div class="inner-baner-container"

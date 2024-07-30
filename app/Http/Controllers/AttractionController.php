@@ -13,7 +13,7 @@ class AttractionController extends Controller
     public function index()
     {
 
-        $attractions = Attraction::paginate(9);
+        $attractions = Attraction::select('id', 'name', 'slug', 'thumbnail')->paginate(9);
         $totalAttractions = Attraction::count();
         $totalApartments = Apartment::count();
         $totalRestaurants = Restaurant::count();
@@ -24,7 +24,7 @@ class AttractionController extends Controller
 
     public function show($slug)
     {
-        $attraction = Attraction::with('socials')->where('slug->pl', $slug)->firstOrFail();
+        $attraction = Attraction::with('socials', 'posts')->where('slug->pl', $slug)->firstOrFail();
 
         $otherAttractions = Attraction::orderByDesc('created_at')->take(4)->get();
 

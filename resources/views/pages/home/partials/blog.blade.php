@@ -19,7 +19,7 @@
            </div>
 
            <div class="btn-wrap text-center">
-               <a href="#" class="button-primary" style="text-transform:uppercase">zobacz aktualne wydarzenia</a>
+               <a href="{{ route('blog.index') }}" class="button-primary" style="text-transform:uppercase">zobacz aktualne wydarzenia</a>
            </div>
        </div>
    </section>

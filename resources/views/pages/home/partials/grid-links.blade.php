@@ -1,13 +1,12 @@
       <!--BUTTONS-GRID-->
       <div class="trip-search-section ">
-        <!-- <div class="slider-shape"></div> -->
         <div class="buttons__grid ">
      
            <a href="{{route('attraction.index')}}"  class="buttons__box">
      
               <img src="assets/icons/attractions.png" alt="" >
      
-              <h2 class="text-5xl text-red-500">Atrakcje</h2>
+              <h2>Atrakcje</h2>
      
            </a>
            <a href="{{route('restaurant.index')}}"  class="buttons__box">

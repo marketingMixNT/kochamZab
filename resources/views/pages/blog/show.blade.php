@@ -1,4 +1,4 @@
-<x-layouts.app title="" description="">
+<x-layouts.app title="{{ $post->getMetaTitle() }}" description="{{ $post->getMetaDesc() }}">
    {{-- header --}}
     <section class="inner-banner-wrap">
         <div class="inner-baner-container"
@@ -39,12 +39,7 @@
             </div>
         </div>
     </div>
-  {{-- latest posts --}}
-  {{-- <div class="row">
-    @foreach ($filteredPosts as $post)
-    <x-home.post :post="$post"/>
-    @endforeach
-  </div> --}}
+  
   <section class="blog-section" style="padding:0;margin-bottom:100px">
    <div class="container">
        <div class="section-heading text-center">

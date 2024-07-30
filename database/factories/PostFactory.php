@@ -29,6 +29,7 @@ class PostFactory extends Factory
             'thumbnail' => $this->faker->text(),
             'content' => '{}',
             'published_at' => $this->faker->dateTime(),
+            'published_end' => $this->faker->dateTime(),
             'featured' => $this->faker->boolean(),
             'user_id' => User::factory(),
         ];
