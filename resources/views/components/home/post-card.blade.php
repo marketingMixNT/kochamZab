@@ -8,10 +8,14 @@
                 class=" w-full h-full object-cover group-hover:scale-110 duration-500 max-h-[400px]">
         </div>
         {{-- text --}}
-        <div class="p-6 flex flex-col justify-between flex-grow gap-8 dark:bg-bgDark-200 ">
+        <div class="p-6 flex flex-col justify-between flex-grow gap-8 bg-bgLight-200 dark:bg-bgDark-200 ">
             <h2 class="text-2xl text-fontBlue  dark:text-fontLight font-bold ">{{ $post->title }}</h2>
             <p class="flex-grow inline-block lg:hidden 2xl:inline-block">{{ $post->getExcerpt() }}</p>
-            <span class="text-sm text-fontOrange">{{ $post->getPublishedDate() }}</span>
+
+          
+                
+            {{-- <span class="text-sm text-fontOrange">{{ $post->getPublishedDate() }}</span> --}}
+           
         </div>
     </a>
 </div>

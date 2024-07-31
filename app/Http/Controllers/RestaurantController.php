@@ -13,7 +13,7 @@ class RestaurantController extends Controller
     public function index()
     {
 
-        $restaurants = Restaurant::select('id', 'name', 'slug', 'thumbnail', 'desc')->paginate(9);
+        $restaurants = Restaurant::select('id', 'title', 'slug', 'thumbnail', 'desc')->paginate(9);
         $totalAttractions = Attraction::count();
         $totalApartments = Apartment::count();
         $totalRestaurants = Restaurant::count();

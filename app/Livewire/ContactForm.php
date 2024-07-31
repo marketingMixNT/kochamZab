@@ -9,36 +9,38 @@ class ContactForm extends Component
 {
 
     public $name;
+    public $phone;
     public $email;
 
     public $content;
 
     public $successMessage;
 
-   
+
 
     // public $captcha = 0;
- 
-// public function updatedCaptcha($token)
-// {
-//     $response = Http::post('https://www.google.com/recaptcha/api/siteverify?secret=' . env('CAPTCHA_SECRET_KEY') . '&response=' . $token);
-//     $this->captcha = $response->json()['score'];
- 
-//     if (!$this->captcha > .3) {
-//         $this->store();
-//     } else {
-//         return session()->flash('success',  __('home.contact.success-message'));
-//     }
- 
-// }
+
+    // public function updatedCaptcha($token)
+    // {
+    //     $response = Http::post('https://www.google.com/recaptcha/api/siteverify?secret=' . env('CAPTCHA_SECRET_KEY') . '&response=' . $token);
+    //     $this->captcha = $response->json()['score'];
+
+    //     if (!$this->captcha > .3) {
+    //         $this->store();
+    //     } else {
+    //         return session()->flash('success',  __('home.contact.success-message'));
+    //     }
+
+    // }
 
 
     protected $rules = [
         'name' => 'required',
+        'phone' => 'required',
         'email' => 'required|email',
         'content' => 'required',
         // 'captcha' => ['required'],
-        
+
     ];
 
     public function updated($propertyName)
@@ -52,6 +54,7 @@ class ContactForm extends Component
 
         Mail::send('emails.contact-form-email', [
             'name' => $this->name,
+            'phone' => $this->phone,
             'email' => $this->email,
             'content' => $this->content,
         ], function ($message) {
@@ -70,6 +73,7 @@ class ContactForm extends Component
     public function resetForm()
     {
         $this->name = '';
+        $this->phone = '';
         $this->email = '';
         $this->content = '';
         // $this->captcha = 0;
@@ -79,5 +83,4 @@ class ContactForm extends Component
     {
         return view('livewire.contact-form');
     }
-   
 }

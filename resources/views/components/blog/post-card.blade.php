@@ -1,6 +1,6 @@
 @props(['post'])
 
-<div class="customPost" >
+<div class="customPost">
     <article class="post">
         <figure class="feature-image">
             <a href="{{ route('blog.show', $post->slug) }}">
@@ -14,9 +14,12 @@
             </h3>
             <div class="entry-meta">
 
-                <span class="posted-on">
-                    <a href="{{ route('blog.show', $post->slug) }}">{{ $post->getPublishedDate() }}</a>
-                </span>
+               
+                    <span class="posted-on">
+                        <a href="{{ route('blog.show', $post->slug) }}">{{ $post->getPublishedDate() }}</a>
+                    </span>
+              
+
 
             </div>
             <p>{{ $post->getExcerpt() }}</p>

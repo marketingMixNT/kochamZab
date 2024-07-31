@@ -30,7 +30,9 @@ export default {
                 fontOrange:"#f56960",
 
                 bgLight: {
-                    400: "#ffffff",
+
+                    200: "#ffffff",
+                    400: "#fafafa",
                 },
                 bgDark: {
                     200: "#222222",

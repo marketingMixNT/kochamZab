@@ -13,7 +13,7 @@ class AttractionController extends Controller
     public function index()
     {
 
-        $attractions = Attraction::select('id', 'name', 'slug', 'thumbnail')->paginate(9);
+        $attractions = Attraction::select('id', 'title', 'slug', 'thumbnail','desc')->paginate(9);
         $totalAttractions = Attraction::count();
         $totalApartments = Apartment::count();
         $totalRestaurants = Restaurant::count();

@@ -5,7 +5,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
 
 <head>
- 
+
     <!-- meta -->
     @include('partials.meta')
     <!-- favicon -->
@@ -17,32 +17,21 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="relative bg-bgLight-400 dark:bg-bgDark-400  font-text  text-fontDark dark:text-fontLight  overflow-x-hidden ">
+<body
+    class="relative bg-bgLight-400 dark:bg-bgDark-400  font-text  text-fontDark dark:text-fontLight  overflow-x-hidden ">
 
-
+    <x-preloader />
     <x-shared.header.topbar />
     <x-shared.header.navbar />
 
-    {{ $slot }}
+    <main>
+        {{ $slot }}
+    </main>
 
     <x-shared.footer />
 
-    {{-- <x-preloader />
 
-    <div id="page" class="full-page">
 
-       
-
-        <main id="content" class="site-main">
-           
-        </main>
-
-        
-
-    </div>
-    
-    <x-back-to-top /> --}}
-    {{-- @include('partials.scripts') --}}
 </body>
 
 </html>

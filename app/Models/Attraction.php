@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -76,6 +77,11 @@ class Attraction extends Model
      {
          return  asset('storage/' . $this->thumbnail);
      }
+
+     public function getExcerpt()
+    {
+        return Str::limit(strip_tags($this->desc), 250);
+    }
 
     public $translatable = ['title', 'slug','meta_title','meta_desc','desc'];
 }

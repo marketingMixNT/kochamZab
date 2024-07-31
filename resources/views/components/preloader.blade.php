@@ -1,5 +1,7 @@
-<div id="siteLoader" class="site-loader">
-    <div class="preloader-content">
-       <img src="{{asset("assets/images/loader1.gif")}}" alt="">
-    </div>
- </div>
+
+
+ <div id="preloader"
+    class="fixed inset-0 flex flex-col justify-center items-center gap-y-1 bg-fontLight transition-opacity duration-1000 ease-in-out bg-third-300 opacity-95"
+    style="z-index: 1000000000000">
+
+</div>

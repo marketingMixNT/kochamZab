@@ -9,6 +9,11 @@
     </div>
 
     <div style="margin-bottom:15px">
+        <span style="font-size: 16px;font-weight:800">Telefon:</span>
+        <span style="font-size: 16px">{{ $phone }}</span>
+    </div>
+
+    <div style="margin-bottom:15px">
         <span style="font-size: 16px;font-weight:800">Email:</span>
         <span style="font-size: 16px">{{ $email }}</span>
     </div>
@@ -22,6 +27,7 @@
     <div style="display:flex;gap:20px">
 
         <a href="mailto:{{ $email }}" style='background-color: #014a0a;padding:12px 24px;border-radius:12px;color:white'>Napisz</a>
+        <a href="tel:{{ $phone }}" style='background-color: #014a0a;padding:12px 24px;border-radius:12px;color:white'>Zadzwoń</a>
         
     </div>
 </div>
