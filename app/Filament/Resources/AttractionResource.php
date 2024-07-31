@@ -98,7 +98,7 @@ class AttractionResource extends Resource
                     ->description('Podaj nazwę atrakcji, dane kontaktowe oraz social media')
                     ->schema([
 
-                        Forms\Components\TextInput::make('name')
+                        Forms\Components\TextInput::make('title')
                             ->label('Nazwa atrakcji')
                             ->unique(ignoreRecord: true)
                             ->minLength(3)

@@ -94,7 +94,7 @@ class ApartmentResource extends Resource
                     ->description('Podaj nazwę atrakcji, dane kontaktowe oraz social media')
                     ->schema([
 
-                        Forms\Components\TextInput::make('name')
+                        Forms\Components\TextInput::make('title')
                             ->label('Nazwa Apartamentu')
                             ->unique(ignoreRecord: true)
                             ->minLength(3)

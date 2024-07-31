@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Filament\Forms\Components\Select;
 use Illuminate\Database\Eloquent\Model;
+use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Social extends Model
 {
@@ -55,5 +57,39 @@ class Social extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public static function getForm($context = null): array
+    {
+        return [
+            Select::make('name')
+                ->label('Platforma')
+                ->required()
+                ->disableOptionsWhenSelectedInSiblingRepeaterItems()
+                ->live()
+                ->searchable()
+                ->preload()
+                ->options([
+                    'facebook' => 'Facebook',
+                    'instagram' => 'Instagram',
+                    'twitter' => 'X/Twitter',
+                    'tiktok' => 'TikTok',
+                    'youtube' => 'YouTube',
+                    'linkedin' => 'LinkedIn',
+                    'tripadvisor' => 'TripAdvisor',
+                    'booking' => 'Booking',
+                ]),
+
+
+            TextInput::make('link')
+                ->label('Link')
+                ->required()
+                ->minLength(3)
+                ->url()
+                
+                ->placeholder('np. https://www.instagram.com/marketingmix_pl/'),
+
+               
+        ];
     }
 }

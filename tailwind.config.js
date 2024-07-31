@@ -27,12 +27,15 @@ export default {
                 fontDark: "#333333",
                 fontBlue: "#101f46",
                 fontLight: "#ffffff",
+                fontOrange:"#f56960",
 
                 bgLight: {
                     400: "#ffffff",
                 },
                 bgDark: {
-                    400: "#000000",
+                    200: "#222222",
+                    300: "#383838",
+                    400: "#111111",
                 },
             },
         },

@@ -1,82 +1,25 @@
-<div class="fullwidth-callback" style="background-image: url({{asset('assets/images/zab.jpg')}});background-position:center">
-    <div class="container">
-       <div class="section-heading section-heading-white text-center">
-          <div class="row">
-             <div class="col-lg-8 offset-lg-2">
-                <span class="dash-style">Kocham Ząb</span>
-                <h2>Miejsce pełne możliwości</h2>
-                <p>Ząb to nie tylko malownicza wieś, ale również miejsce pełne różnorodnych atrakcji i
-                    udogodnień.
-                    Niezależnie od tego, czy jesteś miłośnikiem przyrody, smakoszem lokalnej kuchni, czy
-                    poszukujesz relaksu i odpoczynku - Ząb ma coś specjalnego dla każdego. Przyjedź i przekonaj
-                    się, jak wiele ma do zaoferowania!</p>
-             </div>
-          </div>
-       </div>
-       <div class="callback-counter-wrap">
-         
+<div class="bg-top bg-no-repeat bg-cover bg-fixed py-24 bg-blend-multiply bg-gray-500 flex flex-col justify-center items-center gap-12 px-6 lg:px-12"
+    style="background-image: url({{ asset('assets/images/zab.jpg') }})">
+    <x-home.text-box light subheading="Kocham Ząb" heading="Miejsce pełne możliwości">ąb to nie tylko malownicza wieś, ale
+        również miejsce pełne różnorodnych atrakcji i
+        udogodnień.
+        Niezależnie od tego, czy jesteś miłośnikiem przyrody, smakoszem lokalnej kuchni, czy
+        poszukujesz relaksu i odpoczynku - Ząb ma coś specjalnego dla każdego. Przyjedź i przekonaj
+        się, jak wiele ma do zaoferowania!</x-home.text-box>
+    <div class="max-w-screen-2xl mx-auto grid  sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-6 2xl:gap-12 px-6">
+
+        <x-info-item href="{{ route('blog.index') }}" img="{{ asset('assets/icons/events.webp') }}"
+            :counter="$totalPosts">Wydarzeń</x-info-item>
+        <x-info-item href="{{ route('attraction.index') }}" img="{{ asset('assets/icons/attractions.webp') }}"
+            :counter="$totalAttractions">Atrakcji</x-info-item>
+        <x-info-item href="{{ route('apartment.index') }}" img="{{ asset('assets/icons/accomodation.webp') }}"
+            :counter="$totalApartments">Apartamentów</x-info-item>
+        <x-info-item href="{{ route('restaurant.index') }}" img="{{ asset('assets/icons/restaurant.webp') }}"
+            :counter="$totalRestaurants">Restauracji</x-info-item>
 
 
-          <a href="{{route('attraction.index')}}" class="counter-item">
-             <div class="counter-item-inner">
-                <div class="counter-icon">
-                    <img src="{{asset("assets/icons/attractions.png")}}" alt="" >
-                </div>
-                <div class="counter-content">
-                   <span class="counter-no">
-                      <span class="counter">{{$totalAttractions}}</span>
-                   </span>
-                   <span class="counter-text">
-                      Atrakcji
-                   </span>
-                </div>
-             </div>
-            </a>
-          <a href="{{route('restaurant.index')}}" class="counter-item">
-             <div class="counter-item-inner">
-                <div class="counter-icon">
-                    <img src="{{asset("assets/icons/restaurant.png")}}" alt="" >
-                </div>
-                <div class="counter-content">
-                   <span class="counter-no">
-                      <span class="counter">{{$totalRestaurants}}</span>
-                   </span>
-                   <span class="counter-text">
-                      Restauracji
-                   </span>
-                </div>
-             </div>
-            </a>
-          <a href="{{route('apartment.index')}}" class="counter-item">
-             <div class="counter-item-inner">
-                <div class="counter-icon">
-                    <img src="{{asset("assets/icons/accomodation.png")}}" alt="" >
-                </div>
-                <div class="counter-content">
-                   <span class="counter-no">
-                      <span class="counter">{{$totalApartments}}</span>
-                   </span>
-                   <span class="counter-text">
-                      Apartamentów
-                   </span>
-                </div>
-             </div>
-            </a>
-          <a href="{{route('blog.index')}}" class="counter-item">
-             <div class="counter-item-inner">
-                <div class="counter-icon">
-                    <img src="{{asset("assets/icons/events.png")}}" alt="" >
-                </div>
-                <div class="counter-content">
-                   <span class="counter-no">
-                      <span class="counter">{{$totalPosts}}</span>
-                   </span>
-                   <span class="counter-text">
-                      Wydarzeń
-                   </span>
-                </div>
-             </div>
-            </a>
-       </div>
+
+
     </div>
- </div>
+
+</div>

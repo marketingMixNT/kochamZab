@@ -148,7 +148,7 @@ class PostResource extends Resource
                             ->schema([
                                 Select::make('apartment_id')
                                     ->label('Apartament')
-                                    ->relationship('apartments', 'name')
+                                    ->relationship('apartments', 'title')
                                     ->multiple()
                                     ->preload()
                                     ->searchable()
@@ -157,7 +157,7 @@ class PostResource extends Resource
 
                                 Select::make('attraction_id')
                                     ->label('Atrakcja')
-                                    ->relationship('attractions', 'name')
+                                    ->relationship('attractions', 'title')
                                     ->multiple()
                                     ->preload()
                                     ->searchable()
@@ -166,7 +166,7 @@ class PostResource extends Resource
 
                                 Select::make('restaurant_id')
                                     ->label('Restauracja')
-                                    ->relationship('restaurants', 'name')
+                                    ->relationship('restaurants', 'title')
                                     ->multiple()
                                     ->preload()
                                     ->searchable()
@@ -190,6 +190,11 @@ class PostResource extends Resource
                             ->columns(1)
                             ->default(now())
                             ->required(),
+                        DateTimePicker::make('published_end')
+                            ->label('Zakończenie publikacji')
+                            ->columns(1)
+                            ->default(now())
+                            ->required(),
                         Toggle::make('featured')->label('Polecany')->columnSpanFull()->onIcon('heroicon-o-star'),
                     ]),
             ]);
@@ -209,6 +214,37 @@ class PostResource extends Resource
                     ->description(function (Post $record) {
                         return Str::limit(strip_tags($record->content), 40);
                     }),
+
+                Tables\Columns\TextColumn::make('published_at')
+                    ->label('Zakończenie publikacji')
+                    ->badge()
+                    ->dateTime()
+                    ->formatStateUsing(function ($state) {
+                        return Carbon::parse($state)->format('d-m-Y H:i');
+                    })
+                    ->color(function ($state) {
+                        if ($state <= Carbon::now()) {
+                            return 'success';
+                        } else {
+                            return 'danger';
+                        }
+                    })
+                    ->sortable(),
+                    Tables\Columns\TextColumn::make('published_end')
+                    ->label('Data zakończenia')
+                    ->badge()
+                    ->dateTime()
+                    ->formatStateUsing(function ($state) {
+                        return Carbon::parse($state)->format('d-m-Y H:i');
+                    })
+                    ->color(function ($state) {
+                        if ($state >= Carbon::now()) {
+                            return 'success';
+                        } else {
+                            return 'danger';
+                        }
+                    })
+                    ->sortable(),
 
                 Tables\Columns\TextColumn::make('published_at')
                     ->label('Data publikacji')

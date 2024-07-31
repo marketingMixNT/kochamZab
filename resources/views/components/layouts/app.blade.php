@@ -17,11 +17,15 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="relative bg-bgLight-400 dark:bg-bgDark-400  font-text font-light text-fontDark dark:text-fontLight  overflow-x-hidden ">
+<body class="relative bg-bgLight-400 dark:bg-bgDark-400  font-text  text-fontDark dark:text-fontLight  overflow-x-hidden ">
 
-    <x-shared.header.header />
+
+    <x-shared.header.topbar />
+    <x-shared.header.navbar />
 
     {{ $slot }}
+
+    <x-shared.footer />
 
     {{-- <x-preloader />
 
@@ -33,7 +37,7 @@
            
         </main>
 
-        <x-footer />
+        
 
     </div>
     

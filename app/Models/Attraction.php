@@ -2,14 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Attraction extends Model
 {
+    use HasTranslations;
+
     use HasFactory;
 
     /**
@@ -48,6 +51,7 @@ class Attraction extends Model
         'title' => 'array',
         'slug' => 'array',
         'desc' => 'array',
+        'gallery' => 'array',
         'featured' => 'boolean',
         'user_id' => 'integer',
     ];
@@ -66,4 +70,12 @@ class Attraction extends Model
     {
         return $this->hasMany(Social::class);
     }
+
+     // METHODS
+     public function getThumbnailUrl()
+     {
+         return  asset('storage/' . $this->thumbnail);
+     }
+
+    public $translatable = ['title', 'slug','meta_title','meta_desc','desc'];
 }

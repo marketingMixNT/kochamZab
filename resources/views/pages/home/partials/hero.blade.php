@@ -13,7 +13,7 @@
                         <div
                             class="max-w-screen-lg mx-auto text-center flex flex-col justify-center items-center gap-12 px-6 2xl:px-0">
 
-                            <h1 class="text-fontLight text-4xl sm:text-5xl  md:text-6xl   font-bold" style="line-height: 1.2">{{ $slide->title }}
+                            <h1 class="text-fontLight text-4xl sm:text-5xl  md:text-6xl 2xl:text-7xl   font-bold" style="line-height: 1.2">{{ $slide->title }}
                             </h1>
                             <p class="text-fontLight text-lg lg:text-xl lg:font-normal">{{ $slide->content }}</p>
 

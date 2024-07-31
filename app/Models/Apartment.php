@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Spatie\Translatable\HasTranslations;
 
 
 class Apartment extends Model
@@ -52,6 +53,7 @@ class Apartment extends Model
         'title' => 'array',
         'slug' => 'array',
         'desc' => 'array',
+        'gallery' => 'array',
         'featured' => 'boolean',
         'user_id' => 'integer',
     ];
@@ -70,6 +72,19 @@ class Apartment extends Model
     {
         return $this->hasMany(Social::class);
     }
+
+ // METHODS
+ public function getExcerpt()
+ {
+     return Str::limit(strip_tags($this->desc), 120);
+ }
+
+ public function getThumbnailUrl()
+ {
+     return  asset('storage/' . $this->thumbnail);
+ }
+
+    public $translatable = ['title', 'slug', 'meta_title', 'meta_desc', 'desc'];
 
     
 }

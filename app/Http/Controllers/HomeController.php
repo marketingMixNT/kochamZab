@@ -19,9 +19,9 @@ class HomeController extends Controller
 
         $slides = Slide::orderBy('sort', 'asc')->get();
 
-        $posts = Post::published()->select('id', 'title', 'slug', 'thumbnail', 'published_at')
+        $posts = Post::published()->select('id', 'title', 'slug', 'thumbnail','content', 'published_at')
             ->orderBy('published_at', 'desc')
-            ->take(3)
+            ->take(4)
             ->get();
 
         $attractions = Attraction::select('id', 'title', 'slug', 'thumbnail')->orderBy('sort', 'desc')->take(3)->get();
@@ -32,6 +32,8 @@ class HomeController extends Controller
         $totalApartments = Apartment::count();
         $totalRestaurants = Restaurant::count();
         $totalPosts = Post::count();
+
+
 
         return view("pages.home.index", compact("slides", "posts", "attractions", "apartments", "restaurants", "totalAttractions", "totalApartments", "totalRestaurants", "totalPosts"));
     }

@@ -1,28 +1,21 @@
 @props(['apartment'])
 
-<div class="col-lg-4 col-md-6">
-    <div class="package-wrap">
-        <figure class="feature-image">
-            <a href="{{ route('apartment.show', $apartment->slug) }}">
-                <img src="{{ $apartment->getThumbnailUrl() }}" alt="{{ $apartment->name }}"
-                    style="height:305px;width:100%;object-fit:cover" loading="lazy">
-            </a>
-        </figure>
 
-        <div class="package-content-wrap">
 
-            <div class="package-content" style="margin-top:40px">
-                <h3>
-                    <a href="{{ route('apartment.show', $apartment->slug) }}">{{ $apartment->name }}</a>
-                </h3>
 
-                <p style="height:100px">{{ $apartment->getExcerpt() }}</p>
-                <div class="btn-wrap">
-                    <a href="{{ route('apartment.show', $apartment->slug) }}" class="button-text width-6">Zobacz<i
-                            class="fas fa-arrow-right"></i></a>
-
-                </div>
-            </div>
+<div class="flex flex-col  h-full  shadow-lg hover:shadow-2xl duration-500 group  ">
+    <a href="{{ route('blog.show', $apartment->slug) }}" class="flex flex-col h-full  rounded-lg overflow-hidden">
+        {{-- thumbnail --}}
+        <div class="overflow-hidden ">
+            <img src="{{ $apartment->getThumbnailUrl() }}" alt="miniaturka postu o tytule {{ $apartment->title }}" loading="lazy"
+                class=" w-full h-full object-cover group-hover:scale-110 duration-500 max-h-[400px]">
         </div>
-    </div>
+        {{-- text --}}
+        <div class="p-6 flex flex-col justify-between flex-grow gap-8 dark:bg-bgDark-200 ">
+            <h2 class="text-2xl text-fontBlue  dark:text-fontLight font-bold ">{{ $apartment->title }}</h2>
+            <p class="flex-grow inline-block lg:hidden 2xl:inline-block">{{ $apartment->getExcerpt() }}</p>
+            {{-- <span class="text-sm text-fontOrange">{{ $apartment->getPublishedDate() }}</span> --}}
+        </div>
+    </a>
 </div>
+

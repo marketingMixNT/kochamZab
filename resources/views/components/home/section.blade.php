@@ -1,0 +1,1 @@
+<section class=" px-6 md:px-12 2xl:px-0 py-12 lg:py-20 flex flex-col justify-center items-center lg:gap-12 gap-20">{{$slot}}</section>

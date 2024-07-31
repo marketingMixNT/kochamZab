@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('thumbnail');
             $table->json('content');
             $table->dateTime('published_at');
-            $table->dateTime('published_end');
+            $table->dateTime('published_end')->nullable();
             $table->boolean('featured')->nullable();
             $table->foreignId('user_id');
             $table->timestamps();

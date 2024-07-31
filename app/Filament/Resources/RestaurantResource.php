@@ -96,7 +96,7 @@ class RestaurantResource extends Resource
                     ->description('Podaj nazwę restauracji, dane kontaktowe oraz social media')
                     ->schema([
 
-                        Forms\Components\TextInput::make('name')
+                        Forms\Components\TextInput::make('title')
                             ->label('Nazwa Restauracji')
                             ->unique(ignoreRecord: true)
                             ->minLength(3)
