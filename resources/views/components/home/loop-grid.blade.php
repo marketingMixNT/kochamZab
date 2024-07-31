@@ -1,1 +1,0 @@
-<div class="grid grid-cols-1 lg:grid-cols-3 max-w-screen-md lg:max-w-screen-2xl mx-auto gap-12">{{$slot}}</div>

@@ -20,7 +20,7 @@
 <body
     class="relative bg-bgLight-400 dark:bg-bgDark-400  font-text  text-fontDark dark:text-fontLight  overflow-x-hidden ">
 
-    <x-preloader />
+    <x-shared.preloader />
     <x-shared.nav.topbar />
     <x-shared.nav.navbar />
 

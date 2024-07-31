@@ -1,78 +1,42 @@
-<x-layouts.app title="O nas | Kocham Ząb" description="">
+<x-layouts.app title="O nas | Kocham Ząb"
+    description="Dowiedz się więcej o nas i naszej misji. Odkryj, jak promujemy Ząb i wspieramy lokalną społeczność z Kocham Ząb.">
 
 
+    <x-slot:header>
+
+        <x-banner>O nas</x-banner>
+
+    </x-slot:header>
+
+    <x-slot:main>
+        <x-base.section noFlex>
+            <x-base.loop-grid>
+
+                {{-- item --}}
+                <x-about-card href="{{ route('about.zab') }}" img="{{ asset('assets/images/zab.jpg') }}">O
+                    zębie</x-about-card>
+                {{-- item --}}
+                <x-about-card href="{{ route('about.history') }}"
+                    img="{{ asset('assets/images/zab.jpg') }}">Historia</x-about-card>
+                {{-- item --}}
+                <x-about-card href="{{ route('about.poronin') }}" img="{{ asset('assets/images/zab.jpg') }}">Gmina
+                    Poronin</x-about-card>
+                {{-- item --}}
+                <x-about-card href="{{ route('about.association') }}"
+                    img="{{ asset('assets/images/zab.jpg') }}">Stowarzyszenie</x-about-card>
+                {{-- item --}}
+                <x-about-card href="{{ route('about.zwiazek') }}" img="{{ asset('assets/images/zab.jpg') }}">Związek
+                    Podhalan</x-about-card>
+                {{-- item --}}
+                <x-about-card href="{{ route('about.band') }}" img="{{ asset('assets/images/zab.jpg') }}">Zespół
+                    Regionalny Zbójnicek</x-about-card>
 
 
-    <x-banner>O nas</x-banner>
+            </x-base.loop-grid>
 
-    <section class="max-w-screen-2xl mx-auto py-20 px-6 sm:px-12 2xl:px-0 ">
-        <x-home.loop-grid>
+        </x-base.section>
 
-            {{-- item --}}
-            <a href="{{ route('about.zab') }}"
-                class="p-8 bg-cover bg-center bg-no-repeat h-[500px] w-full bg-blend-multiply bg-gray-400 hover:bg-gray-500 duration-500 flex justify-start items-end group shadow-lg hover:shadow-2xl rounded-lg"
-                style="background-image: url('{{ asset('assets/images/zab.jpg') }}')">
-
-
-                <h2 class="text-fontLight group-hover:text-secondary-400 duration-500 text-xl lg:text-2xl font-bold">O
-                    zębie</h2>
-            </a>
-            {{-- item --}}
-            <a href="{{ route('about.zab') }}"
-                class="p-8 bg-cover bg-center bg-no-repeat h-[500px] w-full bg-blend-multiply bg-gray-400 hover:bg-gray-500 duration-500 flex justify-start items-end group shadow-lg hover:shadow-2xl rounded-lg"
-                style="background-image: url('{{ asset('assets/images/zab.jpg') }}')">
-
-
-                <h2 class="text-fontLight group-hover:text-secondary-400 duration-500 text-xl lg:text-2xl font-bold">O
-                    zębie</h2>
-            </a>
-            {{-- item --}}
-            <a href="{{ route('about.zab') }}"
-                class="p-8 bg-cover bg-center bg-no-repeat h-[500px] w-full bg-blend-multiply bg-gray-400 hover:bg-gray-500 duration-500 flex justify-start items-end group shadow-lg hover:shadow-2xl rounded-lg"
-                style="background-image: url('{{ asset('assets/images/zab.jpg') }}')">
-
-
-                <h2 class="text-fontLight group-hover:text-secondary-400 duration-500 text-xl lg:text-2xl font-bold">O
-                    zębie</h2>
-            </a>
-            {{-- item --}}
-            <a href="{{ route('about.zab') }}"
-                class="p-8 bg-cover bg-center bg-no-repeat h-[500px] w-full bg-blend-multiply bg-gray-400 hover:bg-gray-500 duration-500 flex justify-start items-end group shadow-lg hover:shadow-2xl rounded-lg"
-                style="background-image: url('{{ asset('assets/images/zab.jpg') }}')">
-
-
-                <h2 class="text-fontLight group-hover:text-secondary-400 duration-500 text-xl lg:text-2xl font-bold">O
-                    zębie</h2>
-            </a>
-            {{-- item --}}
-            <a href="{{ route('about.zab') }}"
-                class="p-8 bg-cover bg-center bg-no-repeat h-[500px] w-full bg-blend-multiply bg-gray-400 hover:bg-gray-500 duration-500 flex justify-start items-end group shadow-lg hover:shadow-2xl rounded-lg"
-                style="background-image: url('{{ asset('assets/images/zab.jpg') }}')">
-
-
-                <h2 class="text-fontLight group-hover:text-secondary-400 duration-500 text-xl lg:text-2xl font-bold">O
-                    zębie</h2>
-            </a>
-            {{-- item --}}
-            <a href="{{ route('about.zab') }}"
-                class="p-8 bg-cover bg-center bg-no-repeat h-[500px] w-full bg-blend-multiply bg-gray-400 hover:bg-gray-500 duration-500 flex justify-start items-end group shadow-lg hover:shadow-2xl rounded-lg"
-                style="background-image: url('{{ asset('assets/images/zab.jpg') }}')">
-
-
-                <h2 class="text-fontLight group-hover:text-secondary-400 duration-500 text-xl lg:text-2xl font-bold">O
-                    zębie</h2>
-            </a>
-
-
-
-
-        </x-home.loop-grid>
-
-
-
-    </section>
-
-    <!--HERO-BOTTOM-->
-    <x-info :totalAttractions="$totalAttractions" :totalApartments="$totalApartments" :totalRestaurants="$totalRestaurants" :totalPosts="$totalPosts" />
-
+        <!--HERO-BOTTOM-->
+        <x-info :totalAttractions="$totalAttractions" :totalApartments="$totalApartments" :totalRestaurants="$totalRestaurants" :totalPosts="$totalPosts" />
+    </x-slot:main>
 </x-layouts.app>
