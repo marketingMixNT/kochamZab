@@ -7,8 +7,8 @@
     <section class="max-w-screen-2xl mx-auto py-20 px-6 sm:px-12 2xl:px-0 ">
         <x-home.loop-grid>
 
-            @foreach ($attractions as $post)
-                <x-home.post-card :post="$post" />
+            @foreach ($attractions as $attraction)
+                <x-home.attraction-card :attraction="$attraction" />
             @endforeach
         </x-home.loop-grid>
 

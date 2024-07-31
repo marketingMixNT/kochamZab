@@ -83,5 +83,23 @@ class Attraction extends Model
         return Str::limit(strip_tags($this->desc), 250);
     }
 
+    public function getMetaTitle(): string
+    {
+        if ($this->meta_title) {
+            return $this->meta_title;
+        } else {
+            return $this->title;
+        }
+    }
+
+    public function getMetaDesc(): string
+    {
+        if ($this->meta_desc) {
+            return $this->meta_desc;
+        } else {
+            return substr($this->content, 0, 150);;
+        }
+    }
+
     public $translatable = ['title', 'slug','meta_title','meta_desc','desc'];
 }
