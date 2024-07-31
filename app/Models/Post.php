@@ -86,7 +86,7 @@ class Post extends Model
     }
     public function getExcerpt()
     {
-        return Str::limit(strip_tags($this->content), 250);
+        return Str::limit(strip_tags($this->content), 200);
     }
     public function getMetaTitle(): string
     {

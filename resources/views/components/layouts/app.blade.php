@@ -1,4 +1,4 @@
-@props(['title', 'description', 'noFollow' => false])
+@props(['title', 'description', 'header', 'main', 'noFollow' => false])
 
 
 <!doctype html>
@@ -21,16 +21,18 @@
     class="relative bg-bgLight-400 dark:bg-bgDark-400  font-text  text-fontDark dark:text-fontLight  overflow-x-hidden ">
 
     <x-preloader />
-    <x-shared.header.topbar />
-    <x-shared.header.navbar />
+    <x-shared.nav.topbar />
+    <x-shared.nav.navbar />
+
+
+    {{ $header }}
+
 
     <main>
-        {{ $slot }}
+        {{ $main }}
     </main>
 
     <x-shared.footer />
-
-
 
 </body>
 

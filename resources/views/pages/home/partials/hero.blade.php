@@ -1,5 +1,4 @@
-
-<section class="h-[calc(100vh-90px)] md:h-[calc(100vh-90px)]  lg:h-[calc(100vh-140px)]  ">
+<header class="h-[calc(100vh-90px)] md:h-[calc(100vh-90px)]  lg:h-[calc(100vh-140px)]  ">
     {{-- SLIDES --}}
     <div class=" swiper home-slides-swiper h-full w-full">
         <div class=" swiper-wrapper w-full h-full">
@@ -13,12 +12,13 @@
                         <div
                             class="max-w-screen-lg mx-auto text-center flex flex-col justify-center items-center gap-12 px-6 2xl:px-0">
 
-                            <h1 class="text-fontLight text-4xl sm:text-5xl  md:text-6xl 2xl:text-7xl   font-bold" style="line-height: 1.2">{{ $slide->title }}
-                            </h1>
+                            <x-ui.header-heading>{{ $slide->title }}</x-ui.header-heading>
+
                             <p class="text-fontLight text-lg lg:text-xl lg:font-normal">{{ $slide->content }}</p>
 
                             @if ($slide->link)
-                                <x-link-btn class="mt-6 2xl:mt-12" href="{{ $slide->link }}">Więcej informacji</x-link-btn>
+                                <x-ui.link-btn class="mt-6 2xl:mt-12" href="{{ $slide->link }}">Więcej
+                                    informacji</x-ui.link-btn>
                             @endif
                         </div>
                     </div>
@@ -26,4 +26,4 @@
             @endforeach
         </div>
     </div>
-</section>
+</header>
