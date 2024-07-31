@@ -6,7 +6,7 @@
 
 
 
-            <x-shared.header.nav-item href="#"> O nas</x-shared.header.nav-item>
+            <x-shared.header.nav-item href="{{route('about.index')}}"> O nas</x-shared.header.nav-item>
             <x-shared.header.nav-item href="{{ route('blog.index') }}"> Wydarzenia</x-shared.header.nav-item>
             <x-shared.header.nav-item href="{{ route('attraction.index') }}"> Atrakcje</x-shared.header.nav-item>
             <x-shared.header.nav-item href="{{ route('apartment.index') }}"> Noclegi</x-shared.header.nav-item>

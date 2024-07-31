@@ -10,9 +10,17 @@ use Illuminate\Http\Request;
 
 class AboutController extends Controller
 {
-    
-    
-    
+
+    public function index()
+    {
+        $totalAttractions = Attraction::count();
+        $totalApartments = Apartment::count();
+        $totalRestaurants = Restaurant::count();
+        $totalPosts = Post::count();
+
+        return view("pages.about.index",compact("totalAttractions", "totalApartments", "totalRestaurants", 'totalPosts'));
+    }
+
     public function zab()
     {
 
@@ -21,7 +29,7 @@ class AboutController extends Controller
         $totalRestaurants = Restaurant::count();
         $totalPosts = Post::count();
 
-        return view("pages.about.zab",compact("totalAttractions","totalApartments","totalRestaurants",'totalPosts'));
+        return view("pages.about.zab", compact("totalAttractions", "totalApartments", "totalRestaurants", 'totalPosts'));
     }
     public function history()
     {
@@ -31,7 +39,7 @@ class AboutController extends Controller
         $totalRestaurants = Restaurant::count();
         $totalPosts = Post::count();
 
-        return view("pages.about.history",compact("totalAttractions","totalApartments","totalRestaurants",'totalPosts'));
+        return view("pages.about.history", compact("totalAttractions", "totalApartments", "totalRestaurants", 'totalPosts'));
     }
 
     public function poronin()
@@ -42,7 +50,7 @@ class AboutController extends Controller
         $totalRestaurants = Restaurant::count();
         $totalPosts = Post::count();
 
-        return view("pages.about.poronin",compact("totalAttractions","totalApartments","totalRestaurants",'totalPosts'));
+        return view("pages.about.poronin", compact("totalAttractions", "totalApartments", "totalRestaurants", 'totalPosts'));
     }
     public function association()
     {
@@ -52,7 +60,7 @@ class AboutController extends Controller
         $totalRestaurants = Restaurant::count();
         $totalPosts = Post::count();
 
-        return view("pages.about.association",compact("totalAttractions","totalApartments","totalRestaurants",'totalPosts'));
+        return view("pages.about.association", compact("totalAttractions", "totalApartments", "totalRestaurants", 'totalPosts'));
     }
     public function zwiazek()
     {
@@ -62,7 +70,7 @@ class AboutController extends Controller
         $totalRestaurants = Restaurant::count();
         $totalPosts = Post::count();
 
-        return view("pages.about.zwiazek",compact("totalAttractions","totalApartments","totalRestaurants",'totalPosts'));
+        return view("pages.about.zwiazek", compact("totalAttractions", "totalApartments", "totalRestaurants", 'totalPosts'));
     }
     public function band()
     {
@@ -72,6 +80,6 @@ class AboutController extends Controller
         $totalRestaurants = Restaurant::count();
         $totalPosts = Post::count();
 
-        return view("pages.about.band",compact("totalAttractions","totalApartments","totalRestaurants",'totalPosts'));
+        return view("pages.about.band", compact("totalAttractions", "totalApartments", "totalRestaurants", 'totalPosts'));
     }
 }
