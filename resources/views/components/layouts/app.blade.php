@@ -25,7 +25,9 @@
     <x-shared.nav.navbar />
 
 
-    {{ $header }}
+    @if (!empty($header))
+        {{ $header }}
+    @endif
 
 
     <main>

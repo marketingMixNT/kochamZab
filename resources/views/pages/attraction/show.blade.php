@@ -156,7 +156,7 @@
                             <a href="mailto:{{ $attraction->mail }}" class="link-hover">{{ $attraction->email }}</a>
                         </div>
                     </div>
-                    @if ($apartment->socials->count() > 0)
+                    @if ($attraction->socials->count() > 0)
                         <div
                             class="w-full flex flex-col justify-center items-center text-center lg:justify-start lg:items-start gap-2 ">
                             <h2 class=" text-xl font-bold">Social Media</h2>

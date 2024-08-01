@@ -1,7 +1,7 @@
 @props(['class' => ''])
 
 <button  type="button"
-    class="text-fontLight dark:text-fontLight hover:bg-secondary-200 dark:hover:bg-secondary-200  rounded-md text-sm p-1 {{$class}} theme-toggle">
+    class="text-fontLight dark:text-fontLight hover:bg-secondary-200 dark:hover:bg-secondary-200  rounded-md text-sm p-1 {{$class}} theme-toggle" aria-label="przełączanie motywu">
     <svg  class="hidden w-5 md:w-8 lg:w-5 h-5 md:h-8 lg:h-5 theme-toggle-dark-icon" fill="currentColor" viewBox="0 0 20 20"
         xmlns="http://www.w3.org/2000/svg">
         <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
