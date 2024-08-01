@@ -120,12 +120,16 @@ class AttractionResource extends Resource
                                 Forms\Components\TextInput::make('phone')
                                     ->label('Telefon')
                                     ->prefix('+48')
+                                    ->required()
+
                                     ->integer()
                                     ->columns(1),
 
                                 Forms\Components\TextInput::make('email')
                                     ->label('Email')
                                     ->email()
+                                    ->required()
+
                                     ->live(debounce: 1000)
                                     ->afterStateUpdated(function (Livewire $livewire, Component $component) {
                                         $validate = $livewire->validateOnly($component->getStatePath());
@@ -138,6 +142,8 @@ class AttractionResource extends Resource
                                 Forms\Components\TextInput::make('site_link')
                                     ->label('Link do strony atrakcji')
                                     ->url()
+                                    ->required()
+
                                     ->minLength(3)
                                     ->live(debounce: 1000)
                                     ->afterStateUpdated(function (Livewire $livewire, Component $component) {
@@ -207,19 +213,19 @@ class AttractionResource extends Resource
                             ->label('Link do Google Maps')
                             ->placeholder('np. https://maps.app.goo.gl/6mVWwduHMxm2pEKP8')
                             ->url()
+                            ->required()
+
                             ->columns(1),
 
                         Forms\Components\Textarea::make('google_maps_frame')
                             ->label('Google Maps iFrame')
                             ->placeholder('wklej tutaj iframe z mapą google')
                             ->autosize()
+                            ->required()
+
                             ->columnSpanFull(),
 
-                        Shout::make('info')
-                            ->content('Usuń tagi: width="", height="" oraz dodaj tagi: name="nazwaAtrakcji", class="w-full h-full"')
-                            ->type('info')
-                            ->color('danger')
-                            ->columnSpanFull(),
+                       
                     ]),
 
                 //IMAGES
@@ -258,11 +264,11 @@ class AttractionResource extends Resource
                             ->appendFiles()
                             ->image()
                             ->reorderable()
-                            // ->hint('Pierwsze 3 zdjęcia pojawią się przy głównym opisie')
+                            ->hint('Galeria musi mieć co najmniej 5 zdjęć')
                             ->maxSize(8192)
                             ->optimize('webp')
                             ->imageEditor()
-                            ->minFiles(3)
+                            ->minFiles(5)
                             ->maxFiles(12)
                             ->panelLayout('grid')
                             ->imageEditorAspectRatios([
@@ -303,9 +309,10 @@ class AttractionResource extends Resource
                     ->sortable(),
 
                 Tables\Columns\ImageColumn::make('thumbnail')
-                    ->label('Miniaturka'),
+                    ->label('Miniaturka')
+                    ->circular(),
 
-                Tables\Columns\TextColumn::make('name')
+                Tables\Columns\TextColumn::make('title')
                     ->label('Nazwa')
                     ->description(function (Attraction $record) {
                         return Str::limit(strip_tags($record->desc), 40);

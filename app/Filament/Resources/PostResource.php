@@ -144,7 +144,7 @@ class PostResource extends Resource
                             ->required(),
 
                         Fieldset::make('Przypisz posta')
-                            
+
                             ->schema([
                                 Select::make('apartment_id')
                                     ->label('Apartament')
@@ -193,7 +193,7 @@ class PostResource extends Resource
                         DateTimePicker::make('published_end')
                             ->label('Zakończenie publikacji')
                             ->columns(1)
-                            ->default(now())
+                            ->default(now()->addMonth())
                             ->required(),
                         Toggle::make('featured')->label('Polecany')->columnSpanFull()->onIcon('heroicon-o-star'),
                     ]),
@@ -206,7 +206,8 @@ class PostResource extends Resource
             ->defaultSort('published_at', 'desc')
             ->columns([
                 Tables\Columns\ImageColumn::make('thumbnail')
-                    ->label('Miniaturka'),
+                    ->label('Miniaturka')
+                    ->circular(),
                 Tables\Columns\TextColumn::make('title')
                     ->label('Tytuł')
                     ->searchable()
@@ -226,11 +227,12 @@ class PostResource extends Resource
                         if ($state <= Carbon::now()) {
                             return 'success';
                         } else {
-                            return 'danger';
+                            return 'warning';
                         }
                     })
                     ->sortable(),
-                    Tables\Columns\TextColumn::make('published_end')
+
+                Tables\Columns\TextColumn::make('published_end')
                     ->label('Data zakończenia')
                     ->badge()
                     ->dateTime()
@@ -265,7 +267,7 @@ class PostResource extends Resource
                     ->label('Polecony')
                     ->boolean(),
 
-                    Tables\Columns\TextColumn::make('user_id')
+                Tables\Columns\TextColumn::make('user_id')
                     ->label('Autor')
                     ->sortable()
                     ->formatStateUsing(function ($state) {
@@ -288,12 +290,7 @@ class PostResource extends Resource
             ]);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
+
 
     public static function getPages(): array
     {

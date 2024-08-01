@@ -116,11 +116,13 @@ class ApartmentResource extends Resource
                                 Forms\Components\TextInput::make('phone')
                                     ->label('Telefon')
                                     ->prefix('+48')
+                                    ->required()
                                     ->integer()
                                     ->columns(1),
 
                                 Forms\Components\TextInput::make('email')
                                     ->label('Email')
+                                    ->required()
                                     ->email()
                                     ->live(debounce: 1000)
                                     ->afterStateUpdated(function (Livewire $livewire, Component $component) {
@@ -134,6 +136,7 @@ class ApartmentResource extends Resource
                                 Forms\Components\TextInput::make('site_link')
                                     ->label('Link do strony apartamentu')
                                     ->url()
+                                    ->required()
                                     ->minLength(3)
                                     ->live(debounce: 1000)
                                     ->afterStateUpdated(function (Livewire $livewire, Component $component) {
@@ -205,19 +208,19 @@ class ApartmentResource extends Resource
                             ->label('Link do Google Maps')
                             ->placeholder('np. https://maps.app.goo.gl/6mVWwduHMxm2pEKP8')
                             ->url()
+                            ->required()
+
                             ->columns(1),
 
                         Forms\Components\Textarea::make('google_maps_frame')
                             ->label('Google Maps iFrame')
                             ->placeholder('wklej tutaj iframe z mapą google')
                             ->autosize()
+                            ->required()
+
                             ->columnSpanFull(),
 
-                        Shout::make('info')
-                            ->content('Usuń tagi: width="", height="" oraz dodaj tagi: name="nazwaAtrakcji", class="w-full h-full"')
-                            ->type('info')
-                            ->color('danger')
-                            ->columnSpanFull(),
+
                     ]),
 
                 //IMAGES
@@ -250,18 +253,18 @@ class ApartmentResource extends Resource
                             ->label('Galeria')
                             ->directory('apartments-galleries')
                             ->getUploadedFileNameForStorageUsing(
-                                fn (TemporaryUploadedFile $file): string => 'apartment-galeria-' . now()->format('H-i-s') . '-' . str_replace([' ', '.'], '', microtime()) . '.' . $file->getClientOriginalExtension()
+                                fn (TemporaryUploadedFile $file): string => 'apartament-galeria-' . now()->format('H-i-s') . '-' . str_replace([' ', '.'], '', microtime()) . '.' . $file->getClientOriginalExtension()
                             )
                             ->multiple()
                             ->appendFiles()
                             ->image()
                             ->reorderable()
-                            // ->hint('Pierwsze 3 zdjęcia pojawią się przy głównym opisie')
+                            ->hint('Galeria musi mieć co najmniej 5 zdjęć')
                             ->maxSize(8192)
                             ->optimize('webp')
                             ->imageEditor()
-                            ->minFiles(3)
-                            ->maxFiles(12)
+                            ->minFiles(5)
+                            ->maxFiles(16)
                             ->panelLayout('grid')
                             ->imageEditorAspectRatios([
                                 null,
@@ -296,21 +299,22 @@ class ApartmentResource extends Resource
                     ->sortable(),
 
                 Tables\Columns\ImageColumn::make('thumbnail')
-                    ->label('Miniaturka'),
+                    ->label('Miniaturka')
+                    ->circular(),
 
-                Tables\Columns\TextColumn::make('name')
+                Tables\Columns\TextColumn::make('title')
                     ->label('Nazwa')
                     ->description(function (Apartment $record) {
                         return Str::limit(strip_tags($record->desc), 40);
                     })
                     ->searchable()
                     ->sortable(),
-                    Tables\Columns\TextColumn::make('posts_count')
+                Tables\Columns\TextColumn::make('posts_count')
                     ->label('Liczba Postów')
                     ->counts('posts')
                     ->sortable(),
 
-                    Tables\Columns\TextColumn::make('user_id')
+                Tables\Columns\TextColumn::make('user_id')
                     ->label('Autor')
                     ->sortable()
                     ->formatStateUsing(function ($state) {
@@ -342,7 +346,7 @@ class ApartmentResource extends Resource
             ]);
     }
 
-  
+
 
     public static function getPages(): array
     {

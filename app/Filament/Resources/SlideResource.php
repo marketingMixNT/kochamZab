@@ -93,7 +93,8 @@ class SlideResource extends Resource
                     ->sortable(),
 
                 Tables\Columns\ImageColumn::make('image')
-                    ->label('Zdjęcie'),
+                    ->label('Zdjęcie')
+                    ,
 
                 Tables\Columns\TextColumn::make('title')
                     ->label('Treść')
@@ -135,12 +136,7 @@ class SlideResource extends Resource
             ]);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
+
 
     public static function getPages(): array
     {

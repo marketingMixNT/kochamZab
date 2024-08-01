@@ -1,9 +1,9 @@
-<x-layouts.app title="Wydarzenia w Zębie | Kocham Ząb"
-    description="Bądź na bieżąco z najnowszymi wydarzeniami w Zębie. Odkryj lokalne imprezy, festiwale i spotkania społeczności z Kocham Ząb.">
+<x-layouts.app title="Archiwum wydarzeń w Zębie | Kocham Ząb"
+    description="Zobacz wszystkie wydarzenia w Zębie. Odkryj lokalne imprezy, festiwale i spotkania społeczności z Kocham Ząb.">
 
 
 <x-slot:header>
-    <x-banner >Aktualności</x-banner>
+    <x-banner >Archiwum</x-banner>
 
 </x-slot:header>
 
@@ -17,9 +17,6 @@
         </x-base.loop-grid>
 
         {{ $posts->links('vendor.pagination.tailwind') }}
-
-        <x-ui.link-btn href="{{ route('blog.archive') }}" class="mt-8" >zobacz archiwum</x-ui.link-btn>
-
 
     </x-base.section>
 

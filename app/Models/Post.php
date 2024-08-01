@@ -74,8 +74,14 @@ class Post extends Model
     // METHODS
     public function scopePublished($query)
     {
-        $query->where('published_at', '<=', Carbon::now());
+        $query->where('published_at', '<=', Carbon::now())
+            ->where('published_end', '>=', Carbon::now());
     }
+    public function scopeArchive($query)
+    {
+        $query->where('published_end', '<=', Carbon::now());
+    }
+
     public function getThumbnailUrl()
     {
         return  asset('storage/' . $this->thumbnail);
@@ -108,5 +114,5 @@ class Post extends Model
 
 
     // TRANSLATABLE
-    public $translatable = ['name', 'slug','meta_title','meta_desc','content'];
+    public $translatable = ['name', 'slug', 'meta_title', 'meta_desc', 'content'];
 }

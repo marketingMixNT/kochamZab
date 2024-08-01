@@ -33,22 +33,22 @@ class AdminPanelProvider extends PanelProvider
     public function panel(Panel $panel): Panel
     {
         return $panel
-        
+
             ->default()
             ->id('admin')
             ->path('admin')
             ->login()
             ->passwordReset()
-            // ->unsavedChangesAlerts()
+            ->unsavedChangesAlerts()
             ->sidebarCollapsibleOnDesktop()
-            ->favicon('/favicon/favicon.ico')
-            ->brandLogo('/assets//logo/logo.png')
+            ->favicon('/assets/favicon/favicon.ico')
+            ->brandLogo('/assets/logo/logo--horizontal.webp')
             ->brandLogoHeight(fn () => auth()->check() ? '40px' : '100px')
             ->colors([
                 'primary' => Color::hex('#036eb6'),
                 'gray' => Color::Slate
             ])
-          
+
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
@@ -64,7 +64,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->navigationItems([
                 NavigationItem::make('Strona Główna')
-                    ->url('http://localhost:8000', shouldOpenInNewTab: true)
+                    ->url('https://kochamzab.pl', shouldOpenInNewTab: true)
                     ->icon('heroicon-o-globe-alt'),
                 NavigationItem::make('Edytor zdjęć')
                     ->url('https://www.iloveimg.com/', shouldOpenInNewTab: true)
@@ -93,6 +93,4 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->plugin(SpatieLaravelTranslatablePlugin::make()->defaultLocales(['pl', 'en']),);
     }
-
-   
 }

@@ -25,6 +25,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('/o-nas/zespol-regionalny-zbojnicek', [AboutController::class, 'band'])->name('about.band');
 
     Route::get('/wydarzenia', [BlogController::class, 'index'])->name('blog.index');
+    Route::get('/wydarzenia/archiwum', [BlogController::class, 'archive'])->name('blog.archive');
 
     Route::get('/wydarzenie/{slug}', [BlogController::class, 'show'])->name('blog.show');
     

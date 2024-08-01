@@ -13,7 +13,7 @@ class BlogController extends Controller
     public function index()
     {
 
-        $posts = Post::select('id', 'title', 'slug', 'thumbnail','content' ,'published_at')->paginate(6);
+        $posts = Post::published()->select('id', 'title', 'slug', 'thumbnail','content' ,'published_at')->paginate(6);
         $totalAttractions = Attraction::count();
         $totalApartments = Apartment::count();
         $totalRestaurants = Restaurant::count();
@@ -35,5 +35,18 @@ class BlogController extends Controller
         $filteredPosts = $filteredPosts->take(3);
 
         return view('pages.blog.show', compact('post', 'filteredPosts'));
+    }
+
+
+    public function archive()
+    {
+
+        $posts = Post::archive()->select('id', 'title', 'slug', 'thumbnail','content' ,'published_at')->paginate(6);
+        $totalAttractions = Attraction::count();
+        $totalApartments = Apartment::count();
+        $totalRestaurants = Restaurant::count();
+        $totalPosts = Post::count();
+
+        return view("pages.blog.archive", compact("posts", "totalAttractions", "totalApartments", "totalRestaurants", 'totalPosts'));
     }
 }
