@@ -6,5 +6,9 @@ style="background-image: url({{ asset('assets/images/zab.jpg') }}) ">
 
 
 <img src="{{ asset('assets/images/banner-pattern.png') }}" alt=""
-    class="w-full absolute -bottom-1 left-0 right-0">
+    class="w-full absolute -bottom-1 left-0 right-0 dark:hidden">
+
+    <img src="{{ asset('assets/images/banner-pattern--dark.png') }}" alt=""
+    class="w-full absolute -bottom-1 left-0 right-0 hidden dark:block">  
+
 </header>

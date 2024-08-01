@@ -45,14 +45,12 @@
     {{-- message --}}
     <div class="relative z-0 w-full mb-5 group">
 
-        {{-- <textarea wire:model.live.lazy="content"  name="content" id="content"
-            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-secondary-400 focus:outline-none focus:ring-0 focus:border-secondary-200 min-h-[100px] max-h-[200px]"
-            placeholder=" " required ></textarea> --}}
+     
         <textarea wire:model.live.lazy="content" name="content" id="content"
             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-secondary-400 focus:outline-none focus:ring-0 focus:border-secondary-200 peer min-h-[200px] max-h-[200px]"
             placeholder=" " required></textarea>
         <label for="content"
-            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-secondary-400 peer-focus:dark:text-secondary-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 ">Wiadmość</label>
+            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-secondary-400 peer-focus:dark:text-secondary-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 ">Wiadomość</label>
         @error('content')
             <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
         @enderror
@@ -60,7 +58,7 @@
 
 
     <button type="submit" wire.loading.attr="disabled" type='submit' aria-label="Wyślij"
-        class="text-white bg-secondary-400 hover:bg-secondary-200 focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-secondary-400 dark:hover:bg-secondary-200 flex gap-1 justify-center items-center "><svg wire:loading wire:target="submitForm" class="animate-spin -ml-1 mr-2 h-5 w-5 text-white"
+        class=" px-8 xl:px-10 py-3 bg-secondary-400 hover:bg-secondary-200  lg:text-sm xl:text-base font-medium uppercase text-white rounded-md duration-500"><svg wire:loading wire:target="submitForm" class="animate-spin -ml-1 mr-2 h-5 w-5 text-white"
         xmlns="http://www.w3.org/2000/svg" fill="#000000" viewBox="0 0 24 24">
         <circle class="opacity-40" cx="12" cy="12" r="10" stroke="#000000" stroke-width="4"></circle>
         <path class="opacity-75" fill="#fff"
@@ -68,5 +66,7 @@
         </path>
     </svg>Wyślij</button>
 </form>
+
+
 
 

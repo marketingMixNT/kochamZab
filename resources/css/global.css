@@ -7,6 +7,12 @@ p{
     line-height: 1.6;
 }
 
+.prose, .prose h2, .prose h3, .prose li, .prose strong{
+    @apply text-fontDark dark:text-fontLight;
+}
+
+
+
 
 .hover-scale{
     @apply hover:scale-110 duration-500

@@ -2,24 +2,28 @@
     description="Odkryj najciekawsze atrakcje w Zębie. Zwiedzaj malownicze szlaki, zabytki i lokalne atrakcje turystyczne z Kocham Ząb.">
 
 
-    <x-banner>Atrakcje</x-banner>
+    <x-slot:header>
+        <x-banner>Atrakcje</x-banner>
 
-    <section class="max-w-screen-2xl mx-auto py-20 px-6 sm:px-12 2xl:px-0 ">
-        <x-home.loop-grid>
+    </x-slot:header>
+
+    <x-slot:main>
+    <x-base.section >
+        <x-base.loop-grid>
 
             @foreach ($attractions as $attraction)
-                <x-home.attraction-card :attraction="$attraction" />
+                <x-attraction-card :attraction="$attraction" />
             @endforeach
-        </x-home.loop-grid>
+        </x-base.loop-grid>
 
         {{ $attractions->links('vendor.pagination.tailwind') }}
 
-    </section>
+    </x-base.section>
 
     <!--HERO-BOTTOM-->
     <x-info :totalAttractions="$totalAttractions" :totalApartments="$totalApartments" :totalRestaurants="$totalRestaurants" :totalPosts="$totalPosts" />
 
-
+    </x-slot:main>
 
 
 

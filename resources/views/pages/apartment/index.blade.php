@@ -1,24 +1,28 @@
-<x-layouts.app title="Apartamenty w Zębie | Kocham Ząb" description="Znajdź komfortowe apartamenty w Zębie. Wybierz idealne miejsce na nocleg i ciesz się wygodnym wypoczynkiem z Kocham Ząb.">
-    
+<x-layouts.app title="Apartamenty w Zębie | Kocham Ząb"
+    description="Znajdź komfortowe apartamenty w Zębie. Wybierz idealne miejsce na nocleg i ciesz się wygodnym wypoczynkiem z Kocham Ząb.">
 
-    <x-banner>Noclegi</x-banner>
+    <x-slot:header>
+        <x-banner>Noclegi</x-banner>
 
-    <section class="max-w-screen-2xl mx-auto py-20 px-6 sm:px-12 2xl:px-0 ">
-        <x-home.loop-grid>
+    </x-slot:header>
 
-            @foreach ($apartments as $post)
-                <x-home.post-card :post="$post" />
-            @endforeach
-        </x-home.loop-grid>
+    <x-slot:main>
+        <x-base.section>
+            <x-base.loop-grid>
 
-        {{ $apartments->links('vendor.pagination.tailwind') }}
+                @foreach ($apartments as $apartment)
+                    <x-apartment-card :apartment="$apartment" />
+                @endforeach
+            </x-base.loop-grid>
 
-    </section>
+            {{ $apartments->links('vendor.pagination.tailwind') }}
 
-    <!--HERO-BOTTOM-->
-    <x-info :totalAttractions="$totalAttractions" :totalApartments="$totalApartments" :totalRestaurants="$totalRestaurants" :totalPosts="$totalPosts" />
+        </x-base.section>
 
+        <!--HERO-BOTTOM-->
+        <x-info :totalAttractions="$totalAttractions" :totalApartments="$totalApartments" :totalRestaurants="$totalRestaurants" :totalPosts="$totalPosts" />
 
+    </x-slot:main>
 
 
 

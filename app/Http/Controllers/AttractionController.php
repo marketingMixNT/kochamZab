@@ -34,6 +34,8 @@ class AttractionController extends Controller
 
         $filteredAttractions =  $filteredAttractions->take(3);
 
+
+
         return view('pages.attraction.show', compact('attraction', 'filteredAttractions'));
     }
 }

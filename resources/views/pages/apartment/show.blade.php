@@ -1,179 +1,204 @@
 <x-layouts.app title="{{ $apartment->getMetaTitle() }}" description="{{ $apartment->getMetaDesc() }}">
-    {{-- header --}}
-    <section class="inner-banner-wrap">
-        <div class="inner-baner-container"
-            style="background-image: url({{ asset($apartment->getThumbnailUrl()) }}); background-position:center; background-size:cover; background-repeat:no-repeat ;background-attachment:fixed">
-            <div class="container">
-                <div class="inner-banner-content">
-                    <h1 class="inner-title">{{ $apartment->name }}</h1>
+
+    <x-slot:header>
+
+        <header
+            class="relative w-full h-[calc(100vh-190px)] bg-blend-multiply bg-fixed bg-no-repeat bg-cover bg-center  bg-gray-400  text-center"
+            style="background-image: url({{ asset($apartment->getThumbnailUrl()) }})">
+
+
+
+            <x-ui.header-heading class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2">
+                {{ $apartment->title }}</x-ui.header-heading>
+        </header>
+    </x-slot:header>
+
+
+    <x-slot:main>
+
+        {{-- info --}}
+        <x-base.section class="max-w-screen-2xl mx-auto">
+            {{-- CONTAINER --}}
+
+
+            <div
+                class="w-full flex flex-col lg:flex-row flex-wrap justify-center items-center lg:items-start h-full gap-y-10 gap-x-32">
+                {{-- ADDRESS --}}
+                <div class="flex flex-col justify-center items-center gap-3">
+                    <h2 class=" text-xl font-bold">Adres</h2>
+                    <a href="{{ $apartment->google_maps_link }}" target="_blank"
+                        class="link-hover">{{ $apartment->address }}</a>
+                </div>
+
+                {{-- SOCIALS --}}
+                @if ($apartment->socials->count() > 0)
+                    <div class="flex flex-col justify-center items-center gap-3 ">
+                        <h2 class=" text-xl font-bold">Social Media</h2>
+                        <div class="flex justify-center items-center gap-4">
+                            @foreach ($apartment->socials as $social)
+                                <x-ui.social :social="$social" />
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+                {{-- SITE --}}
+                <div class="flex flex-col justify-center items-center gap-3">
+                    <h2 class=" text-xl font-bold">Strona</h2>
+                    <a href="{{ $apartment->site_link }}" target="_blank"
+                        class="link-hover">{{ $apartment->site_link }}</a>
                 </div>
             </div>
-        </div>
-        <div class="inner-shape"></div>
-    </section>
-    {{-- main --}}
-    <div class="single-tour-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="single-tour-inner">
-                        <figure class="feature-image">
-                            {{-- thumbnail --}}
-                            <img src="{{ asset($apartment->getThumbnailUrl()) }}"
-                                alt="miniaturka atrakcji {{ $apartment->name }}"
-                                style="height:500px;object-fit:cover;width:100%">
-                            {{-- address --}}
-                            <div class="package-meta text-center">
-                                <ul>
-                                    <li>
-                                        <a href="{{ $apartment->google_maps_link }}" target="_blank"
-                                            style="color:white">
-                                            <i class="far fa-map"></i>
-                                            {{ $apartment->address }}
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </figure>
-                        {{-- socials --}}
-                        <div class="col-lg-7" style="width:30%; margin:0 auto">
-                            <div class="sidebar">
-                                <div class="package-price">
-                                    <div class="start-wrap">
-                                        <div
-                                            style="display: flex;justify-content: center;align-items: center;gap: 10px;">
-                                            @foreach ($apartment->socials as $social)
-                                                <x-socials :social="$social" />
-                                            @endforeach
 
 
-                                        </div>
-                                    </div>
-                                </div>
+        </x-base.section>
 
 
+        {{-- description --}}
+        <x-base.section narrow class="max-w-screen-xl mx-auto ">
 
-                            </div>
+            <div class="flex flex-col lg:flex-row gap-y-12">
+
+                <div class="w-full lg:w-[55%] flex flex-col gap-y-12 relative lg:px-12">
+
+
+                    @foreach (collect($apartment->gallery)->slice(0, 3) as $img)
+                        <img src="{{ asset('storage/' . $img) }}" alt="zdjęcie przedstawiające  {{ $apartment->title }}"
+                            class="w-full sticky top-12 aspect-square max-h-[500px] object-cover" loading="lazy">
+                    @endforeach
+
+                </div>
+                <div class="w-full lg:w-[45%] lg:pl-12  relative">
+
+                    <div class="prose">
+
+                        {!! $apartment->desc !!}
+                    </div>
+                </div>
+            </div>
+
+
+        </x-base.section>
+
+        {{-- gallery --}}
+        <section class="py-5">
+
+            {{-- heading --}}
+            <div class="max-w-screen-xl mx-auto  px-6 md:px-12 2xl:px-0 text-center">
+                <x-ui.heading>Galeria</x-ui.heading>
+
+            </div>
+
+            {{-- swiper --}}
+            <div class="swiper attraction-gallery-swiper">
+                <div class="py-10  swiper-wrapper">
+
+                    @foreach ($apartment->gallery as $img)
+                        <a data-fslightbox href="{{ asset('storage/' . $img) }}" class=" swiper-slide">
+
+                            <img src="{{ asset('storage/' . $img) }}"
+                                alt="zdjęcie przedstawiające  {{ $apartment->title }}"
+                                class=" h-full w-full object-cover aspect-square" loading="lazy">
+                        </a>
+                    @endforeach
+                </div>
+
+
+            </div>
+        </section>
+
+
+        {{-- posts --}}
+        @if ($apartment->posts->count() > 0)
+            <x-base.section narrow class="max-w-screen-xl mx-auto py-24">
+
+                <x-ui.heading>Artykuły</x-ui.heading>
+
+                <x-base.loop-grid>
+
+                    @foreach ($apartment->posts as $post)
+                        <x-post-card :post="$post" />
+                    @endforeach
+                </x-base.loop-grid>
+            </x-base.section>
+        @endif
+        {{-- contact --}}
+
+        <x-base.section narrow class="max-w-screen-xl mx-auto py-24">
+            <x-ui.heading>Kontakt</x-ui.heading>
+            <div class="flex flex-col lg:flex-row justify-center items-center gap-y-12">
+
+                {{-- text --}}
+                <div class="w-full lg:w-[40%] flex flex-col justify-end items-start lg:p-12 gap-4">
+
+
+                    <div
+                        class="w-full flex flex-col justify-center items-center text-center lg:justify-start lg:items-start gap-2 ">
+                        <h2 class=" text-xl font-bold">Adres</h2>
+                        <div class="flex justify-center lg:justify-start items-center gap-2 ml-2">
+
+                            <a href="{{ $apartment->google_maps_link }}"
+                                class="link-hover">{{ $apartment->address }}</a>
                         </div>
-                        <div class="tab-container">
-                            {{-- tabs --}}
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="overview-tab" data-toggle="tab" href="#overview"
-                                        role="tab" aria-controls="overview" aria-selected="true">Opis</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="map-tab" data-toggle="tab" href="#map" role="tab"
-                                        aria-controls="map" aria-selected="false">Kontakt i mapa</a>
-                                </li>
 
-                            </ul>
-                            <div class="tab-content" id="myTabContent">
-                                {{-- description --}}
-                                <div class="tab-pane fade show active" id="overview" role="tabpanel"
-                                    aria-labelledby="overview-tab">
-                                    <div class="overview-content">
-                                        {!! $apartment->desc !!}
+                    </div>
 
-                                    </div>
-                                </div>
-                                {{-- address --}}
-                                <div class="tab-pane" id="map" role="tabpanel" aria-labelledby="map-tab">
-
-                                    <div
-                                        style="display: flex;justify-start: center;align-items: center;gap: 5px;margin-bottom:15px;">
-                                        <i class="far fa-map"></i>
-                                        <a href="{{ $apartment->google_maps_link }}"> {{ $apartment->address }}</a>
-                                    </div>
-
-                                    <div
-                                        style="display: flex;justify-start: center;align-items: center;gap: 5px;margin-bottom:15px;">
-                                        <i class="fas fa-phone"></i>
-                                        <a href="tel:{{ $apartment->phone }}"> {{ $apartment->phone }}</a>
-                                    </div>
-
-                                    <div
-                                        style="display: flex;justify-start: center;align-items: center;gap: 5px;margin-bottom:15px;">
-                                        <i class="far fa-envelope"></i>
-                                        <a href="mailto:{{ $apartment->email }}"> {{ $apartment->email }}</a>
-                                    </div>
-
-                                    <div class="map-area">
-                                        {!! $apartment->google_maps_frame !!}
-                                    </div>
-                                </div>
-
-                            </div>
+                    <div
+                        class="w-full flex flex-col justify-center items-center text-center lg:justify-start lg:items-start gap-2 ">
+                        <h2 class=" text-xl font-bold">Kontakt</h2>
+                        <div class="flex justify-start items-center gap-2 ml-2">
+                            <x-iconpark-phonetelephone-o class="w-5 mt-[2px]" />
+                            <a href="tel:+48{{ $apartment->phone }}" class="link-hover">+48{{ $apartment->phone }}</a>
                         </div>
-                        <div class="single-tour-gallery">
-                            <h3>Galeria</h3>
-                            <div class="single-tour-slider">
-                                @foreach ($apartment->gallery as $image)
-                                    <div class="single-tour-item">
-                                        <figure class="feature-image">
-                                            <a href="{{ asset('storage/' . $image) }}" class="glightbox">
-                                                <img src="{{ asset('storage/' . $image) }}" alt=""
-                                                    style="height:300px;object-fit:cover;width:100%"></a>
-                                        </figure>
-                                    </div>
+                        <div class="flex justify-start items-center gap-2 ml-2">
+                            <x-iconpark-mail-o class="w-5 mt-[2px]" />
+                            <a href="mailto:{{ $apartment->mail }}" class="link-hover">{{ $apartment->email }}</a>
+                        </div>
+                    </div>
+                    @if ($apartment->socials)
+                        <div
+                            class="w-full flex flex-col justify-center items-center text-center lg:justify-start lg:items-start gap-2 ">
+                            <h2 class=" text-xl font-bold">Social Media</h2>
+                            <div class="flex justify-center items-center gap-4">
+                                @foreach ($apartment->socials as $social)
+                                    <x-ui.social :social="$social" />
                                 @endforeach
-
-
                             </div>
                         </div>
+                    @endif
+                    <div
+                        class="w-full flex flex-col justify-center items-center  lg:justify-start lg:items-start gap-2 ">
+                        <h2 class=" text-xl font-bold">Strona Internetowa</h2>
+                        <div class="flex justify-start items-center gap-2 ml-2">
+
+                            <a href="{{ $apartment->site_link }}" class="link-hover">{{ $apartment->site_link }}</a>
+                        </div>
+
                     </div>
-                </div>
 
-            </div>
-        </div>
-    </div>
-{{-- posts --}}
-@if ($apartment->posts->count() > 0)
-<section class="blog-section" style="padding-top:0">
-    <div class="container">
-        <div class="section-heading text-center">
-            <div class="row">
-                <div class="col-lg-8 offset-lg-2">
-                    
-                    <h2>Artykuły</h2>
-                   
+
+
+
+                </div>
+                {{-- google maps iframe --}}
+                <div class="w-full lg:w-[60%] h-[500px]">
+                    {!! $apartment->google_maps_frame !!}
                 </div>
             </div>
-        </div>
-        <div class="row">
-           
-           @foreach ($apartment->posts->take(3) as $post)
-              <x-home.post :post="$post"/>
-           @endforeach
-           
-        </div>
+        </x-base.section>
 
-        
-    </div>
-</section>
-@endif
-   
+        {{-- other attractions --}}
+        <x-base.section narrow class="max-w-screen-xl mx-auto pb-20">
 
-    <!-- subscribe section html start -->
-    <section class="blog-section" style="padding:0;margin-bottom:100px">
-        <div class="container">
-            <div class="section-heading text-center">
-                <div class="row">
-                    <div class="col-lg-8 offset-lg-2">
-                        <h2>Inne apartamenty</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
+            <x-ui.heading>Podobne apartamenty</x-ui.heading>
+
+            <x-base.loop-grid>
 
                 @foreach ($filteredApartments as $apartment)
-                    <x-home.apartment-card :apartment="$apartment" />
+                    <x-apartment-card :apartment="$apartment" />
                 @endforeach
+            </x-base.loop-grid>
 
-            </div>
 
-
-        </div>
-    </section>
-    <!-- subscribe html end -->
+        </x-base.section>
+    </x-slot:main>
 </x-layouts.app>

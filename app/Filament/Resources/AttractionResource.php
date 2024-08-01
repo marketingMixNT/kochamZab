@@ -147,7 +147,7 @@ class AttractionResource extends Resource
 
                                 Repeater::make('socials')
                                     ->label('Social Media')
-                                    ->relationship()
+                                    ->relationship('socials')
                                     ->schema(Social::getForm())
                                     ->columnSpanFull()
                                     ->itemLabel(fn (array $state): ?string => $state['name'] ?? null)

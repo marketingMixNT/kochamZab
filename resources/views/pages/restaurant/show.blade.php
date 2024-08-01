@@ -1,180 +1,204 @@
 <x-layouts.app title="{{ $restaurant->getMetaTitle() }}" description="{{ $restaurant->getMetaDesc() }}">
-    {{-- header --}}
-    <section class="inner-banner-wrap">
-        <div class="inner-baner-container"
-            style="background-image: url({{ asset($restaurant->getThumbnailUrl()) }}); background-position:center; background-size:cover; background-repeat:no-repeat ;background-attachment:fixed">
-            <div class="container">
-                <div class="inner-banner-content">
-                    <h1 class="inner-title">{{ $restaurant->name }}</h1>
+
+    <x-slot:header>
+
+        <header
+            class="relative w-full h-[calc(100vh-190px)] bg-blend-multiply bg-fixed bg-no-repeat bg-cover bg-center  bg-gray-400  text-center"
+            style="background-image: url({{ asset($restaurant->getThumbnailUrl()) }})">
+
+
+
+            <x-ui.header-heading class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2">
+                {{ $restaurant->title }}</x-ui.header-heading>
+        </header>
+    </x-slot:header>
+
+
+    <x-slot:main>
+
+        {{-- info --}}
+        <x-base.section class="max-w-screen-2xl mx-auto">
+            {{-- CONTAINER --}}
+
+
+            <div
+                class="w-full flex flex-col lg:flex-row flex-wrap justify-center items-center lg:items-start h-full gap-y-10 gap-x-32">
+                {{-- ADDRESS --}}
+                <div class="flex flex-col justify-center items-center gap-3">
+                    <h2 class=" text-xl font-bold">Adres</h2>
+                    <a href="{{ $restaurant->google_maps_link }}" target="_blank"
+                        class="link-hover">{{ $restaurant->address }}</a>
+                </div>
+
+                {{-- SOCIALS --}}
+                @if ($restaurant->socials->count() > 0)
+                    <div class="flex flex-col justify-center items-center gap-3 ">
+                        <h2 class=" text-xl font-bold">Social Media</h2>
+                        <div class="flex justify-center items-center gap-4">
+                            @foreach ($restaurant->socials as $social)
+                                <x-ui.social :social="$social" />
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+                {{-- SITE --}}
+                <div class="flex flex-col justify-center items-center gap-3">
+                    <h2 class=" text-xl font-bold">Strona</h2>
+                    <a href="{{ $restaurant->site_link }}" target="_blank"
+                        class="link-hover">{{ $restaurant->site_link }}</a>
                 </div>
             </div>
-        </div>
-        <div class="inner-shape"></div>
-    </section>
-    {{-- main --}}
-    <div class="single-tour-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="single-tour-inner">
-                        <figure class="feature-image">
-                            {{-- thumbnail --}}
-                            <img src="{{ asset($restaurant->getThumbnailUrl()) }}"
-                                alt="miniaturka atrakcji {{ $restaurant->name }}"
-                                style="height:500px;object-fit:cover;width:100%">
-                            {{-- address --}}
-                            <div class="package-meta text-center">
-                                <ul>
-                                    <li>
-                                        <a href="{{ $restaurant->google_maps_link }}" target="_blank"
-                                            style="color:white">
-                                            <i class="far fa-map"></i>
-                                            {{ $restaurant->address }}
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </figure>
-                        {{-- socials --}}
-                        <div class="col-lg-7" style="width:30%; margin:0 auto">
-                            <div class="sidebar">
-                                <div class="package-price">
-                                    <div class="start-wrap">
-                                        <div
-                                            style="display: flex;justify-content: center;align-items: center;gap: 10px;">
-                                            @foreach ($restaurant->socials as $social)
-                                                <x-socials :social="$social" />
-                                            @endforeach
 
 
-                                        </div>
-                                    </div>
-                                </div>
+        </x-base.section>
 
 
+        {{-- description --}}
+        <x-base.section narrow class="max-w-screen-xl mx-auto ">
 
-                            </div>
+            <div class="flex flex-col lg:flex-row gap-y-12">
+
+                <div class="w-full lg:w-[55%] flex flex-col gap-y-12 relative lg:px-12">
+
+
+                    @foreach (collect($restaurant->gallery)->slice(0, 3) as $img)
+                        <img src="{{ asset('storage/' . $img) }}" alt="zdjęcie przedstawiające  {{ $restaurant->title }}"
+                            class="w-full sticky top-12 aspect-square max-h-[500px] object-cover" loading="lazy">
+                    @endforeach
+
+                </div>
+                <div class="w-full lg:w-[45%] lg:pl-12  relative">
+
+                    <div class="prose">
+
+                        {!! $restaurant->desc !!}
+                    </div>
+                </div>
+            </div>
+
+
+        </x-base.section>
+
+        {{-- gallery --}}
+        <section class="py-5">
+
+            {{-- heading --}}
+            <div class="max-w-screen-xl mx-auto  px-6 md:px-12 2xl:px-0 text-center">
+                <x-ui.heading>Galeria</x-ui.heading>
+
+            </div>
+
+            {{-- swiper --}}
+            <div class="swiper attraction-gallery-swiper">
+                <div class="py-10  swiper-wrapper">
+
+                    @foreach ($restaurant->gallery as $img)
+                        <a data-fslightbox href="{{ asset('storage/' . $img) }}" class=" swiper-slide">
+
+                            <img src="{{ asset('storage/' . $img) }}"
+                                alt="zdjęcie przedstawiające  {{ $restaurant->title }}"
+                                class=" h-full w-full object-cover aspect-square" loading="lazy">
+                        </a>
+                    @endforeach
+                </div>
+
+
+            </div>
+        </section>
+
+
+        {{-- posts --}}
+        @if ($restaurant->posts->count() > 0)
+            <x-base.section narrow class="max-w-screen-xl mx-auto py-24">
+
+                <x-ui.heading>Artykuły</x-ui.heading>
+
+                <x-base.loop-grid>
+
+                    @foreach ($restaurant->posts as $post)
+                        <x-post-card :post="$post" />
+                    @endforeach
+                </x-base.loop-grid>
+            </x-base.section>
+        @endif
+        {{-- contact --}}
+
+        <x-base.section narrow class="max-w-screen-xl mx-auto py-24">
+            <x-ui.heading>Kontakt</x-ui.heading>
+            <div class="flex flex-col lg:flex-row justify-center items-center gap-y-12">
+
+                {{-- text --}}
+                <div class="w-full lg:w-[40%] flex flex-col justify-end items-start lg:p-12 gap-4">
+
+
+                    <div
+                        class="w-full flex flex-col justify-center items-center text-center lg:justify-start lg:items-start gap-2 ">
+                        <h2 class=" text-xl font-bold">Adres</h2>
+                        <div class="flex justify-center lg:justify-start items-center gap-2 ml-2">
+
+                            <a href="{{ $restaurant->google_maps_link }}"
+                                class="link-hover">{{ $restaurant->address }}</a>
                         </div>
-                        <div class="tab-container">
-                            {{-- tabs --}}
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="overview-tab" data-toggle="tab" href="#overview"
-                                        role="tab" aria-controls="overview" aria-selected="true">Opis</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="map-tab" data-toggle="tab" href="#map" role="tab"
-                                        aria-controls="map" aria-selected="false">Kontakt i mapa</a>
-                                </li>
 
-                            </ul>
-                            <div class="tab-content" id="myTabContent">
-                                {{-- description --}}
-                                <div class="tab-pane fade show active" id="overview" role="tabpanel"
-                                    aria-labelledby="overview-tab">
-                                    <div class="overview-content">
-                                        {!! $restaurant->desc !!}
+                    </div>
 
-                                    </div>
-                                </div>
-                                {{-- address --}}
-                                <div class="tab-pane" id="map" role="tabpanel" aria-labelledby="map-tab">
-
-                                    <div
-                                        style="display: flex;justify-start: center;align-items: center;gap: 5px;margin-bottom:15px;">
-                                        <i class="far fa-map"></i>
-                                        <a href="{{ $restaurant->google_maps_link }}"> {{ $restaurant->address }}</a>
-                                    </div>
-
-                                    <div
-                                        style="display: flex;justify-start: center;align-items: center;gap: 5px;margin-bottom:15px;">
-                                        <i class="fas fa-phone"></i>
-                                        <a href="tel:{{ $restaurant->phone }}"> {{ $restaurant->phone }}</a>
-                                    </div>
-
-                                    <div
-                                        style="display: flex;justify-start: center;align-items: center;gap: 5px;margin-bottom:15px;">
-                                        <i class="far fa-envelope"></i>
-                                        <a href="mailto:{{ $restaurant->email }}"> {{ $restaurant->email }}</a>
-                                    </div>
-
-                                    <div class="map-area">
-                                        {!! $restaurant->google_maps_frame !!}
-                                    </div>
-                                </div>
-
-                            </div>
+                    <div
+                        class="w-full flex flex-col justify-center items-center text-center lg:justify-start lg:items-start gap-2 ">
+                        <h2 class=" text-xl font-bold">Kontakt</h2>
+                        <div class="flex justify-start items-center gap-2 ml-2">
+                            <x-iconpark-phonetelephone-o class="w-5 mt-[2px]" />
+                            <a href="tel:+48{{ $restaurant->phone }}" class="link-hover">+48{{ $restaurant->phone }}</a>
                         </div>
-                        <div class="single-tour-gallery">
-                            <h3>Galeria</h3>
-                            <div class="single-tour-slider">
-                                @foreach ($restaurant->gallery as $image)
-                                    <div class="single-tour-item">
-                                        <figure class="feature-image">
-                                            <a href="{{ asset('storage/' . $image) }}" class="glightbox">
-                                                <img src="{{ asset('storage/' . $image) }}" alt=""
-                                                    style="height:300px;object-fit:cover;width:100%"></a>
-                                        </figure>
-                                    </div>
+                        <div class="flex justify-start items-center gap-2 ml-2">
+                            <x-iconpark-mail-o class="w-5 mt-[2px]" />
+                            <a href="mailto:{{ $restaurant->mail }}" class="link-hover">{{ $restaurant->email }}</a>
+                        </div>
+                    </div>
+                    @if ($restaurant->socials)
+                        <div
+                            class="w-full flex flex-col justify-center items-center text-center lg:justify-start lg:items-start gap-2 ">
+                            <h2 class=" text-xl font-bold">Social Media</h2>
+                            <div class="flex justify-center items-center gap-4">
+                                @foreach ($restaurant->socials as $social)
+                                    <x-ui.social :social="$social" />
                                 @endforeach
-
-
                             </div>
                         </div>
+                    @endif
+                    <div
+                        class="w-full flex flex-col justify-center items-center  lg:justify-start lg:items-start gap-2 ">
+                        <h2 class=" text-xl font-bold">Strona Internetowa</h2>
+                        <div class="flex justify-start items-center gap-2 ml-2">
+
+                            <a href="{{ $restaurant->site_link }}" class="link-hover">{{ $restaurant->site_link }}</a>
+                        </div>
+
                     </div>
+
+
+
+
                 </div>
-
-            </div>
-        </div>
-    </div>
-
-{{-- posts --}}
-@if ($restaurant->posts->count() > 0)
-<section class="blog-section" style="padding-top:0">
-    <div class="container">
-        <div class="section-heading text-center">
-            <div class="row">
-                <div class="col-lg-8 offset-lg-2">
-                    
-                    <h2>Artykuły</h2>
-                   
+                {{-- google maps iframe --}}
+                <div class="w-full lg:w-[60%] h-[500px]">
+                    {!! $restaurant->google_maps_frame !!}
                 </div>
             </div>
-        </div>
-        <div class="row">
-           
-           @foreach ($restaurant->posts->take(3) as $post)
-              <x-home.post :post="$post"/>
-           @endforeach
-           
-        </div>
+        </x-base.section>
 
-        
-    </div>
-</section>
-@endif
+        {{-- other attractions --}}
+        <x-base.section narrow class="max-w-screen-xl mx-auto pb-20">
 
+            <x-ui.heading>Podobne restauracje</x-ui.heading>
 
-    <!-- subscribe section html start -->
-    <section class="blog-section" style="padding:0;margin-bottom:100px">
-        <div class="container">
-            <div class="section-heading text-center">
-                <div class="row">
-                    <div class="col-lg-8 offset-lg-2">
-                        <h2>Inne restauracje</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
+            <x-base.loop-grid>
 
                 @foreach ($filteredRestaurants as $restaurant)
-                    <x-home.restaurant-card :restaurant="$restaurant" />
+                    <x-restaurant-card :apartment="$restaurant" />
                 @endforeach
+            </x-base.loop-grid>
 
-            </div>
 
-
-        </div>
-    </section>
-    <!-- subscribe html end -->
+        </x-base.section>
+    </x-slot:main>
 </x-layouts.app>

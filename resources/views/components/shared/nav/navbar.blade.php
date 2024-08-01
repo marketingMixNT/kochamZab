@@ -1,6 +1,6 @@
 
 
-<div id="navbar" class="sticky top-0 px-4 sm:px-10 2xl:px-0 bg-bgLight-400 dark:bg-bgDark-400 z-50 shadow-2xl">
+<div id="navbar" class="sticky top-0 px-4 sm:px-10 2xl:px-0 bg-bgLight-400 dark:bg-bgDark-300 z-50 shadow-2xl">
     {{-- container --}}
     <nav class="max-w-screen-xl mx-auto flex justify-between items-center py-4 ">
         {{-- logo --}}

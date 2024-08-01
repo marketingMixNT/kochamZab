@@ -1,5 +1,6 @@
 import "./bootstrap";
 import "flowbite";
+import 'fslightbox';
 
 import "./partials/nav";
 import "./partials/darkTheme";
