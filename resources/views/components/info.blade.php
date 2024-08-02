@@ -1,5 +1,5 @@
 <div class="flex flex-col justify-center items-center gap-12 px-6 lg:px-12 py-24 bg-top bg-no-repeat bg-cover bg-fixed  bg-blend-multiply bg-gray-500 "
-    style="background-image: url({{ asset('assets/images/zab.jpg') }})">
+    style="background-image: url({{ asset('assets/images/zab.webp') }})">
 
 
         <x-base.section-heading-container>
@@ -14,7 +14,7 @@
         </x-base.section-heading-container>
 
 
-    <div class="max-w-screen-xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-6 2xl:gap-12 px-6">
+    <div class="max-w-screen-xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-6 2xl:gap-12 px-6 md:opacity-0 fade-in">
 
         <x-info-item href="{{ route('blog.index') }}" img="{{ asset('assets/icons/events.webp') }}"
             :counter="$totalPosts">Wydarzeń</x-info-item>

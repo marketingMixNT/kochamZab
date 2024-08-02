@@ -1,204 +1,33 @@
 <x-layouts.app title="{{ $restaurant->getMetaTitle() }}" description="{{ $restaurant->getMetaDesc() }}">
 
     <x-slot:header>
-
-        <header
-            class="relative w-full h-[calc(100vh-190px)] bg-blend-multiply bg-fixed bg-no-repeat bg-cover bg-center  bg-gray-400  text-center"
-            style="background-image: url({{ asset($restaurant->getThumbnailUrl()) }})">
-
-
-
-            <x-ui.header-heading class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2">
-                {{ $restaurant->title }}</x-ui.header-heading>
-        </header>
+        <x-show.header :item="$restaurant" />
     </x-slot:header>
-
 
     <x-slot:main>
 
         {{-- info --}}
-        <x-base.section class="max-w-screen-2xl mx-auto">
-            {{-- CONTAINER --}}
-
-
-            <div
-                class="w-full flex flex-col lg:flex-row flex-wrap justify-center items-center lg:items-start h-full gap-y-10 gap-x-32">
-                {{-- ADDRESS --}}
-                <div class="flex flex-col justify-center items-center gap-3">
-                    <h2 class=" text-xl font-bold">Adres</h2>
-                    <a href="{{ $restaurant->google_maps_link }}" target="_blank"
-                        class="link-hover">{{ $restaurant->address }}</a>
-                </div>
-
-                {{-- SOCIALS --}}
-                @if ($restaurant->socials->count() > 0)
-                    <div class="flex flex-col justify-center items-center gap-3 ">
-                        <h2 class=" text-xl font-bold">Social Media</h2>
-                        <div class="flex justify-center items-center gap-4">
-                            @foreach ($restaurant->socials as $social)
-                                <x-ui.social :social="$social" />
-                            @endforeach
-                        </div>
-                    </div>
-                @endif
-                {{-- SITE --}}
-                <div class="flex flex-col justify-center items-center gap-3">
-                    <h2 class=" text-xl font-bold">Strona</h2>
-                    <a href="{{ $restaurant->site_link }}" target="_blank"
-                        class="link-hover">{{ $restaurant->site_link }}</a>
-                </div>
-            </div>
-
-
-        </x-base.section>
-
+        <x-show.info :item="$restaurant" />
 
         {{-- description --}}
-        <x-base.section narrow class="max-w-screen-xl mx-auto ">
-
-            <div class="flex flex-col lg:flex-row gap-y-12">
-
-                <div class="w-full lg:w-[55%] flex flex-col gap-y-12 relative lg:px-12">
-
-
-                    @foreach (collect($restaurant->gallery)->slice(0, 3) as $img)
-                        <img src="{{ asset('storage/' . $img) }}" alt="zdjęcie przedstawiające  {{ $restaurant->title }}"
-                            class="w-full sticky top-12 aspect-square max-h-[500px] object-cover" loading="lazy">
-                    @endforeach
-
-                </div>
-                <div class="w-full lg:w-[45%] lg:pl-12  relative">
-
-                    <div class="prose">
-
-                        {!! $restaurant->desc !!}
-                    </div>
-                </div>
-            </div>
-
-
-        </x-base.section>
+        <x-show.description :item="$restaurant" />
 
         {{-- gallery --}}
-        <section class="py-5">
-
-            {{-- heading --}}
-            <div class="max-w-screen-xl mx-auto  px-6 md:px-12 2xl:px-0 text-center">
-                <x-ui.heading>Galeria</x-ui.heading>
-
-            </div>
-
-            {{-- swiper --}}
-            <div class="swiper attraction-gallery-swiper">
-                <div class="py-10  swiper-wrapper">
-
-                    @foreach ($restaurant->gallery as $img)
-                        <a data-fslightbox href="{{ asset('storage/' . $img) }}" class=" swiper-slide">
-
-                            <img src="{{ asset('storage/' . $img) }}"
-                                alt="zdjęcie przedstawiające  {{ $restaurant->title }}"
-                                class=" h-full w-full object-cover aspect-square" loading="lazy">
-                        </a>
-                    @endforeach
-                </div>
-
-
-            </div>
-        </section>
-
+        <x-show.gallery :item="$restaurant" />
 
         {{-- posts --}}
-        @if ($restaurant->posts->count() > 0)
-            <x-base.section narrow class="max-w-screen-xl mx-auto py-24">
+        <x-show.posts :item="$restaurant" />
 
-                <x-ui.heading>Artykuły</x-ui.heading>
-
-                <x-base.loop-grid>
-
-                    @foreach ($restaurant->posts as $post)
-                        <x-post-card :post="$post" />
-                    @endforeach
-                </x-base.loop-grid>
-            </x-base.section>
-        @endif
         {{-- contact --}}
-
-        <x-base.section narrow class="max-w-screen-xl mx-auto py-24">
-            <x-ui.heading>Kontakt</x-ui.heading>
-            <div class="flex flex-col lg:flex-row justify-center items-center gap-y-12">
-
-                {{-- text --}}
-                <div class="w-full lg:w-[40%] flex flex-col justify-end items-start lg:p-12 gap-4">
-
-
-                    <div
-                        class="w-full flex flex-col justify-center items-center text-center lg:justify-start lg:items-start gap-2 ">
-                        <h2 class=" text-xl font-bold">Adres</h2>
-                        <div class="flex justify-center lg:justify-start items-center gap-2 ml-2">
-
-                            <a href="{{ $restaurant->google_maps_link }}"
-                                class="link-hover">{{ $restaurant->address }}</a>
-                        </div>
-
-                    </div>
-
-                    <div
-                        class="w-full flex flex-col justify-center items-center text-center lg:justify-start lg:items-start gap-2 ">
-                        <h2 class=" text-xl font-bold">Kontakt</h2>
-                        <div class="flex justify-start items-center gap-2 ml-2">
-                            <x-iconpark-phonetelephone-o class="w-5 mt-[2px]" />
-                            <a href="tel:+48{{ $restaurant->phone }}" class="link-hover">+48{{ $restaurant->phone }}</a>
-                        </div>
-                        <div class="flex justify-start items-center gap-2 ml-2">
-                            <x-iconpark-mail-o class="w-5 mt-[2px]" />
-                            <a href="mailto:{{ $restaurant->mail }}" class="link-hover">{{ $restaurant->email }}</a>
-                        </div>
-                    </div>
-                    @if ($restaurant->socials)
-                        <div
-                            class="w-full flex flex-col justify-center items-center text-center lg:justify-start lg:items-start gap-2 ">
-                            <h2 class=" text-xl font-bold">Social Media</h2>
-                            <div class="flex justify-center items-center gap-4">
-                                @foreach ($restaurant->socials as $social)
-                                    <x-ui.social :social="$social" />
-                                @endforeach
-                            </div>
-                        </div>
-                    @endif
-                    <div
-                        class="w-full flex flex-col justify-center items-center  lg:justify-start lg:items-start gap-2 ">
-                        <h2 class=" text-xl font-bold">Strona Internetowa</h2>
-                        <div class="flex justify-start items-center gap-2 ml-2">
-
-                            <a href="{{ $restaurant->site_link }}" class="link-hover">{{ $restaurant->site_link }}</a>
-                        </div>
-
-                    </div>
-
-
-
-
-                </div>
-                {{-- google maps iframe --}}
-                <div class="w-full lg:w-[60%] h-[500px]">
-                    {!! $restaurant->google_maps_frame !!}
-                </div>
-            </div>
-        </x-base.section>
+        <x-show.contact :item="$restaurant" />
 
         {{-- other attractions --}}
-        <x-base.section narrow class="max-w-screen-xl mx-auto pb-20">
+        <x-show.other title="Podobne restauracje">
+            @foreach ($filteredRestaurants as $restaurant)
+                <x-restaurant-card :restaurant="$restaurant" />
+            @endforeach
+        </x-show.other>
 
-            <x-ui.heading>Podobne restauracje</x-ui.heading>
-
-            <x-base.loop-grid>
-
-                @foreach ($filteredRestaurants as $restaurant)
-                    <x-restaurant-card :apartment="$restaurant" />
-                @endforeach
-            </x-base.loop-grid>
-
-
-        </x-base.section>
     </x-slot:main>
+
 </x-layouts.app>

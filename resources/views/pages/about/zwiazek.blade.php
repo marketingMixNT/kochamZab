@@ -7,7 +7,7 @@
     description="Poznaj Związek Podhalan w Zębie. Dowiedz się o naszej misji, działaniach i wkładzie w rozwój oraz promocję kultury Podhala.">
 
     <x-slot:header>
-        <x-banner>Związek Podhalan</x-banner>
+        <x-banner img="{{asset('assets/images/o-nas-7.webp')}}">Związek Podhalan</x-banner>
 
     </x-slot:header>
 
@@ -29,8 +29,8 @@
                         </div>
                     </div>
                     <div>
-                        <img src="{{ asset('assets/images/zab.jpg') }}" alt="zdjęcie przedstawiające Ząb"
-                            class="aspect-video w-full max-h-[500px]" loading="lazy">
+                        <img src="{{asset('assets/images/o-nas-7.webp')}}" alt="zdjęcie przedstawiające Ząb"
+                            class="aspect-video w-full max-h-[500px] md:opacity-0 fade-in object-cover" loading="lazy">
                     </div>
                 </header>
 

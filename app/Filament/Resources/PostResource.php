@@ -207,7 +207,7 @@ class PostResource extends Resource
             ->columns([
                 Tables\Columns\ImageColumn::make('thumbnail')
                     ->label('Miniaturka')
-                    ->circular(),
+                    ,
                 Tables\Columns\TextColumn::make('title')
                     ->label('Tytuł')
                     ->searchable()

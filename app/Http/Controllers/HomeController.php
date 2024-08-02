@@ -21,12 +21,12 @@ class HomeController extends Controller
 
         $posts = Post::published()->select('id', 'title', 'slug', 'thumbnail','content', 'published_at')
             ->orderBy('published_at', 'desc')
-            ->take(4)
+            ->take(3)
             ->get();
 
-        $attractions = Attraction::select('id', 'title', 'slug', 'thumbnail')->orderBy('sort', 'desc')->take(3)->get();
-        $apartments = Apartment::select('id', 'title', 'slug', 'thumbnail', 'desc')->orderBy('sort', 'desc')->take(3)->get();
-        $restaurants = Restaurant::select('id', 'title', 'slug', 'thumbnail', 'desc')->orderBy('sort', 'desc')->take(3)->get();
+        $attractions = Attraction::select('id', 'title', 'slug', 'thumbnail')->orderBy('sort', 'asc')->take(3)->get();
+        $apartments = Apartment::select('id', 'title', 'slug', 'thumbnail', 'desc')->orderBy('sort', 'asc')->take(3)->get();
+        $restaurants = Restaurant::select('id', 'title', 'slug', 'thumbnail', 'desc')->orderBy('sort', 'asc')->take(3)->get();
 
         $totalAttractions = Attraction::count();
         $totalApartments = Apartment::count();

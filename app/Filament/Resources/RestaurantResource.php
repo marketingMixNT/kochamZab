@@ -218,7 +218,9 @@ class RestaurantResource extends Resource
                             ->required()
                             ->columnSpanFull(),
 
-                        
+                            Shout::make('so-important')
+                            ->content('W celu poprawy SEO dodaj do mapy tag title="" , np. title="restauracjaMarketingMix"')
+                            ->color('waring')
                     ]),
 
                 //IMAGES
@@ -292,13 +294,13 @@ class RestaurantResource extends Resource
             ->reorderable('sort')
             ->defaultSort('sort', 'desc')
             ->columns([
-                Tables\Columns\TextColumn::make('order')
+                Tables\Columns\TextColumn::make('sort')
                     ->label('#')
                     ->sortable(),
 
                 Tables\Columns\ImageColumn::make('thumbnail')
-                    ->label('Miniaturka')
-                    ->circular(),
+                    ->label('Miniaturka'),
+                    
 
                 Tables\Columns\TextColumn::make('title')
                     ->label('Nazwa')

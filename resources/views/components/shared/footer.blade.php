@@ -20,8 +20,8 @@
                         <li><x-link href="{{ route('about.poronin') }}">Gmina Poronin</x-link></li>
                         <li><x-link href="{{ route('about.association') }}">Zespół Regionalny Zbójnicek</x-link></li>
                         <li><x-link href="{{ route('about.zwiazek') }}">Związek Podhalan o/Ząb</x-link></li>
-                        <li><x-link href="#">Polityka Prywatności</x-link></li>
-                        <li><x-link href="#">Kontakt</x-link></li>
+                        <li><x-link href="{{ route('contact.index') }}">Kontakt</x-link></li>
+                        <li><x-link href="{{route('privacy-policy')}}">Polityka Prywatności</x-link></li>
                     </ul>
                 </nav>
             </div>
@@ -39,7 +39,7 @@
             </div>
             {{-- grid-col --}}
             <div class="hidden lg:flex flex-col items-start justify-start gap-4">
-                <h2 class="text-lg font-bold text-fontOrange uppercase">Mieszkańcy</h2>
+                {{-- <h2 class="text-lg font-bold text-fontOrange uppercase">Mieszkańcy</h2>
                 <nav class="textwidget widget-text">
                     <ul class="space-y-2">
                         <li><x-link href="{{ route('attraction.index') }}">Atrakcje</x-link></li>
@@ -47,7 +47,7 @@
                         <li><x-link href="{{ route('restaurant.index') }}">Gastronomia</x-link></li>
 
                     </ul>
-                </nav>
+                </nav> --}}
             </div>
             {{-- grid-col --}}
             <div class="flex flex-col justify-center lg:justify-start items-center lg:items-start gap-4">

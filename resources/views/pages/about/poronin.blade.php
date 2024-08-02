@@ -4,7 +4,7 @@
 <x-layouts.app title="Poronin - O Nas | Kocham Ząb" description="Dowiedz się więcej o malowniczej wsi Poronin i jej wyjątkowych atrakcjach. Odkryj historię, kulturę i uroki tego miejsca z Kocham Ząb.">
 
     <x-slot:header>
-        <x-banner>Gmina Poronin</x-banner>
+        <x-banner img="{{asset('assets/images/o-nas-5.webp')}}">Gmina Poronin</x-banner>
 
     </x-slot:header>
 
@@ -26,8 +26,8 @@
                         </div>
                     </div>
                     <div>
-                        <img src="{{ asset('assets/images/zab.jpg') }}" alt="zdjęcie przedstawiające Ząb"
-                            class="aspect-video w-full max-h-[500px]" loading="lazy">
+                        <img src="{{asset('assets/images/o-nas-5.webp')}}" alt="zdjęcie przedstawiające Ząb"
+                            class="aspect-video w-full max-h-[500px] md:opacity-0 fade-in object-cover" loading="lazy">
                     </div>
                 </header>
 

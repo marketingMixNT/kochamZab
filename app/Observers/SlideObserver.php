@@ -12,9 +12,7 @@ class SlideObserver
      */
     public function created(Slide $slide): void
     {
-        if ($slide->isDirty('image')) {
-            Storage::disk('public')->delete($slide->getOriginal('image'));
-        }
+        
     }
 
     /**
@@ -22,8 +20,8 @@ class SlideObserver
      */
     public function updated(Slide $slide): void
     {
-        if (! is_null($slide->image)) {
-            Storage::disk('public')->delete($slide->image);
+        if ($slide->isDirty('image')) {
+            Storage::disk('public')->delete($slide->getOriginal('image'));
         }
     }
 
@@ -32,7 +30,9 @@ class SlideObserver
      */
     public function deleted(Slide $slide): void
     {
-        //
+        if (! is_null($slide->image)) {
+            Storage::disk('public')->delete($slide->image);
+        }
     }
 
     /**

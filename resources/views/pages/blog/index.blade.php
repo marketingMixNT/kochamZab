@@ -3,7 +3,7 @@
 
 
 <x-slot:header>
-    <x-banner >Aktualności</x-banner>
+    <x-banner img="{{asset('assets/images/attraction.webp')}}" alt="Aktualności" >Aktualności</x-banner>
 
 </x-slot:header>
 

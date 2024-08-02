@@ -14,7 +14,7 @@
 
                             <x-ui.header-heading>{{ $slide->title }}</x-ui.header-heading>
 
-                            <p class="text-fontLight text-lg lg:text-xl lg:font-normal">{{ $slide->content }}</p>
+                            <p class="text-fontLight text-base lg:text-lg lg:font-normal">{{ $slide->content }}</p>
 
                             @if ($slide->link)
                                 <x-ui.link-btn class="mt-6 2xl:mt-12" href="{{ $slide->link }}">Więcej

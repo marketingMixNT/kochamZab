@@ -9,7 +9,7 @@
             ciekawego!</x-ui.section-description>
     </x-base.section-heading-container>
     {{-- loop --}}
-    <x-base.loop-grid>
+    <x-base.loop-grid class="md:opacity-0 fade-in">
         @foreach ($posts as $post)
             <x-post-card :post="$post" />
         @endforeach

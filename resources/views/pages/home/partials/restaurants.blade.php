@@ -12,7 +12,7 @@
 
 
    {{-- loop --}}
-   <x-base.loop-grid>
+   <x-base.loop-grid class="md:opacity-0 fade-in">
        @foreach ($restaurants as $restaurant)
            <x-restaurant-card :restaurant="$restaurant" />
        @endforeach

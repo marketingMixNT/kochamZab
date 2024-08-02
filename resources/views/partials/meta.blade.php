@@ -22,7 +22,7 @@
 <link rel="canonical" href="{{ url()->current() }}" />
 
 {{-- og --}}
-<meta property="og:title" content="{{ $title }}">
+<meta property="og:title" content="{{ $title }} | kochamzab.pl">
 <meta property="og:description" content="{{ $description }}">
 <meta property="og:url" content="https://www.kochamzab.pl">
 <meta property="og:type" content="website">

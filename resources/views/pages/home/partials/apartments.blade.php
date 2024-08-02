@@ -6,7 +6,7 @@
         <x-ui.section-description>ZZąb oferuje szeroką gamę komfortowych apartamentów i miejsc noclegowych, które spełnią oczekiwania nawet najbardziej wymagających gości. Znajdziesz tu przytulne pensjonaty, nowoczesne apartamenty oraz urokliwe domki, idealne na wypoczynek zarówno dla par, rodzin, jak i grup przyjaciół. Każde miejsce jest starannie przygotowane, aby zapewnić maksymalny komfort i niezapomniane wrażenia z pobytu w tej malowniczej wsi.</x-ui.section-description>
     </x-base.section-heading-container>
     {{-- loop --}}
-    <x-base.loop-grid>
+    <x-base.loop-grid class="md:opacity-0 fade-in">
         @foreach ($apartments as $apartment)
             <x-apartment-card :apartment="$apartment" />
         @endforeach

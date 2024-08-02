@@ -3,7 +3,7 @@
 
 
 <x-slot:header>
-    <x-banner >Archiwum</x-banner>
+    <x-banner img="{{asset('assets/images/attraction.webp')}}" alt="Aktualności" >Archiwum wydarzeń</x-banner>
 
 </x-slot:header>
 

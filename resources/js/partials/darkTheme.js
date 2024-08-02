@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var themeToggleDarkIcon = themeToggleBtn.querySelector('.theme-toggle-dark-icon');
         var themeToggleLightIcon = themeToggleBtn.querySelector('.theme-toggle-light-icon');
 
-        // Check local storage for the theme
+       
         if (localStorage.getItem('color-theme') === 'dark' || 
             (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             // Set to dark theme

@@ -2,7 +2,7 @@
     description="Skontaktuj się z nami, aby uzyskać więcej informacji o naszym produkcie i usługach.">
 
     <x-slot:header>
-        <x-banner >Kontakt</x-banner>
+        <x-banner img="{{asset('assets/images/o-nas-3.webp')}}">Kontakt</x-banner>
     
     </x-slot:header>
 
@@ -67,14 +67,14 @@
                     </h3>
                     <ul class="flex items-center gap-2 ">
                         <li>
-                            <a href="#" rel="nofollow noreferrer"> <x-iconpark-facebook
+                            <a href="https://www.facebook.com/kochamzab" rel="nofollow noreferrer" aria-label="link do facebooka"> <x-iconpark-facebook
                                     class="w-9  hover:scale-110 duration-500 text-secondary-400" /></a>
                         </li>
                         <li>
-                            <a href="#" rel="nofollow noreferrer"> <x-iconpark-tiktok
+                            <a href="https://www.tiktok.com/@kochamzab" rel="nofollow noreferrer" aria-label="link do tiktoka"> <x-iconpark-tiktok
                                     class="w-9 hover:scale-110 duration-500 text-secondary-400" /></a>
                         </li>
-                        <li> <a href="#" rel="nofollow noreferrer"> <x-iconpark-instagram-o
+                        <li> <a href="https://www.instagram.com/kochamzab" rel="nofollow noreferrer" aria-label="link do instagrama"> <x-iconpark-instagram-o
                                     class="w-9 hover:scale-110 duration-500 text-secondary-400" /></a></li>
                     
                     </ul>

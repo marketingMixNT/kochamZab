@@ -220,7 +220,9 @@ class ApartmentResource extends Resource
 
                             ->columnSpanFull(),
 
-
+                            Shout::make('so-important')
+                            ->content('W celu poprawy SEO dodaj do mapy tag title="" , np. title="hotelMarketingMix"')
+                            ->color('waring')
                     ]),
 
                 //IMAGES
@@ -300,7 +302,7 @@ class ApartmentResource extends Resource
 
                 Tables\Columns\ImageColumn::make('thumbnail')
                     ->label('Miniaturka')
-                    ->circular(),
+                    ,
 
                 Tables\Columns\TextColumn::make('title')
                     ->label('Nazwa')

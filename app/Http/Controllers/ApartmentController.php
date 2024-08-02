@@ -13,7 +13,7 @@ class ApartmentController extends Controller
     public function index()
     {
 
-        $apartments = Apartment::select('id', 'title', 'slug', 'thumbnail', 'desc')->paginate(9);
+        $apartments = Apartment::select('id', 'title', 'slug', 'thumbnail', 'desc')->orderBy('sort', 'asc')->paginate(6);
         $totalAttractions = Attraction::count();
         $totalApartments = Apartment::count();
         $totalRestaurants = Restaurant::count();

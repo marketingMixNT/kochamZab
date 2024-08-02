@@ -81,7 +81,7 @@
     description="Poznaj bogatą historię wsi Ząb. Dowiedz się o wydarzeniach i ludziach, którzy ukształtowali to wyjątkowe miejsce z Kocham Ząb.">
 
     <x-slot:header>
-        <x-banner>Historia Zębu</x-banner>
+        <x-banner img="{{asset('assets/images/o-nas-4.webp')}}">Historia Zębu</x-banner>
 
     </x-slot:header>
 
@@ -106,8 +106,8 @@
                         </div>
                     </div>
                     <div>
-                        <img src="{{ asset('assets/images/zab.jpg') }}" alt="zdjęcie przedstawiające Ząb"
-                            class="aspect-video w-full max-h-[500px]" loading="lazy">
+                        <img src="{{asset('assets/images/o-nas-4.webp')}}" alt="zdjęcie przedstawiające Ząb"
+                            class="aspect-video w-full max-h-[500px] md:opacity-0 fade-in object-cover" loading="lazy">
                     </div>
                 </header>
 

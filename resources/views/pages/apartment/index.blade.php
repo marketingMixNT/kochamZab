@@ -2,7 +2,7 @@
     description="Znajdź komfortowe apartamenty w Zębie. Wybierz idealne miejsce na nocleg i ciesz się wygodnym wypoczynkiem z Kocham Ząb.">
 
     <x-slot:header>
-        <x-banner>Noclegi</x-banner>
+        <x-banner img="{{asset('assets/images/apartment.webp')}}">Apartamenty</x-banner>
 
     </x-slot:header>
 

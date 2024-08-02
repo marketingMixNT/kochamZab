@@ -9,7 +9,7 @@
             festiwale - każdy znajdzie tu coś dla siebie.</x-ui.section-description>
     </x-base.section-heading-container>
     {{-- loop --}}
-    <x-base.loop-grid>
+    <x-base.loop-grid class="md:opacity-0 fade-in">
         @foreach ($attractions as $attraction)
             <x-attraction-card :attraction="$attraction" />
         @endforeach

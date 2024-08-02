@@ -2,7 +2,7 @@
   
 
     <x-slot:header>
-    <x-banner >Gastronomia</x-banner>
+    <x-banner img="{{asset('assets/images/restaurant.webp')}}">Gastronomia</x-banner>
 
 </x-slot:header>
 

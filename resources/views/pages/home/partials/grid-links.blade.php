@@ -1,4 +1,4 @@
-<nav class="bg-primary-400 w-full h-[120px] hidden md:grid grid-cols-4">
+<nav class="bg-primary-400 w-full h-[120px] hidden md:grid grid-cols-4 ">
 
    <x-link-grid-item href="{{ route('blog.index') }}"
        img="{{ asset('assets/icons/events.webp') }}">Wydarzenia</x-link-grid-item>

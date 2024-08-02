@@ -89,7 +89,7 @@ public function getMetaTitle(): string
     if ($this->meta_title) {
         return $this->meta_title;
     } else {
-        return $this->title;
+        return str_replace(['"', "'"], '', $this->title);
     }
 }
 
@@ -98,7 +98,8 @@ public function getMetaDesc(): string
     if ($this->meta_desc) {
         return $this->meta_desc;
     } else {
-        return substr($this->content, 0, 150);;
+        return substr(strip_tags($this->desc), 0, 150);
+
     }
 }
 

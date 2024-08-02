@@ -2,7 +2,7 @@
     description="Poznaj Zespół Regionalny Zbójnicek. Odkryj tradycje, muzykę i taniec Podhala, które pielęgnuje i promuje nasza grupa.">
 
     <x-slot:header>
-        <x-banner>ZESPÓŁ REGIONALNY ZBÓJNICEK</x-banner>
+        <x-banner img="{{asset('assets/images/o-nas-3.webp')}}">ZESPÓŁ REGIONALNY ZBÓJNICEK</x-banner>
 
     </x-slot:header>
 
@@ -29,8 +29,8 @@
                         </div>
                     </div>
                     <div>
-                        <img src="{{ asset('assets/images/zab.jpg') }}" alt="zdjęcie przedstawiające Ząb"
-                            class="aspect-video w-full max-h-[500px]" loading="lazy">
+                        <img src="{{asset('assets/images/o-nas-3.webp')}}" alt="zdjęcie przedstawiające Ząb"
+                            class="aspect-video w-full max-h-[500px] md:opacity-0 fade-in object-cover" loading="lazy">
                     </div>
                 </header>
 

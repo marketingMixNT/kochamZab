@@ -7,6 +7,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\PrivacyPolicyController;
 use App\Http\Controllers\RestaurantController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -40,5 +41,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
 
     Route::get('/kontakt', [ContactController::class, 'index'])->name('contact.index');
+
+
+    Route::get('/polityka-prywatnosci', PrivacyPolicyController::class)->name('privacy-policy');
+
+
 
 });

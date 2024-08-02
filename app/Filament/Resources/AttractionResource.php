@@ -225,7 +225,9 @@ class AttractionResource extends Resource
 
                             ->columnSpanFull(),
 
-                       
+                            Shout::make('so-important')
+                            ->content('W celu poprawy SEO dodaj do mapy tag title="" , np. title="marketingMix"')
+                            ->color('waring')
                     ]),
 
                 //IMAGES
@@ -258,14 +260,14 @@ class AttractionResource extends Resource
                             ->label('Galeria')
                             ->directory('atrakcja-galeria')
                             ->getUploadedFileNameForStorageUsing(
-                                fn (TemporaryUploadedFile $file): string =>   now()->format('H-i-s') . '-' . str_replace([' ', '.'], '', microtime()) . '.' . $file->getClientOriginalExtension()
+                                fn (TemporaryUploadedFile $file): string => 'atrakcja-galeria-' . now()->format('H-i-s') . '-' . str_replace([' ', '.'], '', microtime()) . '.' . $file->getClientOriginalExtension()
                             )
                             ->multiple()
                             ->appendFiles()
                             ->image()
                             ->reorderable()
                             ->hint('Galeria musi mieć co najmniej 5 zdjęć')
-                            ->maxSize(8192)
+                            ->maxSize(16384)
                             ->optimize('webp')
                             ->imageEditor()
                             ->minFiles(5)
@@ -310,7 +312,7 @@ class AttractionResource extends Resource
 
                 Tables\Columns\ImageColumn::make('thumbnail')
                     ->label('Miniaturka')
-                    ->circular(),
+                    ,
 
                 Tables\Columns\TextColumn::make('title')
                     ->label('Nazwa')

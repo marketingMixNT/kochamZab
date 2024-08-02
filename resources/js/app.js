@@ -7,8 +7,8 @@ import "./partials/darkTheme";
 import './partials/swipers'
 import './partials/footerYear'
 import './partials/preloader'
-
-
+import './partials/observer'
+import './partials/figures'
 
 
 

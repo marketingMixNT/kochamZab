@@ -4,31 +4,31 @@
 
     <x-slot:header>
 
-        <x-banner>O nas</x-banner>
+        <x-banner img="{{asset('assets/images/o-nas-1.webp')}}">O nas</x-banner>
 
     </x-slot:header>
 
     <x-slot:main>
-        <x-base.section noFlex>
+        <x-base.section noFlex >
             <x-base.loop-grid>
 
-                {{-- item --}}
-                <x-about-card href="{{ route('about.zab') }}" img="{{ asset('assets/images/zab.jpg') }}">O
+               
+                <x-about-card href="{{ route('about.zab') }}" img="{{ asset('assets/images/o-nas-2.webp') }}">O
                     zębie</x-about-card>
-                {{-- item --}}
+               
                 <x-about-card href="{{ route('about.history') }}"
-                    img="{{ asset('assets/images/zab.jpg') }}">Historia</x-about-card>
-                {{-- item --}}
-                <x-about-card href="{{ route('about.poronin') }}" img="{{ asset('assets/images/zab.jpg') }}">Gmina
+                    img="{{ asset('assets/images/o-nas-3.webp') }}">Historia</x-about-card>
+                
+                <x-about-card href="{{ route('about.poronin') }}" img="{{ asset('assets/images/o-nas-4.webp') }}">Gmina
                     Poronin</x-about-card>
-                {{-- item --}}
+               
                 <x-about-card href="{{ route('about.association') }}"
-                    img="{{ asset('assets/images/zab.jpg') }}">Stowarzyszenie</x-about-card>
-                {{-- item --}}
-                <x-about-card href="{{ route('about.zwiazek') }}" img="{{ asset('assets/images/zab.jpg') }}">Związek
+                    img="{{ asset('assets/images/o-nas-5.webp') }}">Stowarzyszenie</x-about-card>
+               
+                <x-about-card href="{{ route('about.zwiazek') }}" img="{{ asset('assets/images/o-nas-6.webp') }}">Związek
                     Podhalan</x-about-card>
-                {{-- item --}}
-                <x-about-card href="{{ route('about.band') }}" img="{{ asset('assets/images/zab.jpg') }}">Zespół
+              
+                <x-about-card href="{{ route('about.band') }}" img="{{ asset('assets/images/o-nas-7.webp') }}">Zespół
                     Regionalny Zbójnicek</x-about-card>
 
 
@@ -36,7 +36,7 @@
 
         </x-base.section>
 
-        <!--HERO-BOTTOM-->
+      
         <x-info :totalAttractions="$totalAttractions" :totalApartments="$totalApartments" :totalRestaurants="$totalRestaurants" :totalPosts="$totalPosts" />
     </x-slot:main>
 </x-layouts.app>

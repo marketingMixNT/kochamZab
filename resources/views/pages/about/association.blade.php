@@ -2,7 +2,7 @@
     description="Poznaj działania Stowarzyszenia Promocji i Rozwoju Wsi Ząb. Wspieramy lokalną społeczność, promujemy atrakcje i rozwój regionu.">
 
     <x-slot:header>
-        <x-banner>Stowarzyszenie</x-banner>
+        <x-banner img="{{asset('assets/images/o-nas-2.webp')}}">Stowarzyszenie</x-banner>
 
     </x-slot:header>
 
@@ -30,8 +30,8 @@
                         </div>
                     </div>
                     <div>
-                        <img src="{{ asset('assets/images/zab.jpg') }}" alt="zdjęcie przedstawiające Ząb"
-                            class="aspect-video w-full max-h-[500px]" loading="lazy">
+                        <img src="{{asset('assets/images/o-nas-2.webp')}}" alt="zdjęcie przedstawiające Ząb"
+                            class="aspect-video w-full max-h-[500px] md:opacity-0 fade-in object-cover" loading="lazy">
                     </div>
                 </header>
 
@@ -60,7 +60,7 @@
                     <div class="space-y-2">
                         <h3 class="font-bold text-lg "> Realizacja Celów</h3>
                         <x-ui.paragraph>Stowarzyszenie szczególnie skupia się na:</x-ui.paragraph>
-                        <ul class="list-disc list-inside text-lg font-light pt-2">
+                        <ul class="list-disc list-inside  pt-2">
                             <li>Promocji przedsięwzięć gospodarczych, innowacyjnych i proekologicznych.</li>
                             <li>Rozwoju kultury, rekreacji, i sportu.</li>
                             <li>Wspieraniu edukacji, oświaty i nauki.</li>
@@ -75,7 +75,7 @@
                     <div class="space-y-2">
                         <h3 class="font-bold text-lg"> Zarząd Stowarzyszenia</h3>
                         <x-ui.paragraph>Na czele Stowarzyszenia stoi Zarząd, w którego skład wchodzą:</x-ui.paragraph>
-                        <ul class="list-disc list-inside text-lg font-light pt-2">
+                        <ul class="list-disc list-inside  pt-2">
                             <li>Michał Sobański – Prezes,</li>
                             <li>Czesław Błachuta – Wiceprezes,</li>
                             <li>Stanisław Staszel – Wiceprezes,</li>

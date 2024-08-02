@@ -5,7 +5,7 @@
         {{-- thumbnail --}}
         <div class="overflow-hidden ">
             <img src="{{ $post->getThumbnailUrl() }}" alt="miniaturka postu o tytule {{ $post->title }}" loading="lazy"
-                class=" w-full h-full object-cover group-hover:scale-110 duration-500 max-h-[400px]">
+                class=" w-full  object-cover group-hover:scale-110 duration-500 h-[300px]">
         </div>
         {{-- text --}}
         <div class=" flex flex-col justify-between flex-grow gap-8 p-6 bg-bgLight-200 dark:bg-bgDark-200 ">

@@ -13,7 +13,7 @@ class RestaurantController extends Controller
     public function index()
     {
 
-        $restaurants = Restaurant::select('id', 'title', 'slug', 'thumbnail', 'desc')->paginate(9);
+        $restaurants = Restaurant::select('id', 'title', 'slug', 'thumbnail', 'desc', )->orderBy('sort','asc')->paginate(6);
         $totalAttractions = Attraction::count();
         $totalApartments = Apartment::count();
         $totalRestaurants = Restaurant::count();
@@ -25,7 +25,7 @@ class RestaurantController extends Controller
 
     public function show($slug)
     {
-        $restaurant = Restaurant::with('socials','posts')->where('slug->pl', $slug)->firstOrFail();
+        $restaurant = Restaurant::with('socials', 'posts')->where('slug->pl', $slug)->firstOrFail();
 
         $otherRestaurants = Restaurant::orderByDesc('created_at')->take(4)->get();
 

@@ -5,12 +5,12 @@
 
     <x-slot:main>
 
-    <div class="h-[calc(80vh-90px)] md:h-[calc(80vh-90px)]  lg:h-[calc(80vh-140px)]  flex flex-col justify-center items-center bg-cover bg-center bg-fixed bg-gray-400 bg-blend-multiply" style="background-image: url({{ asset('assets/images/zab.jpg') }})">
+    <div class="h-[calc(80vh-90px)] md:h-[calc(80vh-90px)]  lg:h-[calc(80vh-140px)]  flex flex-col justify-center items-center bg-cover bg-center bg-fixed bg-gray-400 bg-blend-multiply" style="background-image: url({{ asset('assets/images/zab.webp') }})">
         {{-- SLIDES --}}
        
 
         <x-ui.header-heading>500</x-ui.header-heading>
-        <x-ui.paragraph>Wystąpił błąd podczas wyświetlania tej strony</x-ui.paragraph>
+        <p class="text-fontLight ">Wystąpił błąd podczas wyświetlania tej strony</p>
 
         <x-ui.link-btn href="{{ route('home') }}" class="mt-6 2xl:mt-12">Powrót do strony głównej</x-ui.link-btn>
 

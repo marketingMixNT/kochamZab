@@ -10,8 +10,11 @@ export default {
                 max: "2200px",
             },
             fontFamily: {
-                heading: ["Raleway", " sans-serif"],
-                text: ["Open Sans", "sans-serif"],
+                // heading: ["Raleway", " sans-serif"],
+                // text: ["Open Sans", "sans-serif"],
+                heading: ["Poppins", " sans-serif"],
+                text: ["Poppins", "sans-serif"],
+                
             },
             colors: {
                 primary: {
@@ -27,10 +30,9 @@ export default {
                 fontDark: "#333333",
                 fontBlue: "#101f46",
                 fontLight: "#ffffff",
-                fontOrange:"#f56960",
+                fontOrange: "#f56960",
 
                 bgLight: {
-
                     200: "#ffffff",
                     400: "#fafafa",
                 },
@@ -42,5 +44,5 @@ export default {
             },
         },
     },
-    plugins: [require("flowbite/plugin"),require('@tailwindcss/typography'),],
+    plugins: [require("flowbite/plugin"), require("@tailwindcss/typography")],
 };

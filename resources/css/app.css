@@ -1,6 +1,7 @@
 @import 'global.css';
 @import 'hamburger.css';
 
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

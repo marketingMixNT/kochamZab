@@ -32,7 +32,7 @@
 
             <x-ui.heading>Pozostałe artykuły</x-ui.heading>
 
-            <x-base.loop-grid>
+            <x-base.loop-grid class="md:opacity-0 fade-in">
 
                 @foreach ($filteredPosts as $post)
                     <x-post-card :post="$post" />
